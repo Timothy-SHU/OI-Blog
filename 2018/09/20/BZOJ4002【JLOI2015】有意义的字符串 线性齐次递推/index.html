@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【JLOI2015】有意义的字符串$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description$\mathrm{B君}$有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入$b,d,n$，求$$\lfloor(\frac{b+\sqrt{d}}{2})^n\rfloor\mod{75">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ4002【JLOI2015】有意义的字符串 &lt;线性齐次递推&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/09/20/BZOJ4002%E3%80%90JLOI2015%E3%80%91%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E7%BA%BF%E6%80%A7%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【JLOI2015】有意义的字符串$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description$\mathrm{B君}$有两个好朋友，他们叫宁宁和冉冉。有一天，冉冉遇到了一个有趣的题目：输入$b,d,n$，求$$\lfloor(\frac{b+\sqrt{d}}{2})^n\rfloor\mod{75">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-09-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-09-21T10:55:14.814Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="数论数学">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="省选">
+<meta property="article:tag" content="线性递推">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/09/20/BZOJ4002%E3%80%90JLOI2015%E3%80%91%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E7%BA%BF%E6%80%A7%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/09/20/BZOJ4002%E3%80%90JLOI2015%E3%80%91%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E7%BA%BF%E6%80%A7%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8/","path":"2018/09/20/BZOJ4002【JLOI2015】有意义的字符串 线性齐次递推/","title":"BZOJ4002【JLOI2015】有意义的字符串 \u003c线性齐次递推>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ4002【JLOI2015】有意义的字符串 <线性齐次递推> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90JLOI2015%E3%80%91%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="nav-number">1.1.</span> <span class="nav-text">【JLOI2015】有意义的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hint"><span class="nav-number">1.7.</span> <span class="nav-text">Hint</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/20/BZOJ4002%E3%80%90JLOI2015%E3%80%91%E6%9C%89%E6%84%8F%E4%B9%89%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E7%BA%BF%E6%80%A7%E9%BD%90%E6%AC%A1%E9%80%92%E6%8E%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ4002【JLOI2015】有意义的字符串 <线性齐次递推> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ4002【JLOI2015】有意义的字符串 <线性齐次递推>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-09-20 00:00:00" itemprop="dateCreated datePublished" datetime="2018-09-20T00:00:00+08:00">2018-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-09-21 18:55:14" itemprop="dateModified" datetime="2018-09-21T18:55:14+08:00">2018-09-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【JLOI2015】有意义的字符串"><a href="#【JLOI2015】有意义的字符串" class="headerlink" title="【JLOI2015】有意义的字符串"></a>【JLOI2015】有意义的字符串</h3><p>$\mathrm{Time;Limit:;10;Sec}$<br>$\mathrm{Memory;Limit:;128;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>$\mathrm{B君}$有两个好朋友，他们叫宁宁和冉冉。<br>有一天，冉冉遇到了一个有趣的题目：输入$b,d,n$，求<br>$$<br>\lfloor(\frac{b+\sqrt{d}}{2})^n\rfloor\mod{7528443412579576937}<br>$$</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>一行三个整数$b,d,n$。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>一行一个数表示模$7528443412579576937$之后的结果。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1 5 9</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">76</span><br></pre></td></tr></table></figure>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>$0&lt;b^2\le d&lt;(b+1)^2\le10^{18}$，$n\le10^{18}$，$b\equiv1\bmod{2}$，$d\equiv1\bmod{4}$。</p>
+<p>标签：<code>线性齐次递推</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>回忆二阶线性齐次递推的通项形式。</p>
+<p>对于线性递推$Aa_i+Ba_{i-1}+C&#x3D;0$，其特征方程为$Ax^2+Bx+C&#x3D;0$，设其两根为$\alpha,\beta$。则通项的形式为$a_i&#x3D;P\alpha^i+Q\beta^i$，其中$P,Q$为可根据特解计算的待定系数。<br>可以构造一个序列$\lbrace a_i\rbrace$，使得其通项为$a_i&#x3D;(\frac{b+\sqrt{d}}{2})^i+(\frac{b-\sqrt{d}}{2})^i$，那么其特征方程的两根为$\alpha&#x3D;\frac{b+\sqrt{d}}{2},\beta&#x3D;\frac{b-\sqrt{d}}{2}$。于是可以还原其递推式，得到<br>$$<br>a_i-ba_{i-1}+\frac{b^2-d}{4}&#x3D;0\<br>a_0&#x3D;2,;a_1&#x3D;b,;a_n&#x3D;ba_{n-1}-\frac{b^2-d}{4}a_{n-2}\<br>$$<br>由于$b\equiv1\bmod{2},;d\equiv1\bmod{4}$，可知$4|b^2-d$，$\frac{b^2-d}{4}$为整数。可以构造转移矩阵，用矩阵快速幂计算$a_n$。<br>$$<br>\begin{pmatrix}<br>a_{n-1}&amp;a_{n-2}<br>\end{pmatrix}<br>\times<br>\begin{pmatrix}<br>b&amp;1\<br>-\frac{b^2-d}{4}&amp;0<br>\end{pmatrix}<br>&#x3D;\begin{pmatrix}<br>a_n&amp;a_{n-1}<br>\end{pmatrix}<br>$$<br>接下来考虑如何根据$a_i$计算答案。<br>由$0&lt;b^2\le d&lt;(b+1)^2$，可知$\frac{b-\sqrt{d}}{2}\in(-\frac{1}{2},0]$。于是当$2|n$时，$(\frac{b-\sqrt{d}}{2})^n\in[0,\frac{1}{2})$，有$Ans&#x3D;a_n-1$；否则$(\frac{b-\sqrt{d}}{2})^n\in(-\frac{1}{2},0]$，有$Ans&#x3D;a_n$。</p>
+<p>综上，在矩阵快速幂后根据$n$的奇偶性调整答案即可。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> P 7528443412579576937</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">unsigned</span> <span class="type">long</span> <span class="type">long</span> unt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">lnt n, b, d;</span><br><span class="line"><span class="function">lnt <span class="title">add</span><span class="params">(lnt x, lnt y)</span> </span>&#123;</span><br><span class="line">	unt s = (unt)x+(unt)y;</span><br><span class="line">	<span class="keyword">return</span> (lnt)(s%P);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">lnt <span class="title">mul</span><span class="params">(lnt x, lnt y)</span> </span>&#123;</span><br><span class="line">	lnt ret = <span class="number">0</span>; <span class="keyword">if</span> (x &lt; y) <span class="built_in">swap</span>(x, y);</span><br><span class="line">	<span class="keyword">for</span> (; y; x = <span class="built_in">add</span>(x, x)%P, y &gt;&gt;= <span class="number">1</span>)</span><br><span class="line">		<span class="keyword">if</span> (y&amp;<span class="number">1</span>) ret = <span class="built_in">add</span>(ret, x)%P;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">	lnt ele[<span class="number">2</span>][<span class="number">2</span>];</span><br><span class="line">	<span class="built_in">Matrix</span> () &#123;<span class="built_in">memset</span>(ele, <span class="number">0</span>, <span class="keyword">sizeof</span> ele);&#125;</span><br><span class="line">	<span class="keyword">inline</span> Matrix <span class="keyword">operator</span> * (<span class="type">const</span> Matrix &amp;x) <span class="type">const</span> &#123;</span><br><span class="line">		Matrix ret;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++) <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">2</span>; j++) <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; <span class="number">2</span>; k++)</span><br><span class="line">			ret.ele[i][j] = <span class="built_in">add</span>(ret.ele[i][j], <span class="built_in">mul</span>(ele[i][k], x.ele[k][j]))%P;</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; a, m;</span><br><span class="line"><span class="function">Matrix <span class="title">Power</span><span class="params">(Matrix mat, lnt k)</span> </span>&#123;</span><br><span class="line">	Matrix ret;</span><br><span class="line">	ret.ele[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	ret.ele[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; k; k &gt;&gt;= <span class="number">1</span>, mat = mat*mat)</span><br><span class="line">		<span class="keyword">if</span> (k&amp;<span class="number">1</span>) ret = ret*mat;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(b), <span class="built_in">read</span>(d), <span class="built_in">read</span>(n);</span><br><span class="line">	<span class="keyword">if</span> (!n) <span class="keyword">return</span> <span class="built_in">puts</span>(<span class="string">&quot;1&quot;</span>), <span class="number">0</span>;</span><br><span class="line">	a.ele[<span class="number">0</span>][<span class="number">0</span>] = b, a.ele[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line">	m.ele[<span class="number">0</span>][<span class="number">0</span>] = b, m.ele[<span class="number">0</span>][<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">	m.ele[<span class="number">1</span>][<span class="number">0</span>] = P-((<span class="built_in">mul</span>(b, b)-d)&gt;&gt;<span class="number">2</span>);</span><br><span class="line">	a = a*<span class="built_in">Power</span>(m, n<span class="number">-1</span>), a.ele[<span class="number">0</span>][<span class="number">0</span>] -= !(n&amp;<span class="number">1</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, a.ele[<span class="number">0</span>][<span class="number">0</span>]), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E6%95%B0%E8%AE%BA%E6%95%B0%E5%AD%A6/" rel="tag"># 数论数学</a>
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E7%9C%81%E9%80%89/" rel="tag"># 省选</a>
+              <a href="/OI-Blog/tags/%E7%BA%BF%E6%80%A7%E9%80%92%E6%8E%A8/" rel="tag"># 线性递推</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/09/19/BZOJ2001%E3%80%90HNOI2010%E3%80%91%E5%9F%8E%E5%B8%82%E5%BB%BA%E8%AE%BE%20CDQ%E5%88%86%E6%B2%BB+MST/" rel="prev" title="BZOJ2001【HNOI2010】城市建设 < CDQ分治+MST >">
+                  <i class="fa fa-chevron-left"></i> BZOJ2001【HNOI2010】城市建设 < CDQ分治+MST >
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/09/20/ARC068F%20Solitaire%20%E8%AE%A1%E6%95%B0DP/" rel="next" title="ARC068F Solitaire <计数DP>">
+                  ARC068F Solitaire <计数DP> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

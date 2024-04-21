@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="ProblemDynamic len(set(a[L:R]))DescriptionIn python, we can use len(start(a[L:R])) to calculate the number of distinct values of elements $a[L],a[L + 1], \cdots,a[R-1]$.Tere are some interactive examp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVa12345 Dynamic len(set(a[L:R])) &lt;带修莫队&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2017/09/25/UVa12345%20Dynamic%20len(set(a[LR]))%20%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="ProblemDynamic len(set(a[L:R]))DescriptionIn python, we can use len(start(a[L:R])) to calculate the number of distinct values of elements $a[L],a[L + 1], \cdots,a[R-1]$.Tere are some interactive examp">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-09-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-05-19T03:19:41.011Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="莫队">
+<meta property="article:tag" content="UVa">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2017/09/25/UVa12345%20Dynamic%20len(set(a[LR]))%20%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2017/09/25/UVa12345%20Dynamic%20len(set(a[LR]))%20%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F/","path":"2017/09/25/UVa12345 Dynamic len(set(a[LR])) 带修莫队/","title":"UVa12345 Dynamic len(set(a[L:R])) \u003c带修莫队>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>UVa12345 Dynamic len(set(a[L:R])) <带修莫队> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Dynamic-len-set-a-L-R"><span class="nav-number">1.1.</span> <span class="nav-text">Dynamic len(set(a[L:R]))</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Translation"><span class="nav-number">2.</span> <span class="nav-text">Translation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2017/09/25/UVa12345%20Dynamic%20len(set(a[LR]))%20%E5%B8%A6%E4%BF%AE%E8%8E%AB%E9%98%9F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="UVa12345 Dynamic len(set(a[L:R])) <带修莫队> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UVa12345 Dynamic len(set(a[L:R])) <带修莫队>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-09-25 00:00:00" itemprop="dateCreated datePublished" datetime="2017-09-25T00:00:00+08:00">2017-09-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-05-19 11:19:41" itemprop="dateModified" datetime="2018-05-19T11:19:41+08:00">2018-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Dynamic-len-set-a-L-R"><a href="#Dynamic-len-set-a-L-R" class="headerlink" title="Dynamic len(set(a[L:R]))"></a>Dynamic len(set(a[L:R]))</h3><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>In python, we can use len(start(a[L:R])) to calculate the number of distinct values of elements $a[L],a[L + 1], \cdots,a[R-1]$.<br>Tere are some interactive examples that may help you understand how it is done. Remember that the indices of python lists start from $0$.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;</span><br><span class="line">a=[1,2,1,3,2,1,4]</span><br><span class="line">&gt;&gt;&gt; print a[1:6]</span><br><span class="line">[2, 1, 3, 2, 1]</span><br><span class="line">&gt;&gt;&gt; print set(a[1:6])</span><br><span class="line">set([1, 2, 3])</span><br><span class="line">&gt;&gt;&gt; print</span><br><span class="line">len(set(a[1:6]))</span><br><span class="line">3</span><br><span class="line">&gt;&gt;&gt; a[3]=2</span><br><span class="line">&gt;&gt;&gt; print</span><br><span class="line">len(set(a[1:6]))</span><br><span class="line">2</span><br><span class="line">&gt;&gt;&gt; print len(set(a[3:5]))</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<p>Your task is to simulate this process.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>There will be only one test case. The first line contains two integers $n$ and $m$ $(1\le n,m\le 50,000)$.<br>The next line contains the original list.<br>All the integers are between $1$ and $1,000,000$ (inclusive). The next m lines contain the statements<br>that you need to execute.<br>A line formatted as ‘$M$ $x$ $y$’ $(1\le y\le 1,000,000)$ means $a[x] &#x3D; y$, and a line formatted as ‘$Q$ $x$<br>$y$’ means $print\ len(set(a[x : y]))$.<br>It is guaranteed that the statements will not cause $index$ $out$ $of$ $range$ error.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the simulated result, one line for each query.</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">7 4</span><br><span class="line">1 2 1 3 2 1 4</span><br><span class="line">Q 1 6</span><br><span class="line">M 3 2</span><br><span class="line">Q 1 6</span><br><span class="line">Q 3 5</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">2</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+
+<p>标签：<code>带修莫队</code></p>
+<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>给出一个长为$n$的序列，有$m$个操作，分为两类：</p>
+<ol>
+<li>$Q$ $a$ $b$ 询问此序列$a\sim b$位间有多少种不同数</li>
+<li>$M$ $a$ $b$ 将第$a$位改为$b$。</li>
+</ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>本题数据范围只有五万，一看就是带根号的算法，可以$O(n\sqrt{n})$莫队水过。<br>我们发现$Q$操作是标准莫队，但$M$操作是修改，因而需用带修莫队。<br>带修莫队即在普通莫队的双指针种再加一个指针，指向时间。对于离线后询问建的扩展，如果是同一时间，就直接移动双指针；如果是不同时间，就先暴力移动时间指针，然后再移双指针即可。<br>暴力出奇迹~~~</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 50000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_C 1000000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m, tmp, col[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> cnt[MAX_C+<span class="number">5</span>], pos[MAX_N+<span class="number">5</span>], lst[MAX_N+<span class="number">5</span>], ans[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">bool</span> mark[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Modify</span> &#123;<span class="type">int</span> pos, x, pre;&#125; M[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Query</span> &#123;<span class="type">int</span> l, r, id, ts;&#125; Q[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> Query &amp;a, <span class="type">const</span> Query &amp;b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span>	pos[a.l] &lt; pos[b.l] || </span><br><span class="line">			(pos[a.l] == pos[b.l] &amp;&amp; pos[a.r] &lt; pos[b.r]) || </span><br><span class="line">			(pos[a.l] == pos[b.l] &amp;&amp; pos[a.r] == pos[b.r] &amp;&amp; a.ts &lt; b.ts);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (mark[x]) &#123;</span><br><span class="line">		cnt[col[x]]--;</span><br><span class="line">		<span class="keyword">if</span> (!cnt[col[x]])	tmp--;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">if</span> (!cnt[col[x]])	tmp++;</span><br><span class="line">		cnt[col[x]]++;</span><br><span class="line">	&#125;</span><br><span class="line">	mark[x] ^= <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">change</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (mark[x])	<span class="built_in">add</span>(x), col[x] = y, <span class="built_in">add</span>(x);</span><br><span class="line">	<span class="keyword">else</span>	col[x] = y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m);</span><br><span class="line">	<span class="type">int</span> magic = (<span class="type">int</span>)(<span class="built_in">sqrt</span>((<span class="type">double</span>)n+<span class="number">0.5</span>));</span><br><span class="line">	<span class="type">int</span> tot = <span class="number">0</span>, ind = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;col[i]), lst[i] = col[i], pos[i] = i/magic;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">		<span class="type">char</span> opt[<span class="number">2</span>];</span><br><span class="line">		<span class="type">int</span> x, y;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%s%d%d&quot;</span>, opt, &amp;x, &amp;y);	x++;</span><br><span class="line">		<span class="keyword">if</span> (opt[<span class="number">0</span>] == <span class="string">&#x27;Q&#x27;</span>) &#123;</span><br><span class="line">			Q[++tot].id = tot;</span><br><span class="line">			Q[tot].l = x, Q[tot].r = y, Q[tot].ts = ind;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			M[++ind].pos = x, M[ind].x = y, M[ind].pre = lst[x];</span><br><span class="line">			lst[x] = y;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">sort</span>(Q+<span class="number">1</span>, Q+tot+<span class="number">1</span>, cmp);</span><br><span class="line">	<span class="type">int</span> now = <span class="number">0</span>, l = <span class="number">1</span>, r = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= tot; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span> (now &lt; Q[i].ts)	<span class="keyword">for</span> (<span class="type">int</span> j = now+<span class="number">1</span>; j &lt;= Q[i].ts; j++)	<span class="built_in">change</span>(M[j].pos, M[j].x);</span><br><span class="line">		<span class="keyword">if</span> (now &gt; Q[i].ts)	<span class="keyword">for</span> (<span class="type">int</span> j = now; j &gt; Q[i].ts; j--)	<span class="built_in">change</span>(M[j].pos, M[j].pre);</span><br><span class="line">		<span class="keyword">if</span> (l &gt; Q[i].l)	<span class="keyword">for</span> (<span class="type">int</span> j = l<span class="number">-1</span>; j &gt;= Q[i].l; j--)	<span class="built_in">add</span>(j);</span><br><span class="line">		<span class="keyword">if</span> (r &lt; Q[i].r)	<span class="keyword">for</span> (<span class="type">int</span> j = r+<span class="number">1</span>; j &lt;= Q[i].r; j++)	<span class="built_in">add</span>(j);</span><br><span class="line">		<span class="keyword">if</span> (l &lt; Q[i].l)	<span class="keyword">for</span> (<span class="type">int</span> j = l; j &lt; Q[i].l; j++)	<span class="built_in">add</span>(j);</span><br><span class="line">		<span class="keyword">if</span> (r &gt; Q[i].r)	<span class="keyword">for</span> (<span class="type">int</span> j = r; j &gt; Q[i].r; j--)	<span class="built_in">add</span>(j);</span><br><span class="line">		now = Q[i].ts, l = Q[i].l, r = Q[i].r;</span><br><span class="line">		ans[Q[i].id] = tmp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= tot; i++)	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans[i]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/OI-Blog/tags/%E8%8E%AB%E9%98%9F/" rel="tag"># 莫队</a>
+              <a href="/OI-Blog/tags/UVa/" rel="tag"># UVa</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2017/09/24/20170918-24%E6%80%BB%E7%BB%93/" rel="prev" title="20170918-24总结">
+                  <i class="fa fa-chevron-left"></i> 20170918-24总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2017/09/25/HDU3068%20%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%20Manacher/" rel="next" title="HDU3068 最长回文 < Manacher >">
+                  HDU3068 最长回文 < Manacher > <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

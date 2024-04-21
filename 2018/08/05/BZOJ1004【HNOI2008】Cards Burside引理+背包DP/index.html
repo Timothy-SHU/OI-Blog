@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【HNOI2008】Cards$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;162MB}$ Description小春现在很清闲，面对书桌上的$N$张牌，他决定给每张染色。目前小春只有$3$种颜色：红色，蓝色，绿色。他询问$\mathrm{Sun}$有多少种染色方案，$\mathrm{Sun}$很快就给出了答案。进一步，小春要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ1004【HNOI2008】Cards &lt; Burside引理+背包DP &gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/08/05/BZOJ1004%E3%80%90HNOI2008%E3%80%91Cards%20Burside%E5%BC%95%E7%90%86+%E8%83%8C%E5%8C%85DP/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【HNOI2008】Cards$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;162MB}$ Description小春现在很清闲，面对书桌上的$N$张牌，他决定给每张染色。目前小春只有$3$种颜色：红色，蓝色，绿色。他询问$\mathrm{Sun}$有多少种染色方案，$\mathrm{Sun}$很快就给出了答案。进一步，小春要">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-08-04T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-08-12T09:15:53.608Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="计数">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="省选">
+<meta property="article:tag" content="Burnside引理">
+<meta property="article:tag" content="群论">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/08/05/BZOJ1004%E3%80%90HNOI2008%E3%80%91Cards%20Burside%E5%BC%95%E7%90%86+%E8%83%8C%E5%8C%85DP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/08/05/BZOJ1004%E3%80%90HNOI2008%E3%80%91Cards%20Burside%E5%BC%95%E7%90%86+%E8%83%8C%E5%8C%85DP/","path":"2018/08/05/BZOJ1004【HNOI2008】Cards Burside引理+背包DP/","title":"BZOJ1004【HNOI2008】Cards \u003c Burside引理+背包DP >"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ1004【HNOI2008】Cards < Burside引理+背包DP > | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90HNOI2008%E3%80%91Cards"><span class="nav-number">1.1.</span> <span class="nav-text">【HNOI2008】Cards</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explanation"><span class="nav-number">1.7.</span> <span class="nav-text">Explanation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.8.</span> <span class="nav-text">HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/08/05/BZOJ1004%E3%80%90HNOI2008%E3%80%91Cards%20Burside%E5%BC%95%E7%90%86+%E8%83%8C%E5%8C%85DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ1004【HNOI2008】Cards < Burside引理+背包DP > | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ1004【HNOI2008】Cards < Burside引理+背包DP >
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-08-05 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-05T00:00:00+08:00">2018-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-08-12 17:15:53" itemprop="dateModified" datetime="2018-08-12T17:15:53+08:00">2018-08-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【HNOI2008】Cards"><a href="#【HNOI2008】Cards" class="headerlink" title="【HNOI2008】Cards"></a>【HNOI2008】Cards</h3><p>$\mathrm{Time;Limit:;10;Sec}$<br>$\mathrm{Memory;Limit:;162MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>小春现在很清闲，面对书桌上的$N$张牌，他决定给每张染色。<br>目前小春只有$3$种颜色：红色，蓝色，绿色。他询问$\mathrm{Sun}$有多少种染色方案，$\mathrm{Sun}$很快就给出了答案。<br>进一步，小春要求染出$Sr$张红色，$Sb$张蓝色，$Sg$张绿色。他又询问有多少种方案，$\mathrm{Sun}$想了一下，又给出了正确答案。<br>最后小春发明了$M$种不同的洗牌法，他又问$\mathrm{Sun}$有多少种不同的染色方案。两种染色方法相同当且仅当其中一种可以通过任意的洗牌法（即可以使用多种洗牌法，而每种方法可以使用多次）洗成另一种。<br>$\mathrm{Sun}$发现这个问题有点难度，决定交给你。<br>答案可能很大，只要求出答案除以$P$的余数（$P$为质数）。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行输入$5$个整数：$Sr,Sb,Sg,m,p$。$n&#x3D;Sr+Sb+Sg$。<br>接下来$m$行，每行描述一种洗牌法，每行有$n$个用空格隔开的整数$X_1X_2\cdots X_n$，恰为$1$到$n$的一个排列，表示使用这种洗牌法，第$i$位变为原来的$X_i$位的牌。<br>数据保证任意多次洗牌都可用$m$种洗牌法中的一种代替，且对每种洗牌法，都存在一种洗牌法使得能回到原状态。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>不同染法除以$P$的余数。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1 1 1 2 7</span><br><span class="line">2 3 1</span><br><span class="line">3 1 2</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
+<h3 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h3><p>有$2$种本质上不同的染色法<code>RGB</code>和<code>RBG</code>，使用洗牌法<code>231</code>一次可得<code>GBR</code>和<code>BGR</code>，使用洗牌法<code>312</code>一次 可得<code>BRG</code>和<code>GRB</code>。</p>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>$100%$数据满足$\max\lbrace Sr,Sb,Sg\rbrace\le20,;m\le60,;m+1&lt;p&lt;100$。</p>
+<p>标签：<code>Burnside引理</code> <code>背包DP</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>挺好的一道群论基础题，一看是$\mathrm{Polya}$定理裸题，再看发现要转化为背包$\mathrm{DP}$数不动点。</p>
+<p>将每一种洗牌方式看成一种置换，这些置换所形成的群称为$G$。将所有排列的集合称为$X$。那么对于群在集合上的作用$G\times X\to X$，我们想计算其无交轨道数，即$|X&#x2F;G|$。<br>对于一个置换$g\in G$，令$X^g&#x3D;\lbrace x\in X|gx&#x3D;x\rbrace$，即关于$g$的轨道上的不动点数目。<br>由$\mathrm{Burnside}$引理可知，有<br>$$<br>|X&#x2F;G|&#x3D;\frac{1}{|G|}\sum_{g\in G}|X^g|<br>$$<br>由于题目中对每种颜色的数量都有限制，我们无法直接套用$\mathrm{Polya}$定理，因此只能按照$\mathrm{Burnside}$引理将每种置换对应的轨道上不动点数的和算出来，再计算$|X&#x2F;G|$。</p>
+<p>考虑对于一种置换（洗牌方式），如何计算其不动点数。<br>首先，对于一个置换，我们一定可以将其表示为若干轮换作用起来的形式。<br>例如，对于置换<br>$$<br>\begin{pmatrix}<br>1&amp;2&amp;3&amp;4&amp;5\<br>2&amp;5&amp;4&amp;3&amp;1\<br>\end{pmatrix}<br>$$<br>我们可以将其分为不相关的两部分<br>$$<br>\begin{pmatrix}<br>1&amp;2&amp;5\<br>2&amp;5&amp;1\<br>\end{pmatrix}<br>\begin{pmatrix}<br>3&amp;4\<br>4&amp;3\<br>\end{pmatrix}<br>$$<br>再写成两个轮换相作用的形式<br>$$<br>\begin{pmatrix}<br>1&amp;2&amp;5<br>\end{pmatrix}<br>\begin{pmatrix}<br>3&amp;4<br>\end{pmatrix}<br>$$<br>由于每个轮换内部都可以任意交换，对于一种置换，其不动点的每个轮换内部一定是涂的相同颜色。这意味着我们可以将一个轮换作为一个整体看待。<br>于是我们预处理出这个置换每个轮换的大小，将一个轮换看作大小为其长度的物品，做背包$\mathrm{DP}$。<br>设第$i$个物品大小为$sz_i$。用$f[i][a][b]$表示前$i$个物品，有$a$个是第$1$种颜色，有$b$个是第$2$种颜色，此状态下的染色方案数。那么染第$3$种颜色的物品数为$\sum_{j&#x3D;1}^{i}sz_j-a-b$。有三种转移：</p>
+<ol>
+<li>若$a\ge sz_i$，则$f[i][a][b]&#x3D;f[i][a][b]+f[i-1][a-sz_i][b]$</li>
+<li>若$b\ge sz_i$，则$f[i][a][b]&#x3D;f[i][a][b]+f[i-1][a][b-sz_i]$</li>
+<li>若$c\ge sz_i$，则$f[i][a][b]&#x3D;f[i][a][b]+f[i-1][a][b]$</li>
+</ol>
+<p>对于每个输入的洗牌方式，先$\mathrm{DFS}$求出$sz$数组，再$\mathrm{DP}$求出不动点个数并累加即可得到总不动点个数。注意这里还需要加上恒等置换（即所有位置都不动）的不动点数，即$\frac{n!}{A!\cdot B!\cdot C!}$。<br>答案等于$\frac{不动点总数}{m+1}$。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, m, A, B, C, num;</span><br><span class="line"><span class="type">int</span> p[<span class="number">65</span>], cnt[<span class="number">65</span>], tot[<span class="number">65</span>];</span><br><span class="line">lnt f[<span class="number">65</span>][<span class="number">65</span>][<span class="number">65</span>], pw[<span class="number">65</span>], P;</span><br><span class="line"><span class="type">bool</span> mrk[<span class="number">65</span>];</span><br><span class="line"><span class="function">lnt <span class="title">inv</span><span class="params">(lnt x)</span> </span>&#123;</span><br><span class="line">	lnt ret = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (lnt k = P<span class="number">-2</span>; k; k &gt;&gt;= <span class="number">1</span>, x = x*x%P)</span><br><span class="line">		<span class="keyword">if</span> (k&amp;<span class="number">1</span>) ret = ret*x%P;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> sz)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (mrk[u]) &#123;cnt[++num] = sz; <span class="keyword">return</span>;&#125;</span><br><span class="line">	mrk[u] = <span class="literal">true</span>, <span class="built_in">DFS</span>(p[u], sz+<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(A), <span class="built_in">read</span>(B), <span class="built_in">read</span>(C), n = A+B+C, <span class="built_in">read</span>(m), <span class="built_in">read</span>(P);</span><br><span class="line">	pw[<span class="number">0</span>] = <span class="number">1</span>; <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) pw[i] = pw[i<span class="number">-1</span>]*i%P;</span><br><span class="line">	lnt sum = pw[n]*<span class="built_in">inv</span>(pw[A])%P*<span class="built_in">inv</span>(pw[B])%P*<span class="built_in">inv</span>(pw[C])%P;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> T = <span class="number">1</span>; T &lt;= m; T++) &#123;</span><br><span class="line">		num = <span class="number">0</span>; <span class="built_in">memset</span>(mrk, <span class="literal">false</span>, <span class="keyword">sizeof</span> mrk);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">read</span>(p[i]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="keyword">if</span> (!mrk[i]) <span class="built_in">DFS</span>(i, <span class="number">0</span>);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= num; i++) tot[i] = tot[i<span class="number">-1</span>]+cnt[i];</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= num; i++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> a = <span class="number">0</span>; a &lt;= A; a++)</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> b = <span class="number">0</span>; b &lt;= B; b++) &#123;</span><br><span class="line">					<span class="type">int</span> c = tot[i]-a-b; f[i][a][b] = <span class="number">0</span>;</span><br><span class="line">					<span class="keyword">if</span> (a &gt;= cnt[i]) (f[i][a][b] += f[i<span class="number">-1</span>][a-cnt[i]][b]) %= P;</span><br><span class="line">					<span class="keyword">if</span> (b &gt;= cnt[i]) (f[i][a][b] += f[i<span class="number">-1</span>][a][b-cnt[i]]) %= P;</span><br><span class="line">					<span class="keyword">if</span> (c &gt;= cnt[i]) (f[i][a][b] += f[i<span class="number">-1</span>][a][b]) %= P;</span><br><span class="line">				&#125;</span><br><span class="line">		(sum += f[num][A][B]) %= P;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, sum*<span class="built_in">inv</span>(m+<span class="number">1</span>)%P), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E8%AE%A1%E6%95%B0/" rel="tag"># 计数</a>
+              <a href="/OI-Blog/tags/DP/" rel="tag"># DP</a>
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E7%9C%81%E9%80%89/" rel="tag"># 省选</a>
+              <a href="/OI-Blog/tags/Burnside%E5%BC%95%E7%90%86/" rel="tag"># Burnside引理</a>
+              <a href="/OI-Blog/tags/%E7%BE%A4%E8%AE%BA/" rel="tag"># 群论</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/08/04/51Nod1667%20%E6%A6%82%E7%8E%87%E5%A5%BD%E9%A2%98%20%E5%AE%B9%E6%96%A5+%E8%AE%A1%E6%95%B0/" rel="prev" title="51Nod1667 概率好题 <容斥+计数>">
+                  <i class="fa fa-chevron-left"></i> 51Nod1667 概率好题 <容斥+计数>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/08/10/BZOJ4206%20%E6%9C%80%E5%A4%A7%E5%9B%A2%20%E5%87%A0%E4%BD%95+DP/" rel="next" title="BZOJ4206 最大团 <几何+DP>">
+                  BZOJ4206 最大团 <几何+DP> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

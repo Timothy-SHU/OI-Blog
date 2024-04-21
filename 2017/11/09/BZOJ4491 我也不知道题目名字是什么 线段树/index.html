@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem我也不知道题目名字是什么$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;512;MB}$ Description给定一个序列$A[i]$，每次询问$l,r$，求$[l,r]$内最长子串，使得该子串为不上升子串或不下降子串 Input第一行$n$，表示$A$数组有多少元素接下来一行为$n$个整数$A[i]$接下来一个整数$Q$，表">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ4491 我也不知道题目名字是什么 &lt;线段树&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2017/11/09/BZOJ4491%20%E6%88%91%E4%B9%9F%E4%B8%8D%E7%9F%A5%E9%81%93%E9%A2%98%E7%9B%AE%E5%90%8D%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88%20%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem我也不知道题目名字是什么$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;512;MB}$ Description给定一个序列$A[i]$，每次询问$l,r$，求$[l,r]$内最长子串，使得该子串为不上升子串或不下降子串 Input第一行$n$，表示$A$数组有多少元素接下来一行为$n$个整数$A[i]$接下来一个整数$Q$，表">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-11-08T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-03-27T11:25:47.628Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2017/11/09/BZOJ4491%20%E6%88%91%E4%B9%9F%E4%B8%8D%E7%9F%A5%E9%81%93%E9%A2%98%E7%9B%AE%E5%90%8D%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88%20%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2017/11/09/BZOJ4491%20%E6%88%91%E4%B9%9F%E4%B8%8D%E7%9F%A5%E9%81%93%E9%A2%98%E7%9B%AE%E5%90%8D%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88%20%E7%BA%BF%E6%AE%B5%E6%A0%91/","path":"2017/11/09/BZOJ4491 我也不知道题目名字是什么 线段树/","title":"BZOJ4491 我也不知道题目名字是什么 \u003c线段树>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ4491 我也不知道题目名字是什么 <线段树> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%91%E4%B9%9F%E4%B8%8D%E7%9F%A5%E9%81%93%E9%A2%98%E7%9B%AE%E5%90%8D%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">我也不知道题目名字是什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.7.</span> <span class="nav-text">HINT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">1.8.</span> <span class="nav-text">Source</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2017/11/09/BZOJ4491%20%E6%88%91%E4%B9%9F%E4%B8%8D%E7%9F%A5%E9%81%93%E9%A2%98%E7%9B%AE%E5%90%8D%E5%AD%97%E6%98%AF%E4%BB%80%E4%B9%88%20%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ4491 我也不知道题目名字是什么 <线段树> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ4491 我也不知道题目名字是什么 <线段树>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-11-09 00:00:00" itemprop="dateCreated datePublished" datetime="2017-11-09T00:00:00+08:00">2017-11-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-03-27 19:25:47" itemprop="dateModified" datetime="2018-03-27T19:25:47+08:00">2018-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="我也不知道题目名字是什么"><a href="#我也不知道题目名字是什么" class="headerlink" title="我也不知道题目名字是什么"></a>我也不知道题目名字是什么</h3><p>$\mathrm{Time;Limit:;10;Sec}$<br>$\mathrm{Memory;Limit:;512;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>给定一个序列$A[i]$，每次询问$l,r$，求$[l,r]$内最长子串，使得该子串为不上升子串或不下降子串</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行$n$，表示$A$数组有多少元素<br>接下来一行为$n$个整数$A[i]$<br>接下来一个整数$Q$，表示询问数量<br>接下来$Q$行，每行$2$个整数$l,\ r$</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>对于每个询问，求$[l,r]$内最长子串，使得该子串为不上升子串或不下降子串</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">1 2 3 4 5 6 5 4 3</span><br><span class="line">5</span><br><span class="line">1 6</span><br><span class="line">1 7</span><br><span class="line">2 7</span><br><span class="line">1 9</span><br><span class="line">5 9</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">6</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">4</span><br></pre></td></tr></table></figure>
+<p><strong>样例解释</strong><br>五个询问分别对应$[1,6][1,6][2,6][1,6][6,9]$</p>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>$N,Q\le 50000$</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>$By$ 一个读错题的沙茶</p>
+<p>标签：<code>线段树</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>稍有变形的基础线段树。<br>对于每个区间，维护其从左端开始的最长上升升下降序列、从右端开始的最长上升或下降序列、左端点键值、右端点键值、区间中最长序列长度、区间中最长上升序列长度、区间中最长下降序列长度，共$9$个值。然后$updata$和$downtag$注意写法即可。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 50000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m;	<span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> lup, rup, ldn, rdn, lc, rc, l, mxup, mxdn;&#125; tr[(MAX_N&lt;&lt;<span class="number">2</span>)+<span class="number">5</span>];</span><br><span class="line"><span class="function">node <span class="title">update</span><span class="params">(node a, node b)</span> </span>&#123;</span><br><span class="line">	node ret;	ret.l = a.l+b.l, ret.lc = a.lc, ret.rc = b.rc;</span><br><span class="line">	ret.lup = a.lup;	<span class="keyword">if</span> (a.lup == a.l &amp;&amp; a.rc &lt;= b.lc)	ret.lup = a.l+b.lup;</span><br><span class="line">	ret.ldn = a.ldn;	<span class="keyword">if</span> (a.ldn == a.l &amp;&amp; a.rc &gt;= b.lc)	ret.ldn = a.l+b.ldn;</span><br><span class="line">	ret.rup = b.rup;	<span class="keyword">if</span> (b.rup == b.l &amp;&amp; a.rc &lt;= b.lc)	ret.rup = a.rup+b.l;</span><br><span class="line">	ret.rdn = b.rdn;	<span class="keyword">if</span> (b.rdn == b.l &amp;&amp; a.rc &gt;= b.lc)	ret.rdn = a.rdn+b.l;</span><br><span class="line">	ret.mxup = <span class="built_in">max</span>(a.mxup, b.mxup), ret.mxdn = <span class="built_in">max</span>(a.mxdn, b.mxdn);</span><br><span class="line">	<span class="keyword">if</span> (a.rc &lt;= b.lc)	ret.mxup = <span class="built_in">max</span>(ret.mxup, a.rup+b.lup);</span><br><span class="line">	<span class="keyword">if</span> (a.rc &gt;= b.lc)	ret.mxdn = <span class="built_in">max</span>(ret.mxdn, a.rdn+b.ldn);</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s == t) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;tr[v].lc), tr[v].rc = tr[v].lc;</span><br><span class="line">		tr[v].lup = tr[v].rup = tr[v].ldn = tr[v].rdn = tr[v].l = tr[v].mxup = tr[v].mxdn = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> mid = s+t&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">build</span>(v&lt;&lt;<span class="number">1</span>, s, mid), <span class="built_in">build</span>(v&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid+<span class="number">1</span>, t);</span><br><span class="line">	tr[v] = <span class="built_in">update</span>(tr[v&lt;&lt;<span class="number">1</span>], tr[v&lt;&lt;<span class="number">1</span>|<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">node <span class="title">query</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r)	<span class="keyword">return</span> tr[v];</span><br><span class="line">	<span class="type">int</span> mid = s+t&gt;&gt;<span class="number">1</span>; node ls, rs; <span class="type">bool</span> fl = <span class="literal">false</span>, fr = <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid)	ls = <span class="built_in">query</span>(v&lt;&lt;<span class="number">1</span>, s, mid, l, r), fl = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>)	rs = <span class="built_in">query</span>(v&lt;&lt;<span class="number">1</span>|<span class="number">1</span>, mid+<span class="number">1</span>, t, l, r), fr = <span class="literal">true</span>;</span><br><span class="line">	<span class="keyword">return</span> fl ? (fr ? <span class="built_in">update</span>(ls, rs) : ls) : rs;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n), <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;m);</span><br><span class="line">	<span class="keyword">while</span> (m--) &#123;</span><br><span class="line">		<span class="type">int</span> l, r;	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;l, &amp;r);</span><br><span class="line">		node ans = <span class="built_in">query</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r);</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">max</span>(ans.mxup, ans.mxdn));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2017/11/09/BZOJ4720%E3%80%90NOIp2016%E3%80%91%E6%8D%A2%E6%95%99%E5%AE%A4%20%E6%A6%82%E7%8E%87DP/" rel="prev" title="BZOJ4720【NOIp2016】换教室 <概率DP>">
+                  <i class="fa fa-chevron-left"></i> BZOJ4720【NOIp2016】换教室 <概率DP>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2017/11/09/BZOJ4034%E3%80%90HAOI2015%E3%80%91%E6%A0%91%E4%B8%8A%E6%93%8D%E4%BD%9C%20%E6%A0%91%E9%93%BE%E5%89%96%E5%88%86/" rel="next" title="BZOJ4034【HAOI2015】树上操作 <树链剖分>">
+                  BZOJ4034【HAOI2015】树上操作 <树链剖分> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

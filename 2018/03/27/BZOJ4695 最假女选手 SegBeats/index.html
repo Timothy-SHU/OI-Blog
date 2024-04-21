@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem最假女选手$\mathrm{Time;Limit:;50;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description在刚刚结束的水题嘉年华的压轴节目放水大赛中，$\mathrm{wyywyy}$如愿以偿的得到了最假女选手的奖项。但是作为主办人的$\mathrm{C_SUNSHINE}$为了证明$\mathrm{wyywyy}$确实在放水，决定出一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ4695 最假女选手 &lt; SegBeats &gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/03/27/BZOJ4695%20%E6%9C%80%E5%81%87%E5%A5%B3%E9%80%89%E6%89%8B%20SegBeats/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem最假女选手$\mathrm{Time;Limit:;50;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description在刚刚结束的水题嘉年华的压轴节目放水大赛中，$\mathrm{wyywyy}$如愿以偿的得到了最假女选手的奖项。但是作为主办人的$\mathrm{C_SUNSHINE}$为了证明$\mathrm{wyywyy}$确实在放水，决定出一">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-03-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-03-27T12:22:40.679Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="数据结构">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/03/27/BZOJ4695%20%E6%9C%80%E5%81%87%E5%A5%B3%E9%80%89%E6%89%8B%20SegBeats/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/03/27/BZOJ4695%20%E6%9C%80%E5%81%87%E5%A5%B3%E9%80%89%E6%89%8B%20SegBeats/","path":"2018/03/27/BZOJ4695 最假女选手 SegBeats/","title":"BZOJ4695 最假女选手 \u003c SegBeats >"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ4695 最假女选手 < SegBeats > | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E5%81%87%E5%A5%B3%E9%80%89%E6%89%8B"><span class="nav-number">1.1.</span> <span class="nav-text">最假女选手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.7.</span> <span class="nav-text">HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/03/27/BZOJ4695%20%E6%9C%80%E5%81%87%E5%A5%B3%E9%80%89%E6%89%8B%20SegBeats/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ4695 最假女选手 < SegBeats > | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ4695 最假女选手 < SegBeats >
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2018-03-27 00:00:00 / Modified: 20:22:40" itemprop="dateCreated datePublished" datetime="2018-03-27T00:00:00+08:00">2018-03-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="最假女选手"><a href="#最假女选手" class="headerlink" title="最假女选手"></a>最假女选手</h3><p>$\mathrm{Time;Limit:;50;Sec}$<br>$\mathrm{Memory;Limit:;128;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>在刚刚结束的水题嘉年华的压轴节目放水大赛中，$\mathrm{wyywyy}$如愿以偿的得到了最假女选手的奖项。但是作为主办人的$\mathrm{C_SUNSHINE}$为了证明$\mathrm{wyywyy}$确实在放水，决定出一道基础题考察$\mathrm{wyywyy}$的姿势水平。给定一个长度为$N$序列，编号从$1$到$N$。要求支持下面几种操作：</p>
+<ol>
+<li>给一个区间$[L,R]$加上一个数$x$ </li>
+<li>把一个区间$[L,R]$里小于$x$的数变成$x$</li>
+<li>把一个区间$[L,R]$里大于$x$的数变成$x$ </li>
+<li>求区间$[L,R]$的和</li>
+<li>求区间$[L,R]$的最大值</li>
+<li>求区间$[L,R]$的最小值</li>
+</ol>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行一个整数$N$表示序列长度<br>第二行$N$个整数$A_i$表示初始序列<br>第三行一个整数$M$表示操作个数<br>接下来$M$行，每行三或四个整数，第一个整数$Tp$表示操作类型，接下来$L,R,X$或$L,R$表述操作数</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>对于每个$4,5,6$类型的操作，输出一行一个整数表示答案</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1 2</span><br><span class="line">2</span><br><span class="line">2 1 2 2</span><br><span class="line">4 1 2</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4</span><br></pre></td></tr></table></figure>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>$1\le Tp\le6,;N,M\le5\times10^5,;|A_i|\le10^8$<br>$Tp&#x3D;1$时,$|x|\le1000$<br>$Tp&#x3D;2$或$3$时，$|x|\le10^8$</p>
+<p>标签：<code>SegBeats</code> <code>线段树</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>$\mathrm{Segment;Tree;Beats!}$<br>参见<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1o7xSSQ2">吉老师的冬令营课件</a>。</p>
+<p>像课件里那样维护最大值、最大值个数、严格次大值、最小值、最小值个数、严格次小值、区间加标记、区间和，丧心病狂分类更新即可。注意只有区间和需要开$\mathrm{long;long}$，这样即省空间又省常数。</p>
+<p>好久没写过上$140$行的代码了…<br>强烈建议先对拍再交，否则容易卡住评测…</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> ls (v&lt;&lt;1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> rs (v&lt;&lt;1|1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mid ((s+t)&gt;&gt;1)</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 500000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> mx1, mx2, mxc, mi1, mi2, mic, tag;	lnt s;&#125; tr[(MAX_N&lt;&lt;<span class="number">2</span>)+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">update</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">	tr[v].s = tr[ls].s+tr[rs].s;</span><br><span class="line">	<span class="keyword">if</span> (tr[ls].mx1 == tr[rs].mx1)</span><br><span class="line">		tr[v].mx1 = tr[ls].mx1, </span><br><span class="line">		tr[v].mxc = tr[ls].mxc+tr[rs].mxc, </span><br><span class="line">		tr[v].mx2 = <span class="built_in">max</span>(tr[ls].mx2, tr[rs].mx2);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (tr[ls].mx1 &gt; tr[rs].mx1)</span><br><span class="line">		tr[v].mx1 = tr[ls].mx1, </span><br><span class="line">		tr[v].mxc = tr[ls].mxc, </span><br><span class="line">		tr[v].mx2 = <span class="built_in">max</span>(tr[ls].mx2, tr[rs].mx1);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		tr[v].mx1 = tr[rs].mx1, </span><br><span class="line">		tr[v].mxc = tr[rs].mxc, </span><br><span class="line">		tr[v].mx2 = <span class="built_in">max</span>(tr[ls].mx1, tr[rs].mx2);</span><br><span class="line">	<span class="keyword">if</span> (tr[ls].mi1 == tr[rs].mi1)</span><br><span class="line">		tr[v].mi1 = tr[ls].mi1, </span><br><span class="line">		tr[v].mic = tr[ls].mic+tr[rs].mic, </span><br><span class="line">		tr[v].mi2 = <span class="built_in">min</span>(tr[ls].mi2, tr[rs].mi2);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (tr[ls].mi1 &lt; tr[rs].mi1)</span><br><span class="line">		tr[v].mi1 = tr[ls].mi1, </span><br><span class="line">		tr[v].mic = tr[ls].mic, </span><br><span class="line">		tr[v].mi2 = <span class="built_in">min</span>(tr[ls].mi2, tr[rs].mi1);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		tr[v].mi1 = tr[rs].mi1, </span><br><span class="line">		tr[v].mic = tr[rs].mic, </span><br><span class="line">		tr[v].mi2 = <span class="built_in">min</span>(tr[ls].mi1, tr[rs].mi2);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">updmx</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	tr[v].s -= <span class="number">1LL</span>*tr[v].mxc*(tr[v].mx1-x);</span><br><span class="line">	tr[v].mx1 = x, tr[v].mi1 = <span class="built_in">min</span>(x, tr[v].mi1);</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mx1^tr[v].mi1) tr[v].mi2 = <span class="built_in">min</span>(x, tr[v].mi2);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		tr[v].mx2 = -INF, tr[v].mi2 = INF, </span><br><span class="line">		tr[v].s = <span class="number">1LL</span>*(t-s+<span class="number">1</span>)*x, tr[v].mxc = tr[v].mic = t-s+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">updmi</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	tr[v].s += <span class="number">1LL</span>*tr[v].mic*(x-tr[v].mi1);</span><br><span class="line">	tr[v].mi1 = x, tr[v].mx1 = <span class="built_in">max</span>(x, tr[v].mx1);</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mx1^tr[v].mi1) tr[v].mx2 = <span class="built_in">max</span>(x, tr[v].mx2);</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		tr[v].mx2 = -INF, tr[v].mi2 = INF, </span><br><span class="line">		tr[v].s = <span class="number">1LL</span>*(t-s+<span class="number">1</span>)*x, tr[v].mxc = tr[v].mic = t-s+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">downtag</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> x = tr[v].tag;	tr[v].tag = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span> (x)</span><br><span class="line">		tr[ls].mx1 += x, tr[ls].mx2 += x, </span><br><span class="line">		tr[ls].mi1 += x, tr[ls].mi2 += x, </span><br><span class="line">		tr[ls].s += <span class="number">1LL</span>*(mid-s+<span class="number">1</span>)*x, tr[ls].tag += x, </span><br><span class="line">		tr[rs].mx1 += x, tr[rs].mx2 += x, </span><br><span class="line">		tr[rs].mi1 += x, tr[rs].mi2 += x, </span><br><span class="line">		tr[rs].s += <span class="number">1LL</span>*(t-mid)*x, tr[rs].tag += x;</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mx1 &lt; tr[ls].mx1 &amp;&amp; tr[v].mx1 &gt; tr[ls].mx2) <span class="built_in">updmx</span>(ls, s, mid, tr[v].mx1);</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mi1 &gt; tr[ls].mi1 &amp;&amp; tr[v].mi1 &lt; tr[ls].mi2) <span class="built_in">updmi</span>(ls, s, mid, tr[v].mi1);</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mx1 &lt; tr[rs].mx1 &amp;&amp; tr[v].mx1 &gt; tr[rs].mx2) <span class="built_in">updmx</span>(rs, mid+<span class="number">1</span>, t, tr[v].mx1);</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mi1 &gt; tr[rs].mi1 &amp;&amp; tr[v].mi1 &lt; tr[rs].mi2) <span class="built_in">updmi</span>(rs, mid+<span class="number">1</span>, t, tr[v].mi1);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s == t) &#123;</span><br><span class="line">		<span class="type">int</span> x;	<span class="built_in">read</span>(x);</span><br><span class="line">		tr[v].mx1 = tr[v].mi1 = x, tr[v].mxc = tr[v].mic = <span class="number">1</span>;</span><br><span class="line">		tr[v].mx2 = -INF, tr[v].mi2 = INF, tr[v].s = x;	<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">build</span>(ls, s, mid), <span class="built_in">build</span>(rs, mid+<span class="number">1</span>, t), <span class="built_in">update</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">modify</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r) &#123;</span><br><span class="line">		tr[v].mx1 += x, tr[v].mx2 += x;</span><br><span class="line">		tr[v].mi1 += x, tr[v].mi2 += x;</span><br><span class="line">		tr[v].s += <span class="number">1LL</span>*(t-s+<span class="number">1</span>)*x;</span><br><span class="line">		tr[v].tag += x;	<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">downtag</span>(v, s, t);</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid) <span class="built_in">modify</span>(ls, s, mid, l, r, x);</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>) <span class="built_in">modify</span>(rs, mid+<span class="number">1</span>, t, l, r, x);</span><br><span class="line">	<span class="built_in">update</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">optmx</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mi1 &gt;= x) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r &amp;&amp; x &lt; tr[v].mi2)</span><br><span class="line">		&#123;<span class="built_in">updmi</span>(v, s, t, x);	<span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="built_in">downtag</span>(v, s, t);</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid) <span class="built_in">optmx</span>(ls, s, mid, l, r, x);</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>) <span class="built_in">optmx</span>(rs, mid+<span class="number">1</span>, t, l, r, x);</span><br><span class="line">	<span class="built_in">update</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">optmi</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (tr[v].mx1 &lt;= x) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r &amp;&amp; x &gt; tr[v].mx2)</span><br><span class="line">		&#123;<span class="built_in">updmx</span>(v, s, t, x);	<span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="built_in">downtag</span>(v, s, t);</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid) <span class="built_in">optmi</span>(ls, s, mid, l, r, x);</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>) <span class="built_in">optmi</span>(rs, mid+<span class="number">1</span>, t, l, r, x);</span><br><span class="line">	<span class="built_in">update</span>(v);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">lnt <span class="title">query</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r) <span class="keyword">return</span> tr[v].s;</span><br><span class="line">	<span class="built_in">downtag</span>(v, s, t);	lnt ret = <span class="number">0LL</span>;</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid) ret += <span class="built_in">query</span>(ls, s, mid, l, r);</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>) ret += <span class="built_in">query</span>(rs, mid+<span class="number">1</span>, t, l, r);</span><br><span class="line">	<span class="built_in">update</span>(v);	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getmx</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r) <span class="keyword">return</span> tr[v].mx1;</span><br><span class="line">	<span class="built_in">downtag</span>(v, s, t);	<span class="type">int</span> ret = -INF;</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid) ret = <span class="built_in">max</span>(ret, <span class="built_in">getmx</span>(ls, s, mid, l, r));</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>) ret = <span class="built_in">max</span>(ret, <span class="built_in">getmx</span>(rs, mid+<span class="number">1</span>, t, l, r));</span><br><span class="line">	<span class="built_in">update</span>(v);	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getmi</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (s &gt;= l &amp;&amp; t &lt;= r) <span class="keyword">return</span> tr[v].mi1;</span><br><span class="line">	<span class="built_in">downtag</span>(v, s, t);	<span class="type">int</span> ret = INF;</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= mid) ret = <span class="built_in">min</span>(ret, <span class="built_in">getmi</span>(ls, s, mid, l, r));</span><br><span class="line">	<span class="keyword">if</span> (r &gt;= mid+<span class="number">1</span>) ret = <span class="built_in">min</span>(ret, <span class="built_in">getmi</span>(rs, mid+<span class="number">1</span>, t, l, r));</span><br><span class="line">	<span class="built_in">update</span>(v);	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n, T;	<span class="built_in">read</span>(n), <span class="built_in">build</span>(<span class="number">1</span>, <span class="number">1</span>, n), <span class="built_in">read</span>(T);</span><br><span class="line">	<span class="keyword">while</span> (T--) &#123;</span><br><span class="line">		<span class="type">int</span> opt, l, r, x;	<span class="built_in">read</span>(opt);</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">1</span>) <span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">read</span>(x), <span class="built_in">modify</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r, x);</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">2</span>) <span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">read</span>(x), <span class="built_in">optmx</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r, x);</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">3</span>) <span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">read</span>(x), <span class="built_in">optmi</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r, x);</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">4</span>) <span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, <span class="built_in">query</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r));</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">5</span>) <span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getmx</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r));</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">6</span>) <span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, <span class="built_in">getmi</span>(<span class="number">1</span>, <span class="number">1</span>, n, l, r));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/03/26/BZOJ1006%E3%80%90HNOI2008%E3%80%91%E7%A5%9E%E5%A5%87%E7%9A%84%E5%9B%BD%E5%BA%A6%20%E5%BC%A6%E5%9B%BE+MCS/" rel="prev" title="BZOJ1006【HNOI2008】神奇的国度 <弦图+MCS>">
+                  <i class="fa fa-chevron-left"></i> BZOJ1006【HNOI2008】神奇的国度 <弦图+MCS>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/03/27/BZOJ1071%E3%80%90SCOI2007%E3%80%91%E7%BB%84%E9%98%9F%20%E5%8F%8C%E6%8C%87%E9%92%88/" rel="next" title="BZOJ1071【SCOI2007】组队 <双指针>">
+                  BZOJ1071【SCOI2007】组队 <双指针> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

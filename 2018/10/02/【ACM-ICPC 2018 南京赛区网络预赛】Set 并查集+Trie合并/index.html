@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【ACM-ICPC 2018 南京赛区网络预赛】Set$\mathrm{Time;Limit:;1500;ms}$$\mathrm{Memory;Limit:;524288;K}$ DescriptionShinku is very interested in the set. One day, she got $n$ sets, and the $i^{th}$ number $a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ACM-ICPC 2018 南京赛区网络预赛】Set &lt;并查集+Trie合并&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/10/02/%E3%80%90ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B%E3%80%91Set%20%E5%B9%B6%E6%9F%A5%E9%9B%86+Trie%E5%90%88%E5%B9%B6/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【ACM-ICPC 2018 南京赛区网络预赛】Set$\mathrm{Time;Limit:;1500;ms}$$\mathrm{Memory;Limit:;524288;K}$ DescriptionShinku is very interested in the set. One day, she got $n$ sets, and the $i^{th}$ number $a">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-10-01T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-10-26T10:37:19.842Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="并查集">
+<meta property="article:tag" content="Trie">
+<meta property="article:tag" content="ACM">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/10/02/%E3%80%90ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B%E3%80%91Set%20%E5%B9%B6%E6%9F%A5%E9%9B%86+Trie%E5%90%88%E5%B9%B6/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/10/02/%E3%80%90ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B%E3%80%91Set%20%E5%B9%B6%E6%9F%A5%E9%9B%86+Trie%E5%90%88%E5%B9%B6/","path":"2018/10/02/【ACM-ICPC 2018 南京赛区网络预赛】Set 并查集+Trie合并/","title":"【ACM-ICPC 2018 南京赛区网络预赛】Set \u003c并查集+Trie合并>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【ACM-ICPC 2018 南京赛区网络预赛】Set <并查集+Trie合并> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90ACM-ICPC-2018-%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B%E3%80%91Set"><span class="nav-number">1.1.</span> <span class="nav-text">【ACM-ICPC 2018 南京赛区网络预赛】Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explanation"><span class="nav-number">1.7.</span> <span class="nav-text">Explanation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">1.8.</span> <span class="nav-text">Source</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Translation"><span class="nav-number">2.</span> <span class="nav-text">Translation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/10/02/%E3%80%90ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B%E3%80%91Set%20%E5%B9%B6%E6%9F%A5%E9%9B%86+Trie%E5%90%88%E5%B9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【ACM-ICPC 2018 南京赛区网络预赛】Set <并查集+Trie合并> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【ACM-ICPC 2018 南京赛区网络预赛】Set <并查集+Trie合并>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-10-02 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-02T00:00:00+08:00">2018-10-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-10-26 18:37:19" itemprop="dateModified" datetime="2018-10-26T18:37:19+08:00">2018-10-26</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【ACM-ICPC-2018-南京赛区网络预赛】Set"><a href="#【ACM-ICPC-2018-南京赛区网络预赛】Set" class="headerlink" title="【ACM-ICPC 2018 南京赛区网络预赛】Set"></a>【ACM-ICPC 2018 南京赛区网络预赛】Set</h3><p>$\mathrm{Time;Limit:;1500;ms}$<br>$\mathrm{Memory;Limit:;524288;K}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>Shinku is very interested in the set. One day, she got $n$ sets, and the $i^{th}$ number $a_i$ is in the $i^{th}$ set. But she doesn’t think it is interesting enough, so she applies $m$ magic to these sets. There are three kinds of magic:</p>
+<ul>
+<li>$1;u;v$: If the $u^{th}$ and $v^{th}$ numbers are not in one set, then the Shinku’s magic will merge the set containing the $u^{th}$ number and the set containing the $v^{th}$ number.</li>
+<li>$2;u$: Shinku’s magic adds $1$ to each number in the set containing the $u^{th}$ number.</li>
+<li>$3;u;k;x$: Shinku can immediately know how many numbers $t$ in the set containing the $u^{th}$ number satisfy $t\equiv x (\bmod\ 2^k)$ $(0 \le k\le 30,0\le x&lt;2^k)$.</li>
+</ul>
+<p>But unfortunately, for some reason the type $3$ magic fails. So Shinku wants you to tell her the answer after every type $3$ magic.<br>Note that there can be multiple numbers with the same value in one set, that is, numbers with the same value will not disappear when merged.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line contains two integers $n,m$ $(1 \le n,m \le 6 \times 10^5)$, the number of initial sets and the number of the magic.<br>The second line contains $n$ integers. The $i^{th}$ number $a_i$ $(0 \le a_i \le 10^9)$ is the number in the $i^{th}$ set initially.<br>The next $m$ lines describe the sequence of magic. The $i^{th}$ line describes the $i^{th}$ magic. Each magic is a magic as described above.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each type $3$ magic, output the answer you are asked to calculate.</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">3 5</span><br><span class="line">2 3 4</span><br><span class="line">1 1 3</span><br><span class="line">3 3 1 0</span><br><span class="line">2 2</span><br><span class="line">1 2 3</span><br><span class="line">3 3 1 0</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h3><p>After the first operation, the numbers are $2,3,4$, sets are $\lbrace 2,4 \rbrace$ $\lbrace 3 \rbrace$<br>For the second operation, the third number is in $\lbrace 2,4 \rbrace$, $2 \equiv 0\pmod {2^1}$, $4 \equiv 0\pmod {2^1}$, so the answer is $2$.<br>After the third operation, the numbers are $2,4,4$, sets are $\lbrace 2,4 \rbrace$ $\lbrace 4 \rbrace$<br>After the forth operation, the numbers are $2,4,4$, sets are $\lbrace 2,4,4 \rbrace$<br>For the fifth operation, ,the third number is in $\lbrace 2,4,4 \rbrace$, $2 \equiv 0\pmod {2^1}$, $4 \equiv 0\pmod {2^1}$,$4 \equiv 0\pmod {2^1}$, so the answer is $3$.</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/?kw=ACM-ICPC%202018%20%E5%8D%97%E4%BA%AC%E8%B5%9B%E5%8C%BA%E7%BD%91%E7%BB%9C%E9%A2%84%E8%B5%9B">ACM-ICPC 2018 南京赛区网络预赛</a></p>
+<p>标签：<code>并查集</code> <code>Trie合并</code></p>
+<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>给定一个长为$n$ $(n\le5\cdot10^5)$的序列$\lbrace a\rbrace$ $(a_i\le10^9)$，起初第$i$个数在第$i$个集合。<br>有$m$ $(m\le5\cdot10^5)$个操作，分为三类：</p>
+<ul>
+<li>$1;u;v$ 将第$u$个数和第$v$个数所在集合合并</li>
+<li>$2;u$ 将第$u$个数所在集合所有数加$1$</li>
+<li>$3;u;k;x$ 问$u$所在集合有多少个数模$2^k$余$x$ $(k\le 30)$</li>
+</ul>
+<p>对于每个$3$询问，输出答案。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>探索题目条件的特殊性，发现所有询问均是对$2^k$取模。<br>我们将每个数转为二进制后倒置，则询问变为含有$x$转为二进制倒置作为前缀的二进制串的个数，可以用$\mathrm{Trie}$维护。那么$1$操作相当于合并两个$\mathrm{Trie}$，可以用类似线段树合并的做法完成，需要用并查集维护连通性。<br>对于$2$操作，由于每个数都倒置了，可以模拟从最后一位向前进位。于是给结点打上标记，每次下传时将标记除$2$传到下一层，特别地，如果当前层标记是奇数，则需要交换两个子树，因为进位会使$0$变为$1$，$1$变为$0$。<br>总时间复杂度$O((n+q)\log10^9)$。<br>$\mathrm{P.S.}$貌似对$2$操作可以暴力向下递归交换子树。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 600000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, m, sz, rt[MAX_N+<span class="number">5</span>], fa[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> s[<span class="number">2</span>], c, tag;&#125; tr[MAX_N*<span class="number">32</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;<span class="keyword">return</span> fa[x] == x ? x : fa[x] = <span class="built_in">getf</span>(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">downtag</span><span class="params">(<span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!tr[v].tag) <span class="keyword">return</span>;</span><br><span class="line">	<span class="keyword">if</span> (tr[v].tag&amp;<span class="number">1</span>)</span><br><span class="line">		tr[tr[v].s[<span class="number">1</span>]].tag++, </span><br><span class="line">		<span class="built_in">swap</span>(tr[v].s[<span class="number">0</span>], tr[v].s[<span class="number">1</span>]);</span><br><span class="line">	<span class="keyword">if</span> (tr[v].tag &gt; <span class="number">1</span>)</span><br><span class="line">		tr[tr[v].s[<span class="number">0</span>]].tag += (tr[v].tag&gt;&gt;<span class="number">1</span>), </span><br><span class="line">		tr[tr[v].s[<span class="number">1</span>]].tag += (tr[v].tag&gt;&gt;<span class="number">1</span>);</span><br><span class="line">	tr[v].tag = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> &amp;v, <span class="type">int</span> dep, <span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!v) v = ++sz;</span><br><span class="line">	<span class="keyword">if</span> (!dep) &#123;tr[v].c++; <span class="keyword">return</span>;&#125;</span><br><span class="line">	<span class="built_in">insert</span>(tr[v].s[x&amp;<span class="number">1</span>], dep<span class="number">-1</span>, x&gt;&gt;<span class="number">1</span>);</span><br><span class="line">	tr[v].c = tr[tr[v].s[<span class="number">0</span>]].c+tr[tr[v].s[<span class="number">1</span>]].c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!u) <span class="keyword">return</span> v; <span class="keyword">if</span> (!v) <span class="keyword">return</span> u;</span><br><span class="line">	<span class="built_in">downtag</span>(u), <span class="built_in">downtag</span>(v);</span><br><span class="line">	tr[u].s[<span class="number">0</span>] = <span class="built_in">merge</span>(tr[u].s[<span class="number">0</span>], tr[v].s[<span class="number">0</span>]);</span><br><span class="line">	tr[u].s[<span class="number">1</span>] = <span class="built_in">merge</span>(tr[u].s[<span class="number">1</span>], tr[v].s[<span class="number">1</span>]);</span><br><span class="line">	tr[u].c += tr[v].c; <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, x; i &lt;= n; i++)</span><br><span class="line">		fa[i] = i, <span class="built_in">read</span>(x), <span class="built_in">insert</span>(rt[i], <span class="number">30</span>, x);</span><br><span class="line">	<span class="keyword">while</span> (m--) &#123;</span><br><span class="line">		<span class="type">int</span> opt, p, u, v, k, x; <span class="built_in">read</span>(opt);</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="built_in">read</span>(u), <span class="built_in">read</span>(v), u = <span class="built_in">getf</span>(u), v = <span class="built_in">getf</span>(v);</span><br><span class="line">			<span class="keyword">if</span> (u^v) fa[v] = u, rt[u] = <span class="built_in">merge</span>(rt[u], rt[v]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">2</span>) <span class="built_in">read</span>(p), tr[rt[<span class="built_in">getf</span>(p)]].tag++;</span><br><span class="line">		<span class="keyword">if</span> (opt == <span class="number">3</span>) &#123;</span><br><span class="line">			<span class="built_in">read</span>(p), <span class="built_in">read</span>(k), <span class="built_in">read</span>(x), p = rt[<span class="built_in">getf</span>(p)];</span><br><span class="line">			<span class="keyword">for</span> (; k; k--, p = tr[p].s[x&amp;<span class="number">1</span>], x &gt;&gt;= <span class="number">1</span>) <span class="built_in">downtag</span>(p);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, p ? tr[p].c : <span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/OI-Blog/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="tag"># 并查集</a>
+              <a href="/OI-Blog/tags/Trie/" rel="tag"># Trie</a>
+              <a href="/OI-Blog/tags/ACM/" rel="tag"># ACM</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/10/01/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/" rel="prev" title="BZOJ4872【SHOI2017】分手是祝愿 <概率DP>">
+                  <i class="fa fa-chevron-left"></i> BZOJ4872【SHOI2017】分手是祝愿 <概率DP>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/10/02/AGC018E%20Sightseeing%20Plan%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" rel="next" title="AGC018E Sightseeing Plan <组合数学>">
+                  AGC018E Sightseeing Plan <组合数学> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="ProblemShopping OffersDescriptionIn a shop each kind of product has a price. For example, the price of a flower is $2$ ICU (Informatics Currency Units) and the price of a vase is $5$ ICU. In order to">
+<meta property="og:type" content="article">
+<meta property="og:title" content="POJ1170 Shopping Offers &lt;五维DP&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2017/08/17/POJ1170%20Shopping%20Offers%20%E4%BA%94%E7%BB%B4DP/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="ProblemShopping OffersDescriptionIn a shop each kind of product has a price. For example, the price of a flower is $2$ ICU (Informatics Currency Units) and the price of a vase is $5$ ICU. In order to">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-08-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-05-19T03:17:27.224Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="POJ">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2017/08/17/POJ1170%20Shopping%20Offers%20%E4%BA%94%E7%BB%B4DP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2017/08/17/POJ1170%20Shopping%20Offers%20%E4%BA%94%E7%BB%B4DP/","path":"2017/08/17/POJ1170 Shopping Offers 五维DP/","title":"POJ1170 Shopping Offers \u003c五维DP>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>POJ1170 Shopping Offers <五维DP> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Shopping-Offers"><span class="nav-number">1.1.</span> <span class="nav-text">Shopping Offers</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Translation"><span class="nav-number">2.</span> <span class="nav-text">Translation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2017/08/17/POJ1170%20Shopping%20Offers%20%E4%BA%94%E7%BB%B4DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="POJ1170 Shopping Offers <五维DP> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          POJ1170 Shopping Offers <五维DP>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-08-17 00:00:00" itemprop="dateCreated datePublished" datetime="2017-08-17T00:00:00+08:00">2017-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-05-19 11:17:27" itemprop="dateModified" datetime="2018-05-19T11:17:27+08:00">2018-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Shopping-Offers"><a href="#Shopping-Offers" class="headerlink" title="Shopping Offers"></a>Shopping Offers</h3><h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>In a shop each kind of product has a price. For example, the price of a flower is $2$ ICU (Informatics Currency Units) and the price of a vase is $5$ ICU. In order to attract more customers, the shop introduces some special offers.<br>A special offer consists of one or more product items for a reduced price. Examples: three flowers for $5$ ICU instead of $6$, or two vases together with one flower for $10$ ICU instead of $12$.<br>Write a program that calculates the price a customer has to pay for certain items, making optimal use of the special offers. That is, the price should be as low as possible. You are not allowed to add items, even if that would lower the price.<br>For the prices and offers given above, the (lowest) price for three flowers and two vases is $14$ ICU: two vases and one flower for the reduced price of $10$ ICU and two flowers for the regular price of $4$ ICU. </p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Your program is to read from standard input. The first line contains the number $b$ of different kinds of products in the basket $(0 \le b \le 5)$. Each of the next b lines contains three values $c$, $k$, and $p$. The value $c$ is the (unique) product code $(1 \le c \le 999)$. The value $k$ indicates how many items of this product are in the basket $(1 \le k \le 5)$. The value p is the regular price per item $(1 \le p \le 999)$. Notice that all together at most $5\times 5&#x3D;25$ items can be in the basket. The $b+2^{nd}$ line contains the number $s$ of special offers $(0 \le s \le 99)$. Each of the next $s$ lines describes one offer by giving its structure and its reduced price. The first number n on such a line is the number of different kinds of products that are part of the offer $(1 \le n \le 5)$. The next n pairs of numbers $(c,k)$ indicate that $k$ items $(1 \le k \le 5)$ with product code $c$ $(1 \le c \le 999)$ are involved in the offer. The last number $p$ on the line stands for the reduced price $(1 \le p \le 9999)$. The reduced price of an offer is less than the sum of the regular prices. </p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Your program is to write to standard output. Output one line with the lowest possible price to be paid. </p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">7 3 2</span><br><span class="line">8 2 5</span><br><span class="line">2</span><br><span class="line">1 7 3 5</span><br><span class="line">2 7 1 8 2 10</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">14</span><br></pre></td></tr></table></figure>
+
+<p>标签：<code>五维DP</code></p>
+<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>有至多五种物品，给出每一种物品的单价和几种套餐的价格，求买目标物品至少需要多少钱。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>这是一道大水题。因为只有五种物品，可以用五维的$dp$来表示，五个维度分别表示五种物品的个数，即$f[i][j][p][q][r]$表示第一种物品取$i$个，第二种物品取$j$个……第五种物品取$r$个至少需要多少钱。把每种物品的单价看作一种只有一个物品的套餐，这样枚举套餐，看能否转移。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 5</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_S 100</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_C 1000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 2147483647</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m, cnt, basket[MAX_N+<span class="number">5</span>], offer[MAX_S+<span class="number">10</span>][MAX_N+<span class="number">5</span>], v[MAX_S+<span class="number">10</span>], map[MAX_C+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> f[MAX_N+<span class="number">5</span>][MAX_N+<span class="number">5</span>][MAX_N+<span class="number">5</span>][MAX_N+<span class="number">5</span>][MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="type">int</span> id, num, p;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;id, &amp;num, &amp;p);</span><br><span class="line">		map[id] = i, basket[i] = num, offer[cnt][i] = <span class="number">1</span>, v[cnt++] = p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i =<span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="type">int</span> num, id, k, p;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;num);</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num; i++) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;id, &amp;k);</span><br><span class="line">			offer[cnt][map[id]] = k;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;p);</span><br><span class="line">		v[cnt++] = p;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> a0 = <span class="number">0</span>; a0 &lt;= basket[<span class="number">0</span>]; a0++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> a1 = <span class="number">0</span>; a1 &lt;= basket[<span class="number">1</span>]; a1++)</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> a2 = <span class="number">0</span>; a2 &lt;= basket[<span class="number">2</span>]; a2++)</span><br><span class="line">				<span class="keyword">for</span> (<span class="type">int</span> a3 = <span class="number">0</span>; a3 &lt;= basket[<span class="number">3</span>]; a3++)</span><br><span class="line">					<span class="keyword">for</span> (<span class="type">int</span> a4 = <span class="number">0</span>; a4 &lt;= basket[<span class="number">4</span>]; a4++) &#123;</span><br><span class="line">						<span class="keyword">if</span> (a0 == <span class="number">0</span> &amp;&amp; a1 == <span class="number">0</span> &amp;&amp; a2 == <span class="number">0</span> &amp;&amp; a3 == <span class="number">0</span> &amp;&amp; a4 == <span class="number">0</span>) &#123;f[a0][a1][a2][a3][a4] = <span class="number">0</span>;	<span class="keyword">continue</span>;&#125;</span><br><span class="line">						f[a0][a1][a2][a3][a4] = INF;</span><br><span class="line">						<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; cnt; i++) &#123;</span><br><span class="line">							<span class="keyword">if</span> (a0 &lt; offer[i][<span class="number">0</span>] || a1 &lt; offer[i][<span class="number">1</span>] || a2 &lt; offer[i][<span class="number">2</span>] || a3 &lt; offer[i][<span class="number">3</span>] || a4 &lt; offer[i][<span class="number">4</span>])	<span class="keyword">continue</span>;</span><br><span class="line">							f[a0][a1][a2][a3][a4] = <span class="built_in">min</span>(f[a0][a1][a2][a3][a4], f[a0-offer[i][<span class="number">0</span>]][a1-offer[i][<span class="number">1</span>]][a2-offer[i][<span class="number">2</span>]][a3-offer[i][<span class="number">3</span>]][a4-offer[i][<span class="number">4</span>]]+v[i]);</span><br><span class="line">						&#125;</span><br><span class="line">					&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, f[basket[<span class="number">0</span>]][basket[<span class="number">1</span>]][basket[<span class="number">2</span>]][basket[<span class="number">3</span>]][basket[<span class="number">4</span>]]);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/DP/" rel="tag"># DP</a>
+              <a href="/OI-Blog/tags/POJ/" rel="tag"># POJ</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2017/08/17/POJ1182%20%E3%80%90NOI2001%E3%80%91%20%E9%A3%9F%E7%89%A9%E9%93%BE%20%E7%A7%8D%E7%B1%BB%E5%B9%B6%E6%9F%A5%E9%9B%86/" rel="prev" title="POJ1182 【NOI2001】 食物链 <种类并查集>">
+                  <i class="fa fa-chevron-left"></i> POJ1182 【NOI2001】 食物链 <种类并查集>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2017/08/17/BZOJ3110%20K%E5%A4%A7%E6%95%B0%E6%9F%A5%E8%AF%A2%20%E6%A0%91%E5%A5%97%E6%A0%91/" rel="next" title="BZOJ3110 K大数查询 <树套树>">
+                  BZOJ3110 K大数查询 <树套树> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

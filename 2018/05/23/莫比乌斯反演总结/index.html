@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="$;$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="莫比乌斯反演总结">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="$;$">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-22T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-05-27T14:48:47.659Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="总结">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/","path":"2018/05/23/莫比乌斯反演总结/","title":"莫比乌斯反演总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>莫比乌斯反演总结 | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">算术函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E5%87%BD%E6%95%B0%E9%97%B4%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.2.</span> <span class="nav-text">算术函数间的运算</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%87%BD%E6%95%B0%E4%B8%8E%E5%8F%8D%E6%BC%94"><span class="nav-number">2.</span> <span class="nav-text">莫比乌斯函数与反演</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%B4%A8"><span class="nav-number">2.2.</span> <span class="nav-text">性质</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E4%BE%8B%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">莫比乌斯反演例题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%A5%97%E8%B7%AF"><span class="nav-number">3.1.</span> <span class="nav-text">基本套路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%84%E5%A4%84%E7%90%86%E7%A7%AF%E6%80%A7%E5%87%BD%E6%95%B0"><span class="nav-number">3.2.</span> <span class="nav-text">预处理积性函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%AF%E5%BC%8F%E4%B8%AD%E7%9A%84%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94"><span class="nav-number">3.3.</span> <span class="nav-text">积式中的莫比乌斯反演</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%B1%87%E6%80%BB"><span class="nav-number">4.</span> <span class="nav-text">题目汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%83%AD%E8%BA%AB%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">热身题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%84%E9%A2%98"><span class="nav-number">4.2.</span> <span class="nav-text">常规题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6%E9%A2%98"><span class="nav-number">4.3.</span> <span class="nav-text">进阶题</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="莫比乌斯反演总结 | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          莫比乌斯反演总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-05-23 00:00:00" itemprop="dateCreated datePublished" datetime="2018-05-23T00:00:00+08:00">2018-05-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-05-27 22:48:47" itemprop="dateModified" datetime="2018-05-27T22:48:47+08:00">2018-05-27</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>$;$</p>
+<span id="more"></span>
+
+<h2 id="算术函数"><a href="#算术函数" class="headerlink" title="算术函数"></a>算术函数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>定义域为正整数、函数值为复数的函数叫算术函数，即映射$f:\N\to\C$。<br>例如：<br>$$<br>0(n)&#x3D;0\<br>1(n)&#x3D;1\<br>\delta(n)&#x3D;<br>\begin{cases}<br>1&amp;{n&#x3D;1}\<br>0&amp;{n\ge2}\<br>\end{cases}<br>$$</p>
+<h3 id="算术函数间的运算"><a href="#算术函数间的运算" class="headerlink" title="算术函数间的运算"></a>算术函数间的运算</h3><ol>
+<li>相加：$(f+g)(n)&#x3D;f(n)+g(n)$</li>
+<li>相乘：$(f\cdot g)(n)&#x3D;f(n)\cdot g(n)$</li>
+<li>狄利克雷卷积：$(f\otimes g)(n)&#x3D;\sum_{d|n}f(d)g(\frac{n}{d})&#x3D;\sum_{d|n}f(\frac{n}{d})g(d)$<br>卷积的性质：<ul>
+<li>交换律：$f\otimes g&#x3D;g\otimes f$</li>
+<li>结合律：$(f\otimes g)\otimes h&#x3D;f\otimes (g\otimes h)$</li>
+<li>分配律：$f\otimes (g+h)&#x3D;f\otimes g+f\otimes h$</li>
+<li>单位元$\delta$：$f\otimes\delta&#x3D;f&#x3D;\delta\otimes f$</li>
+<li>逆元：对于$f$，$\exists f^{-1}$使得$f\otimes f^{-1}&#x3D;\delta$</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="莫比乌斯函数与反演"><a href="#莫比乌斯函数与反演" class="headerlink" title="莫比乌斯函数与反演"></a>莫比乌斯函数与反演</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>$$<br>\mu(n)&#x3D;<br>\begin{cases}<br>1&amp;&amp;{n&#x3D;1}\<br>(-1)^k &amp; &amp; {n&#x3D;p_1\times p_2\times\cdots\times p_k}\<br>0&amp; &amp; {\exists{p}满足p^2|n}<br>\end{cases}<br>$$</p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><p><strong>结论1</strong>：$\sum_{d|n}\mu(d)&#x3D;\delta$<br>证明：<br>    设$s$为$n$的质因子个数，$w(x)$为$x$的质因子个数<br>    令$rad(n)$为$n$的所有质因子之积，即若$n&#x3D;p_1^{k_1}\times p_2^{k_2}\times\cdots\times p_s^{k_s}$，则$rad(n)&#x3D;p_1\times p_2\times\cdots\times p_s$<br>    当$n&#x3D;1$时，$\sum_{d|1}\mu(d)&#x3D;\mu(1)&#x3D;1$<br>    当$n&gt;1$时，<br>$$<br>\begin{aligned}<br>\sum_{d|n}\mu(d)&amp;&#x3D;\sum_{d|rad(n)}\mu(d)\<br>&amp;&#x3D;\sum_{i&#x3D;1}^{s}\sum_{d|rad(n),w(d)&#x3D;i}\mu(d)\<br>&amp;&#x3D;\sum_{i&#x3D;1}^{s}\binom{s}{i}(-1)^i\<br>&amp;&#x3D;\sum_{i&#x3D;1}^{s}\binom{s}{i}\cdot1^{i}\cdot(-1)^{s-i}\<br>&amp;&#x3D;(1-1)^s\<br>&amp;&#x3D;0\<br>\end{aligned}<br>$$<br>推论：$\mathrm{LHS}&#x3D;\mu\otimes1,;\mathrm{RHS}&#x3D;\delta$，$\therefore;\mu\otimes 1&#x3D;\delta,;\mu^{-1}&#x3D;1$</p>
+<p><strong>结论2</strong>（反演定理）：</p>
+<ol>
+<li>若$g(n)&#x3D;\sum_{d|n}f(d)$，则$f(n)&#x3D;\sum_{d|n}\mu(d)g(\frac{n}{d})$</li>
+<li>若$f(n)&#x3D;\sum_{d|n}\mu(d)g(\frac{n}{d})$，则$g(n)&#x3D;\sum_{d|n}f(d)$</li>
+</ol>
+<p>即$g&#x3D;f\otimes 1\iff f&#x3D;g\otimes \mu$</p>
+<p>证明：</p>
+<ol>
+<li>$\mathrm{RHS}&#x3D;\mu\otimes g&#x3D;\mu\otimes(1\otimes f)&#x3D;(\mu\otimes 1)\otimes f&#x3D;\delta\otimes f&#x3D;f&#x3D;\mathrm{LHS}$</li>
+<li>$\mathrm{RHS}&#x3D;f\otimes1&#x3D;(g\otimes\mu)\otimes1&#x3D;g\otimes(\mu\otimes1)&#x3D;g\otimes\delta&#x3D;g&#x3D;\mathrm{LHS}​$</li>
+</ol>
+<hr>
+<h2 id="莫比乌斯反演例题"><a href="#莫比乌斯反演例题" class="headerlink" title="莫比乌斯反演例题"></a>莫比乌斯反演例题</h2><h3 id="基本套路"><a href="#基本套路" class="headerlink" title="基本套路"></a>基本套路</h3><p>莫比乌斯反演题目是有转换套路的，一般只会用上述<strong>结论1</strong>，少数情况才会用<strong>结论二</strong>。</p>
+<p>例：给定$n,m,d$，求$\sum_{i&#x3D;1}^{n}\sum_{j&#x3D;1}^{m}[\gcd(i,j)&#x3D;d]$<br>分析：<br>    首先需要把$[\gcd(i,j)&#x3D;d]$化为我们熟悉的形式。我们有$\delta(n)&#x3D;[n&#x3D;1]$，那么考虑将$[\gcd(i,j)&#x3D;d]$化为$[\gcd(\frac{i}{d},\frac{j}{d})&#x3D;1]$，于是$原式&#x3D;\sum_{i&#x3D;1}^{n}\sum_{j&#x3D;1}^{m}[\gcd(\frac{i}{d},\frac{j}{d})&#x3D;1]$，当且仅当$i,j$是$d$的倍数时才会有意义。于是又转化为$原式&#x3D;\sum_{x&#x3D;1}^{\lfloor\frac{n}{d}\rfloor}\sum_{y&#x3D;1}^{\lfloor\frac{m}{d}\rfloor}[\gcd(x,y)&#x3D;1]$。<br>    转化后就可以带入<strong>性质1</strong>（$\mu\otimes1&#x3D;\delta$）了，将后面的部分替换，可得到$原式&#x3D;\sum_{x&#x3D;1}^{\lfloor\frac{n}{d}\rfloor}\sum_{y&#x3D;1}^{\lfloor\frac{m}{d}\rfloor}\sum_{z|x,y}\mu(z)$（这里$z$为前面$\gcd(x,y)$的值），接下来需要交换和号，即$原式&#x3D;\sum_{z&#x3D;1}^{\min(n,m)}\mu(z)\sum_{x&#x3D;pz}^{\lfloor\frac{n}{d}\rfloor}\sum_{y&#x3D;qz}^{\lfloor\frac{m}{d}\rfloor}1$，注意到后面$\sum_{x&#x3D;pz}^{\lfloor\frac{n}{d}\rfloor}\sum_{y&#x3D;qz}^{\lfloor\frac{m}{d}\rfloor}1$是可以直接计算的，其等价于$x,y$的所有取值数对中$x,y$均为$z$的倍数的数对个数，所以$\sum_{x&#x3D;pz}^{\lfloor\frac{n}{d}\rfloor}\sum_{y&#x3D;qz}^{\lfloor\frac{m}{d}\rfloor}1&#x3D;\lfloor\frac{n}{dz}\rfloor\cdot\lfloor\frac{m}{dz}\rfloor$。<br>    我们已经得到了$原式&#x3D;\sum_{z&#x3D;1}^{\min(n,m)}\lfloor\frac{n}{dz}\rfloor\cdot\lfloor\frac{m}{dz}\rfloor$，莫比乌斯反演已经转化完了。接下来是计算过程，需要用到数论分块。$z$的取值一定能分为很多块，使得每块中$\lfloor\frac{n}{dz}\rfloor$和$\lfloor\frac{m}{dz}\rfloor$都相同。这样的块一定不会超过$\sqrt{n}+\sqrt{m}$个，对于每个块，我们直接用后面乘式的积乘块大小得到贡献，然后每次用左端点取值找右端点即可。复杂度$O(\sqrt{n}+\sqrt{m})$。</p>
+<p>总结上述基本套路：</p>
+<ul>
+<li>将和式的一部分转化为$[x&#x3D;1]$的形式，并将$\sum_{d|n}\mu(d)&#x3D;[n&#x3D;1]$带入</li>
+<li>将含$\mu$的部分提到前面，并重新确定枚举的约数条件（易错）</li>
+<li>观察$\mu$后面的部分，找方法将其计算出来（直接算或预处理）</li>
+<li>进行数论分块，对于每块用直接乘每个枚举量贡献或预处理前缀和求解</li>
+</ul>
+<h3 id="预处理积性函数"><a href="#预处理积性函数" class="headerlink" title="预处理积性函数"></a>预处理积性函数</h3><p>基本套路中，$1,2,4$条显然是很死板的，而$3$灵活一些。如果$\mu$后面的部分较为复杂，我们不能直接求值，那么如何计算呢？<br><strong>积性函数</strong>：若数论函数$f$满足对于所有$\gcd(a,b)&#x3D;1$，均有$f(a\times b)&#x3D;f(a)\times f(b)$，则称作积性函数。<br><strong>完全积性函数</strong>：若数论函数$f$满足$\forall a,b,;f(a\times b)&#x3D;f(a)\times f(b)$，则称作完全积性函数。<br>我们将$\mu$后面的部分分为一个或多个积性函数，若为完全积性函数则更好。分$\gcd(a,b)$是否为$1$推导一下$f(a\times b)$的表达式，即可用线性筛线性预处理。<br>例：<a target="_blank" rel="noopener" href="http://azrael.top/BZOJ2820%20YY%E7%9A%84GCD%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ2820 YY的GCD</a></p>
+<h3 id="积式中的莫比乌斯反演"><a href="#积式中的莫比乌斯反演" class="headerlink" title="积式中的莫比乌斯反演"></a>积式中的莫比乌斯反演</h3><p>有时，莫比乌斯反演会存在于积式中，作为底数或指数出现。<br>若为底数，则可以直接反演后计算，与和式中的方法类似。<br>若为指数，则会较为复杂。反演后将以莫比乌斯函数为指数的部分分离出来，想办法预处理其前缀积。<br>例：<a target="_blank" rel="noopener" href="http://azrael.top/BZOJ4816%E3%80%90SDOI2017%E3%80%91%E6%95%B0%E5%AD%97%E8%A1%A8%E6%A0%BC%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ4816【SDOI2017】数字表格</a></p>
+<hr>
+<h2 id="题目汇总"><a href="#题目汇总" class="headerlink" title="题目汇总"></a>题目汇总</h2><h3 id="热身题"><a href="#热身题" class="headerlink" title="热身题"></a>热身题</h3><p><a target="_blank" rel="noopener" href="https://www.lydsy.com/JudgeOnline/problem.php?id=1101">BZOJ1101【POI2007】Zap</a><br><a target="_blank" rel="noopener" href="https://www.lydsy.com/JudgeOnline/problem.php?id=2190">BZOJ2190【SDOI2008】仪仗队</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ2671%20Calc%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ2671 Calc</a></p>
+<h3 id="常规题"><a href="#常规题" class="headerlink" title="常规题"></a>常规题</h3><p><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ2820%20YY%E7%9A%84GCD%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ2820 YY的GCD</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ2154%20Crash%E7%9A%84%E6%95%B0%E5%AD%97%E8%A1%A8%E6%A0%BC%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ2154 Crash的数字表格</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ2693%20jzptab%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ2693 jzptab</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ3309%20DZY%20Loves%20Math%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ3309 DZY Loves Math</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ4407%20%E4%BA%8E%E7%A5%9E%E4%B9%8B%E6%80%92%E5%8A%A0%E5%BC%BA%E7%89%88%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ4407 于神之怒加强版</a></p>
+<h3 id="进阶题"><a href="#进阶题" class="headerlink" title="进阶题"></a>进阶题</h3><p><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ3994%E3%80%90SDOI2015%E3%80%91%E7%BA%A6%E6%95%B0%E4%B8%AA%E6%95%B0%E5%92%8C%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ3994【SDOI2015】约数个数和</a><br><a target="_blank" rel="noopener" href="http://azrael.top/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">CF235E Number Challenge</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ4816%E3%80%90SDOI2017%E3%80%91%E6%95%B0%E5%AD%97%E8%A1%A8%E6%A0%BC%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ4816【SDOI2017】数字表格</a><br><a target="_blank" rel="noopener" href="http://azrael.top/BZOJ4174%20tty%E7%9A%84%E6%B1%82%E5%8A%A9%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">BZOJ4174 tty的求助</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E6%80%BB%E7%BB%93/" rel="tag"># 总结</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/05/21/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/" rel="prev" title="BZOJ2194 快速傅立叶之二 < FFT >">
+                  <i class="fa fa-chevron-left"></i> BZOJ2194 快速傅立叶之二 < FFT >
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/05/24/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="next" title="BZOJ1927【SDOI2010】星际竞速 <费用流>">
+                  BZOJ1927【SDOI2010】星际竞速 <费用流> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

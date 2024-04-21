@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem作诗$\mathrm{Time;Limit:;50;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description神犇$\mathrm{SJY}$虐完$\mathrm{HEOI}$之后给傻X$\mathrm{LYD}$出了一题：$\mathrm{SJY}$是T国的公主，平时的一大爱好是作诗。由于时间紧迫，$\mathrm{SHY}$作完诗之后还要虐$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ2821 作诗 &lt;分块&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/06/20/BZOJ2821%20%E4%BD%9C%E8%AF%97%20%E5%88%86%E5%9D%97/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem作诗$\mathrm{Time;Limit:;50;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description神犇$\mathrm{SJY}$虐完$\mathrm{HEOI}$之后给傻X$\mathrm{LYD}$出了一题：$\mathrm{SJY}$是T国的公主，平时的一大爱好是作诗。由于时间紧迫，$\mathrm{SHY}$作完诗之后还要虐$">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-06-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-06-21T04:04:15.769Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="分块">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/06/20/BZOJ2821%20%E4%BD%9C%E8%AF%97%20%E5%88%86%E5%9D%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/06/20/BZOJ2821%20%E4%BD%9C%E8%AF%97%20%E5%88%86%E5%9D%97/","path":"2018/06/20/BZOJ2821 作诗 分块/","title":"BZOJ2821 作诗 \u003c分块>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ2821 作诗 <分块> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%9C%E8%AF%97"><span class="nav-number">1.1.</span> <span class="nav-text">作诗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hint"><span class="nav-number">1.7.</span> <span class="nav-text">Hint</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">1.8.</span> <span class="nav-text">Source</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/06/20/BZOJ2821%20%E4%BD%9C%E8%AF%97%20%E5%88%86%E5%9D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ2821 作诗 <分块> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ2821 作诗 <分块>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-06-20 00:00:00" itemprop="dateCreated datePublished" datetime="2018-06-20T00:00:00+08:00">2018-06-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-06-21 12:04:15" itemprop="dateModified" datetime="2018-06-21T12:04:15+08:00">2018-06-21</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="作诗"><a href="#作诗" class="headerlink" title="作诗"></a>作诗</h3><p>$\mathrm{Time;Limit:;50;Sec}$<br>$\mathrm{Memory;Limit:;128;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>神犇$\mathrm{SJY}$虐完$\mathrm{HEOI}$之后给<code>傻X</code>$\mathrm{LYD}$出了一题：<br>$\mathrm{SJY}$是T国的公主，平时的一大爱好是作诗。由于时间紧迫，$\mathrm{SHY}$作完诗之后还要虐$\mathrm{OI}$，于是$\mathrm{SHY}$找来一篇长度为$N$的文章，阅读$M$次，每次只阅读其中连续的一段$[l,r]$，从这一段中选出一些汉字构成诗。<br>因为$\mathrm{SHY}$喜欢对偶，所以$\mathrm{SHY}$规定最后选出的每个汉字都必须在$[l,r]$里出现了正偶数次。而且$\mathrm{SHY}$认为选出的汉字的种类数（两个一样的汉字称为同一种）越多越好（为了拿到更多的素材！）。于是$\mathrm{SHY}$请$\mathrm{LYD}$安排选法。$\mathrm{LYD}$这种<code>傻X</code>当然不会了，于是向你请教……<br>问题简述：$N$个数，$M$组询问，每次问$[l,r]$中有多少个数出现正偶数次。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>输入第一行三个整数$n,c,m$，表示文章字数、汉字的种类数、要选择$M$次。<br>第二行有$n$个整数，每个数$A_i$在$[1, c]$间，代表一个编码为$A_i$的汉字。<br>接下来$m$行每行两个整数$l$和$r$，设上一个询问的答案为$ans$(第一个询问时$ans&#x3D;0$)，令$L&#x3D;(l+ans)\mod{n+1}$, $R&#x3D;(r+ans)\mod{n+1}$，若$L&gt;R$，交换$L$和$R$，则本次询问为$[L,R]$。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出共$m$行，每行一个整数，第$i$个数表示$\mathrm{SHY}$第$i$次能选出的汉字的最多种类数。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 3 5</span><br><span class="line">1 2 2 3 1</span><br><span class="line">0 4</span><br><span class="line">1 2</span><br><span class="line">2 2</span><br><span class="line">2 3</span><br><span class="line">3 5</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">0</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>对于$100%$的数据，$1\le n,c,m\le10^5$</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p>By <code>lydrainbowcat</code></p>
+<p>标签：<code>分块</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>由于”出现次数为偶数“不好维护，需要分块。<br>将序列分为$\sqrt{n}$个块，预处理出前$i$块内每个数的出现次数，以及两块间的有多少个数出现偶数次。对于每个询问，将左右端点所在块中间的块有多少个数出现偶数次作为基础答案，然后暴力枚举块外的数，结合预处理出的“前$i$块内每个数的出现次数”判断其对答案的影响即可。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 100000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAGIC = <span class="number">316</span>;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, c, m, a[MAX_N+<span class="number">5</span>], buk[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> num[MAGIC+<span class="number">5</span>][MAX_N+<span class="number">5</span>], cnt[MAGIC+<span class="number">5</span>][MAGIC+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">block</span><span class="params">(<span class="type">int</span> p)</span> </span>&#123;<span class="keyword">return</span> p/MAGIC+<span class="number">1</span>;&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">L</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">max</span>((num<span class="number">-1</span>)*MAGIC, <span class="number">1</span>);&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">R</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;<span class="keyword">return</span> <span class="built_in">min</span>(num*MAGIC<span class="number">-1</span>, n);&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(c), <span class="built_in">read</span>(m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">read</span>(a[i]), num[<span class="built_in">block</span>(i)][a[i]]++;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= <span class="built_in">block</span>(n); i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= c; j++)</span><br><span class="line">			num[i][j] += num[i<span class="number">-1</span>][j];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, t; i &lt;= <span class="built_in">block</span>(n); i++) &#123;</span><br><span class="line">		<span class="built_in">memset</span>(buk, <span class="number">0</span>, <span class="keyword">sizeof</span> buk), t = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = i; j &lt;= <span class="built_in">block</span>(n); cnt[i][j++] = t)</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> p = <span class="built_in">L</span>(j); p &lt;= <span class="built_in">R</span>(j); buk[a[p++]]++)</span><br><span class="line">				<span class="keyword">if</span> (buk[a[p]]&amp;<span class="number">1</span>) t++;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (buk[a[p]]) t--;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(buk, <span class="number">0</span>, <span class="keyword">sizeof</span> buk);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> l, r, ans = <span class="number">0</span>; m; m--) &#123;</span><br><span class="line">		<span class="built_in">read</span>(l), <span class="built_in">read</span>(r);</span><br><span class="line">		l = (l+ans)%n+<span class="number">1</span>, r = (r+ans)%n+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (l &gt; r) <span class="built_in">swap</span>(l, r); ans = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="built_in">block</span>(r)-<span class="built_in">block</span>(l) &lt;= <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = l; i &lt;= r; buk[a[i++]]++)</span><br><span class="line">				<span class="keyword">if</span> (buk[a[i]]&amp;<span class="number">1</span>) ans++;</span><br><span class="line">				<span class="keyword">else</span> <span class="keyword">if</span> (buk[a[i]]) ans--;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = l; i &lt;= r; i++) buk[a[i]]--;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			ans = cnt[<span class="built_in">block</span>(l)+<span class="number">1</span>][<span class="built_in">block</span>(r)<span class="number">-1</span>];</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = l; i &lt;= <span class="built_in">R</span>(<span class="built_in">block</span>(l)); i++) buk[a[i]]++;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = r; i &gt;= <span class="built_in">L</span>(<span class="built_in">block</span>(r)); i--) buk[a[i]]++;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = l; i &lt;= <span class="built_in">R</span>(<span class="built_in">block</span>(l)); buk[a[i++]] = <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">if</span> (buk[a[i]]) &#123;</span><br><span class="line">					<span class="type">int</span> t = num[<span class="built_in">block</span>(r)<span class="number">-1</span>][a[i]]-num[<span class="built_in">block</span>(l)][a[i]];</span><br><span class="line">					<span class="keyword">if</span> (!t) ans += ((buk[a[i]]&amp;<span class="number">1</span>) == <span class="number">0</span>);</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span> ((t&amp;<span class="number">1</span>) &amp;&amp; (buk[a[i]]&amp;<span class="number">1</span>)) ans++;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span> (!(t&amp;<span class="number">1</span>) &amp;&amp; (buk[a[i]]&amp;<span class="number">1</span>)) ans--;</span><br><span class="line">				&#125;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> i = r; i &gt;= <span class="built_in">L</span>(<span class="built_in">block</span>(r)); buk[a[i--]] = <span class="number">0</span>)</span><br><span class="line">				<span class="keyword">if</span> (buk[a[i]]) &#123;</span><br><span class="line">					<span class="type">int</span> t = num[<span class="built_in">block</span>(r)<span class="number">-1</span>][a[i]]-num[<span class="built_in">block</span>(l)][a[i]];</span><br><span class="line">					<span class="keyword">if</span> (!t) ans += ((buk[a[i]]&amp;<span class="number">1</span>) == <span class="number">0</span>);</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span> ((t&amp;<span class="number">1</span>) &amp;&amp; (buk[a[i]]&amp;<span class="number">1</span>)) ans++;</span><br><span class="line">					<span class="keyword">else</span> <span class="keyword">if</span> (!(t&amp;<span class="number">1</span>) &amp;&amp; (buk[a[i]]&amp;<span class="number">1</span>)) ans--;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, ans);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/OI-Blog/tags/%E5%88%86%E5%9D%97/" rel="tag"># 分块</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/06/19/BZOJ2095%E3%80%90POI2010%E3%80%91Bridges%20%E4%BA%8C%E5%88%86+%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="prev" title="BZOJ2095【POI2010】Bridges <二分+网络流>">
+                  <i class="fa fa-chevron-left"></i> BZOJ2095【POI2010】Bridges <二分+网络流>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/06/22/BZOJ3876%E3%80%90JSOI2014%E3%80%91%E6%94%AF%E7%BA%BF%E5%89%A7%E6%83%85%20%E5%B8%A6%E4%B8%8B%E7%95%8C%E7%9A%84%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="next" title="BZOJ3876【JSOI2014】支线剧情 <带下界的费用流>">
+                  BZOJ3876【JSOI2014】支线剧情 <带下界的费用流> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

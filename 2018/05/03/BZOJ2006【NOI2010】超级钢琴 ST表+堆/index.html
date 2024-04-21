@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【NOI2010】超级钢琴$\mathrm{Time;Limit:;20;Sec}$$\mathrm{Memory;Limit:;512;MB}$ Description$\mathrm{小Z}$是一个小有名气的钢琴家，最近$\mathrm{C博士}$送给了$\mathrm{小Z}$一架超级钢琴，$\mathrm{小Z}$希望能够用这架钢琴创作出世界上最美妙的音乐。这架超级钢琴可以弹">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ2006【NOI2010】超级钢琴 &lt; ST表+堆 &gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/05/03/BZOJ2006%E3%80%90NOI2010%E3%80%91%E8%B6%85%E7%BA%A7%E9%92%A2%E7%90%B4%20ST%E8%A1%A8+%E5%A0%86/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【NOI2010】超级钢琴$\mathrm{Time;Limit:;20;Sec}$$\mathrm{Memory;Limit:;512;MB}$ Description$\mathrm{小Z}$是一个小有名气的钢琴家，最近$\mathrm{C博士}$送给了$\mathrm{小Z}$一架超级钢琴，$\mathrm{小Z}$希望能够用这架钢琴创作出世界上最美妙的音乐。这架超级钢琴可以弹">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-02T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-05-03T09:04:38.865Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="NOI">
+<meta property="article:tag" content="ST表">
+<meta property="article:tag" content="堆">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/05/03/BZOJ2006%E3%80%90NOI2010%E3%80%91%E8%B6%85%E7%BA%A7%E9%92%A2%E7%90%B4%20ST%E8%A1%A8+%E5%A0%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/05/03/BZOJ2006%E3%80%90NOI2010%E3%80%91%E8%B6%85%E7%BA%A7%E9%92%A2%E7%90%B4%20ST%E8%A1%A8+%E5%A0%86/","path":"2018/05/03/BZOJ2006【NOI2010】超级钢琴 ST表+堆/","title":"BZOJ2006【NOI2010】超级钢琴 \u003c ST表+堆 >"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ2006【NOI2010】超级钢琴 < ST表+堆 > | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90NOI2010%E3%80%91%E8%B6%85%E7%BA%A7%E9%92%A2%E7%90%B4"><span class="nav-number">1.1.</span> <span class="nav-text">【NOI2010】超级钢琴</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explanation"><span class="nav-number">1.7.</span> <span class="nav-text">Explanation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.8.</span> <span class="nav-text">HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/03/BZOJ2006%E3%80%90NOI2010%E3%80%91%E8%B6%85%E7%BA%A7%E9%92%A2%E7%90%B4%20ST%E8%A1%A8+%E5%A0%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ2006【NOI2010】超级钢琴 < ST表+堆 > | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ2006【NOI2010】超级钢琴 < ST表+堆 >
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2018-05-03 00:00:00 / Modified: 17:04:38" itemprop="dateCreated datePublished" datetime="2018-05-03T00:00:00+08:00">2018-05-03</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【NOI2010】超级钢琴"><a href="#【NOI2010】超级钢琴" class="headerlink" title="【NOI2010】超级钢琴"></a>【NOI2010】超级钢琴</h3><p>$\mathrm{Time;Limit:;20;Sec}$<br>$\mathrm{Memory;Limit:;512;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>$\mathrm{小Z}$是一个小有名气的钢琴家，最近$\mathrm{C博士}$送给了$\mathrm{小Z}$一架超级钢琴，$\mathrm{小Z}$希望能够用这架钢琴创作出世界上最美妙的音乐。<br>这架超级钢琴可以弹奏出$n$个音符，编号为$1\sim n$。第$i$个音符的美妙度为$A_i$，其中$A_i$可正可负。<br>一个“超级和弦“由若干个编号连续的音符组成，包含的音符个数不少于$L$且不多于$R$。我们定义超级和弦的美妙度为其包含的所有音符的美妙度之和。两个超级和弦被认为是相同的，当且仅当这两个超级和弦所包含的音符集合是相同的。<br>$\mathrm{小Z}$决定创作一首由$k$个超级和弦组成的乐曲，为了使得乐曲更加动听，$\mathrm{小Z}$要求该乐曲由$k$个不同的超级和弦组成。我们定义一首乐曲的美妙度为其所包含的所有超级和弦的美妙度之和。$\mathrm{小Z}$想知道他能够创作出来的乐曲美妙度最大值是多少。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>第一行包含四个正整数$n,k,L,R$。其中$n$为音符的个数，$k$为乐曲所包含的超级和弦个数，$L$和$R$分别是超级和弦所包含音符个数的下限和上限。<br>接下来$n$行，每行包含一个整数$A_i$，表示按编号从小到大每个音符的美妙度。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>只有一个整数，表示乐曲美妙度的最大值。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4 3 2 3</span><br><span class="line">3</span><br><span class="line">2</span><br><span class="line">-6</span><br><span class="line">8</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">11</span><br></pre></td></tr></table></figure>
+<h3 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h3><p>共有$5$种不同的超级和弦：<br>音符$1\sim2$，美妙度为$3 + 2 &#x3D; 5$<br>音符$2\sim3$，美妙度为$2 + (-6) &#x3D; -4$<br>音符$3\sim4$，美妙度为$(-6) + 8 &#x3D; 2$<br>音符$1\sim3$，美妙度为$3 + 2 + (-6) &#x3D; -1$<br>音符$2\sim4$，美妙度为$2 + (-6) + 8 &#x3D; 4$<br>最优方案为：乐曲由和弦$1$,和弦$3$,和弦$5$组成，美妙度为$5 + 2 + 4 &#x3D; 11$。</p>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>$N\le5\times10^5$，$k\le5\times10^5$，$-1000\le A_i\le1000$，$1\le L\le R\le N$<br>数据保证一定存在满足条件的乐曲</p>
+<p>标签：<code>堆</code> <code>ST表</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>经典线段树例题，不过我用的是一种精妙的<code>ST表</code>。</p>
+<p>找出第$k$大的差值，可以用一个堆维护，每次弹出堆顶。<br>首先将区间和处理为前缀和，这样问题变为给出一个数组$\lbrace s_n\rbrace$，求第$k$大的$s_i-s_j$，其中$i,j\in[1,n],;i-R\le j\le i-L$。<br>考虑对于一个确定的$s_j$，使差值最大的$s_i$一定是$s_{i-R}\sim s_{i-L}$中的最小值，这个最小值可以在$O(1)$时间内用<code>ST表</code>找到。这个值取完后，对于其他以$j$作为终点的区间可以分成两部分，一部分为起点在$i-R\sim j-1$间的区间，另一部分为起点在$j+1\sim i-L$的区间，在这两个区间中分别找最大值插入堆中。<br>对于以每个位置为右端点的区间，我们维护四元组$(p,l,r,val)$，代表右端点位置，左端点的左右界，以及在此左右界中的最大差值。一开始插入以每个位置为右端点的区间中和最大的区间，随后每次弹出最大区间，将这个四元组拆成两部分，即若当前四元组为$(p,l,r,val)$，左端点取$t$时得到最大差值，以后不能取$t$，将四元组拆为$(p,l,t-1,val_1)$和$(p,t+1,r,val_2)$，其中$val_1$和$val_2$分别表示左端点在$[l,t-1]$和$[t+1,r]$间时的最大差值。<br>如此即可在$O(n\log{n})$的时间内找到前$k$大差值的和。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 500000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOG Log[t-s]</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, m, L, R, s[MAX_N+<span class="number">5</span>], st[MAX_N+<span class="number">5</span>][<span class="number">25</span>], Log[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> p, l, r, val; <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> node &amp;t) <span class="type">const</span> &#123;<span class="keyword">return</span> t.val &gt; val;&#125;&#125; ;</span><br><span class="line">priority_queue &lt;node&gt; que;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Min</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;<span class="keyword">return</span> s[a] &lt; s[b] ? a : b;&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> s, <span class="type">int</span> t)</span> </span>&#123;<span class="keyword">return</span> s &gt; t ? <span class="number">-1</span> : <span class="built_in">Min</span>(st[s][LOG], st[t-(<span class="number">1</span>&lt;&lt;LOG)+<span class="number">1</span>][LOG]);&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(m), <span class="built_in">read</span>(L), <span class="built_in">read</span>(R); lnt ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; i++) Log[i] = Log[i&gt;&gt;<span class="number">1</span>]+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">read</span>(s[i]), s[i] += s[i<span class="number">-1</span>], st[i][<span class="number">0</span>] = i;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; (<span class="number">1</span>&lt;&lt;j) &lt;= n; j++) <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt;= n-(<span class="number">1</span>&lt;&lt;j)+<span class="number">1</span>; i++)</span><br><span class="line">		st[i][j] = <span class="built_in">Min</span>(st[i][j<span class="number">-1</span>], st[i+(<span class="number">1</span>&lt;&lt;(j<span class="number">-1</span>))][j<span class="number">-1</span>]);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = L; i &lt;= n; i++)</span><br><span class="line">		que.<span class="built_in">push</span>((node)&#123;i, <span class="built_in">max</span>(i-R, <span class="number">0</span>), i-L, s[i]-s[<span class="built_in">query</span>(<span class="built_in">max</span>(i-R, <span class="number">0</span>), i-L)]&#125;);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, t, p; i &lt;= m; i++) &#123;</span><br><span class="line">		node tp = que.<span class="built_in">top</span>(); que.<span class="built_in">pop</span>(), ans += tp.val, p = tp.p;</span><br><span class="line">		<span class="type">int</span> ll = tp.l, rr = tp.r, lr = <span class="built_in">query</span>(ll, rr)<span class="number">-1</span>, rl = <span class="built_in">query</span>(ll, rr)+<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span> (~(t = <span class="built_in">query</span>(ll, lr))) que.<span class="built_in">push</span>((node)&#123;p, ll, lr, s[p]-s[t]&#125;);</span><br><span class="line">		<span class="keyword">if</span> (~(t = <span class="built_in">query</span>(rl, rr))) que.<span class="built_in">push</span>((node)&#123;p, rl, rr, s[p]-s[t]&#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/OI-Blog/tags/NOI/" rel="tag"># NOI</a>
+              <a href="/OI-Blog/tags/ST%E8%A1%A8/" rel="tag"># ST表</a>
+              <a href="/OI-Blog/tags/%E5%A0%86/" rel="tag"># 堆</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/05/03/BZOJ3784%20%E6%A0%91%E4%B8%8A%E7%9A%84%E8%B7%AF%E5%BE%84%20%E7%82%B9%E5%88%86%E6%B2%BB+ST%E8%A1%A8+%E5%A0%86/" rel="prev" title="BZOJ3784 树上的路径 <点分治序+ST表+堆>">
+                  <i class="fa fa-chevron-left"></i> BZOJ3784 树上的路径 <点分治序+ST表+堆>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/05/04/BZOJ3143%E3%80%90HNOI2013%E3%80%91%E6%B8%B8%E8%B5%B0%20%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/" rel="next" title="BZOJ3143【HNOI2013】游走 <高斯消元>">
+                  BZOJ3143【HNOI2013】游走 <高斯消元> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

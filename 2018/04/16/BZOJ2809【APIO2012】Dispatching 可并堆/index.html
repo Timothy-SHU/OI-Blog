@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【APIO2012】Dispatching$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description在一个忍者的帮派里，一些忍者们被选中派遣给顾客，然后依据自己的工作获取报偿。在这个帮派里，有一名忍者被称之为$\mathrm{Master}$。除了$\mathrm{Master}$以外，每名忍者都有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ2809【APIO2012】Dispatching &lt;可并堆&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/04/16/BZOJ2809%E3%80%90APIO2012%E3%80%91Dispatching%20%E5%8F%AF%E5%B9%B6%E5%A0%86/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【APIO2012】Dispatching$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description在一个忍者的帮派里，一些忍者们被选中派遣给顾客，然后依据自己的工作获取报偿。在这个帮派里，有一名忍者被称之为$\mathrm{Master}$。除了$\mathrm{Master}$以外，每名忍者都有">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-04-15T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-04-16T08:51:55.549Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="可并堆">
+<meta property="article:tag" content="APIO">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/04/16/BZOJ2809%E3%80%90APIO2012%E3%80%91Dispatching%20%E5%8F%AF%E5%B9%B6%E5%A0%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/04/16/BZOJ2809%E3%80%90APIO2012%E3%80%91Dispatching%20%E5%8F%AF%E5%B9%B6%E5%A0%86/","path":"2018/04/16/BZOJ2809【APIO2012】Dispatching 可并堆/","title":"BZOJ2809【APIO2012】Dispatching \u003c可并堆>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ2809【APIO2012】Dispatching <可并堆> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90APIO2012%E3%80%91Dispatching"><span class="nav-number">1.1.</span> <span class="nav-text">【APIO2012】Dispatching</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hint"><span class="nav-number">1.7.</span> <span class="nav-text">Hint</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/04/16/BZOJ2809%E3%80%90APIO2012%E3%80%91Dispatching%20%E5%8F%AF%E5%B9%B6%E5%A0%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ2809【APIO2012】Dispatching <可并堆> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ2809【APIO2012】Dispatching <可并堆>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2018-04-16 00:00:00 / Modified: 16:51:55" itemprop="dateCreated datePublished" datetime="2018-04-16T00:00:00+08:00">2018-04-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【APIO2012】Dispatching"><a href="#【APIO2012】Dispatching" class="headerlink" title="【APIO2012】Dispatching"></a>【APIO2012】Dispatching</h3><p>$\mathrm{Time;Limit:;10;Sec}$<br>$\mathrm{Memory;Limit:;128;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>在一个忍者的帮派里，一些忍者们被选中派遣给顾客，然后依据自己的工作获取报偿。<br>在这个帮派里，有一名忍者被称之为$\mathrm{Master}$。除了$\mathrm{Master}$以外，每名忍者都有且仅有一个上级。为保密，同时增强忍者们的领导力，所有与他们工作相关的指令总是由上级发送给他的直接下属，而不允许通过其他的方式发送。<br>现在你要招募一批忍者，并把它们派遣给顾客。你需要为每个被派遣的忍者支付一定的薪水，同时使得支付的薪水总额不超过你的预算。另外，为了发送指令，你需要选择一名忍者作为管理者，要求这个管理者可以向所有被派遣的忍者发送指令，在发送指令时，任何忍者（不管是否被派遣）都可以作为消息的传递人。管理者自己可以被派遣，也可以不被派遣。当然，如果管理者没有被排遣，就不需要支付管理者的薪水。你的目标是在预算内使顾客的满意度最大。<br>这里定义顾客的满意度为派遣的忍者总数乘以管理者的领导力水平，其中每个忍者的领导力水平也是一定的。<br>写一个程序，给定每一个忍者$i$的上级$B_i$，薪水$C_i$，领导力$L_i$，以及支付给忍者们的薪水总预算$M$，输出在预算内满足上述要求时顾客满意度的最大值。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>从标准输入读入数据。<br>第一行包含两个整数$N$和$M$，其中$N$表示忍者的个数，$M$表示薪水的总预算。<br>接下来$N$行描述忍者们的上级、薪水以及领导力。其中的第$i$行包含三个整数$B_i,C_i,L_i$分别表示第$i$个忍者的上级，薪水以及领导力。$\mathrm{Master}$满足$B_i&#x3D;0$，并且每一个忍者的老板的编号一定小于自己的编号。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出一个数，表示在预算内顾客的满意度的最大值。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">5 4</span><br><span class="line">0 3 3</span><br><span class="line">1 3 5</span><br><span class="line">2 2 2</span><br><span class="line">1 2 4</span><br><span class="line">2 3 1</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p><strong>样例解释</strong><br>如果我们选择编号为$1$的忍者作为管理者并且派遣第三个和第四个忍者，薪水总和为$4$，没有超过总预算$4$。<br>因为派遣了$2$个忍者并且管理者的领导力为$3$，用户的满意度为$6$，是可以得到的用户满意度的最大值。<br><strong>数据范围</strong><br>$1\le N\le10^5,;1\le M\le10^9,;0\le B_i&lt;i,;1\le C_i\le M,;1\le L_i\le10^9$</p>
+<p>标签：<code>可并堆</code> <code>左偏树</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>可并堆基础题。</p>
+<p>对于每个结点作领导的情况，贪心策略肯定在其子树中从小往大选，直到选不了为止。可以每个结点用一个堆维护，但遍历子树会导致复杂度爆炸。</p>
+<p>考虑每次用已经算出的一些结点的答案。那么可以想到一种做法：<br>将每个结点子树中的所有点默认先选上，再从大往小去掉直到可行为止。这样在儿子结点中都没选到的点一定不会在父节点中选到。于是可以直接将每个结点最后选出的点加入到父亲的备选点集中。这样不难发现可以用可并堆维护，$\mathrm{DFS}$时将所有儿子结点的可并堆并起来，再从大往小$\mathrm{pop}$点，找到可行最大$size$后更新答案即可。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 100000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> c, d, ls, rs;&#125; h[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> n, m, b[MAX_N+<span class="number">5</span>], c[MAX_N+<span class="number">5</span>], l[MAX_N+<span class="number">5</span>], sz[MAX_N+<span class="number">5</span>];</span><br><span class="line">vector &lt;<span class="type">int</span>&gt; G[MAX_N+<span class="number">5</span>]; <span class="type">int</span> fa[MAX_N+<span class="number">5</span>]; lnt mx, s[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;<span class="keyword">return</span> fa[x] == x ? fa[x] : <span class="built_in">getf</span>(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">merge</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!a || !b) <span class="keyword">return</span> a^b;</span><br><span class="line">	<span class="keyword">if</span> (h[a].c &lt; h[b].c) <span class="built_in">swap</span>(a, b);</span><br><span class="line">	h[a].rs = <span class="built_in">merge</span>(h[a].rs, b), fa[h[a].rs] = a;</span><br><span class="line">	<span class="keyword">if</span> (h[h[a].rs].d &gt; h[h[a].ls].d) <span class="built_in">swap</span>(h[a].ls, h[a].rs);</span><br><span class="line">	h[a].d = h[a].rs ? h[h[a].rs].d+<span class="number">1</span> : <span class="number">0</span>;	<span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">pop</span><span class="params">(<span class="type">int</span> a)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> l = h[a].ls, r = h[a].rs;</span><br><span class="line">	h[a].ls = h[a].rs = h[a].c = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">return</span> fa[l] = l, fa[r] = r, <span class="built_in">merge</span>(l, r);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">DFS</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> rt = u;	s[u] = c[u], sz[u] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, v; i &lt; (<span class="type">int</span>)G[u].<span class="built_in">size</span>(); i++)</span><br><span class="line">		rt = <span class="built_in">merge</span>(rt, <span class="built_in">DFS</span>(v = G[u][i])), s[u] += s[v], sz[u] += sz[v];</span><br><span class="line">	<span class="keyword">while</span> (s[u] &gt; m &amp;&amp; sz[u]) s[u] -= h[rt].c, sz[u]--, rt = <span class="built_in">pop</span>(rt);</span><br><span class="line">	<span class="keyword">return</span> mx = <span class="built_in">max</span>(mx, <span class="number">1LL</span>*sz[u]*l[u]), rt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">read</span>(b[i]), <span class="built_in">read</span>(c[i]), <span class="built_in">read</span>(l[i]);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		G[b[i]].<span class="built_in">push_back</span>(i);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		fa[i] = i, h[i].c = c[i];</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">DFS</span>(<span class="number">1</span>), <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, mx), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/OI-Blog/tags/%E5%8F%AF%E5%B9%B6%E5%A0%86/" rel="tag"># 可并堆</a>
+              <a href="/OI-Blog/tags/APIO/" rel="tag"># APIO</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/04/14/BZOJ5251%E3%80%902018%E5%A4%9A%E7%9C%81%E7%9C%81%E9%98%9F%E8%81%94%E6%B5%8B%E3%80%91%E5%8A%88%E9%85%8D%20%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="prev" title="BZOJ5251【2018多省省队联测】劈配 <网络流>">
+                  <i class="fa fa-chevron-left"></i> BZOJ5251【2018多省省队联测】劈配 <网络流>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/04/17/BZOJ5180%E3%80%90Baltic2016%E3%80%91Cities%20%E6%96%AF%E5%9D%A6%E7%BA%B3%E6%A0%91/" rel="next" title="BZOJ5180【Baltic2016】Cities <斯坦纳树>">
+                  BZOJ5180【Baltic2016】Cities <斯坦纳树> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

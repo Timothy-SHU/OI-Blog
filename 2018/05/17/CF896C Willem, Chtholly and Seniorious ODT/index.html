@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="ProblemWillem, Chtholly and Seniorious$\mathrm{Time;Limit;per;test:;2;seconds}$$\mathrm{Memory;Limit;per;test:;256;megabytes}$$\mathrm{input:;standard;input}$$\mathrm{output:;standard;output$ Descript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CF896C Willem, Chtholly and Seniorious &lt; ODT &gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="ProblemWillem, Chtholly and Seniorious$\mathrm{Time;Limit;per;test:;2;seconds}$$\mathrm{Memory;Limit;per;test:;256;megabytes}$$\mathrm{input:;standard;input}$$\mathrm{output:;standard;output$ Descript">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-05-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-05-19T01:40:15.160Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="CodeForces">
+<meta property="article:tag" content="ODT">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/","path":"2018/05/17/CF896C Willem, Chtholly and Seniorious ODT/","title":"CF896C Willem, Chtholly and Seniorious \u003c ODT >"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CF896C Willem, Chtholly and Seniorious < ODT > | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Willem-Chtholly-and-Seniorious"><span class="nav-number">1.1.</span> <span class="nav-text">Willem, Chtholly and Seniorious</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Example"><span class="nav-number">1.5.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Note"><span class="nav-number">1.6.</span> <span class="nav-text">Note</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Translation"><span class="nav-number">2.</span> <span class="nav-text">Translation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CF896C Willem, Chtholly and Seniorious < ODT > | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CF896C Willem, Chtholly and Seniorious < ODT >
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-05-17 00:00:00" itemprop="dateCreated datePublished" datetime="2018-05-17T00:00:00+08:00">2018-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-05-19 09:40:15" itemprop="dateModified" datetime="2018-05-19T09:40:15+08:00">2018-05-19</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Willem-Chtholly-and-Seniorious"><a href="#Willem-Chtholly-and-Seniorious" class="headerlink" title="Willem, Chtholly and Seniorious"></a>Willem, Chtholly and Seniorious</h3><p>$\mathrm{Time;Limit;per;test:;2;seconds}$<br>$\mathrm{Memory;Limit;per;test:;256;megabytes}$<br>$\mathrm{input:;standard;input}$<br>$\mathrm{output:;standard;output$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>— Willem…<br>— What’s the matter?<br>— It seems that there’s something wrong with Seniorious…<br>— I’ll have a look…</p>
+<center>
+![](http://codeforces.com/predownloaded/b1/f8/b1f8c486967b50eedc6972dc2ecef18cdfd7d52d.png)
+</center>
+
+<p>$\mathrm{Seniorious}$ is made by linking special talismans in particular order.<br>After over $500$ years, the carillon is now in bad condition, so Willem decides to examine it thoroughly.<br>$\mathrm{Seniorious}$ has $n$ pieces of talisman. Willem puts them in a line, the $i^{th}$ of which is an integer $a_i$.<br>In order to maintain it, Willem needs to perform $m$ operations.<br>There are four types of operations:</p>
+<ol>
+<li>$l;r;x$: For each $i$ such that $l\le i\le r$, assign $a_i+x$ to $a_i$.</li>
+<li>$l;r;x$: For each $i$ such that $l\le i\le r$, assign $x$ to $a_i$.</li>
+<li>$l;r;x$: Print the $x^{th}$ smallest number in the index range $[l,r]$, i.e. the element at the $x^{th}$ position if all the elements $a_i$ such that $l≤i≤r$ are taken and sorted into an array of non-decreasing integers. It’s guaranteed that $1\le x\le r-l+1$.</li>
+<li>$l;r;x;y$: Print the sum of the $x^{th}$ power of $a_i$ such that $l\le i\le r$, modulo $y$, i.e. $(\sum_{i&#x3D;l}^{r}{a_i^x})\mod{y}$.</li>
+</ol>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The only line contains four integers $n,m,seed,vmax$ ($1\le n,m\le10^5$,$0\le seed&lt;10^9+7$,$1\le vmax\le10^9)$.<br>The initial values and operations are generated using following pseudo code:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">def rnd():</span><br><span class="line">    ret = seed</span><br><span class="line">    seed = (seed * 7 + 13) mod 1000000007</span><br><span class="line">    return ret</span><br><span class="line"></span><br><span class="line">for i = 1 to n:</span><br><span class="line">    a[i] = (rnd() mod vmax) + 1</span><br><span class="line"></span><br><span class="line">for i = 1 to m:</span><br><span class="line">    op = (rnd() mod 4) + 1</span><br><span class="line">    l = (rnd() mod n) + 1</span><br><span class="line">    r = (rnd() mod n) + 1</span><br><span class="line">    if (l &gt; r): </span><br><span class="line">         swap(l, r)</span><br><span class="line">    if (op == 3):</span><br><span class="line">        x = (rnd() mod (r - l + 1)) + 1</span><br><span class="line">    else:</span><br><span class="line">        x = (rnd() mod vmax) + 1</span><br><span class="line">    if (op == 4):</span><br><span class="line">        y = (rnd() mod vmax) + 1</span><br></pre></td></tr></table></figure>
+<p>Here $op$ is the type of the operation mentioned in the legend.</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each operation of types $3$ or $4$, output a line containing the answer.</p>
+<span id="more"></span>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p><strong>Input 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 10 7 9</span><br></pre></td></tr></table></figure>
+<p><strong>Output 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">1</span><br><span class="line">0</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<p><strong>Input 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10 10 9 9</span><br></pre></td></tr></table></figure>
+<p><strong>Output 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">1</span><br><span class="line">1</span><br><span class="line">3</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><p>In the first example, the initial array is $\lbrace8,9,7,2,3,1,5,6,4,8\rbrace$.<br>The operations are:<br>$2;6;7;9$<br>$1;3;10;8$<br>$4;4;6;2;4$<br>$1;4;5;8$<br>$2;1;7;1$<br>$4;7;9;4;4$<br>$1;2;7;9$<br>$4;5;8;1;1$<br>$2;5;7;5$<br>$4;3;10;8;5$</p>
+<p>标签：<code>ODT</code></p>
+<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>给出一个长为$10^5$级别的初始数组，要求维护四种操作：</p>
+<ol>
+<li>将$a_l \sim a_r$中的每个数$+x$</li>
+<li>将$a_l\sim a_r$中的每个数赋为$x$</li>
+<li>询问区间$[l,r]$中的第$x$小值</li>
+<li>询问$(\sum_{i&#x3D;l}^{r}{a_i^x})\mod{y}$</li>
+</ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>$\mathrm{ODT}$裸题。</p>
+<p>用一棵<code>set</code>维护若干区间，每个区间都是值相等的一段。<br>对于操作$1$，将与$[l,r]$有交集的所有区间都拿出来，如果是包含的区间，可以直接将区间值$+x$；如果是部分相交，则把区间拆成两部分（或三部分），分别赋值后删除原区间，插入新区间。<br>对于操作$2$，将所有包含区间提出并删除，分成至多三段，即$[pre,l),[l,r],(r,suc]$，其中$pre$和$suc$是与$[l,r]$部分相交的两个区间的左端点和右端点。将左右两个区间赋值为原来的值，将中间的区间赋值为$x$。<br>对于询问$3$，将所有相交区间合起来排序再枚举判断即可。<br>对于询问$4$，将所有相交区间提出来得到每个值的个数，直接统计贡献即可。</p>
+<p>复杂度证明见<a target="_blank" rel="noopener" href="http://codeforces.com/blog/entry/56135">lxl的题解</a></p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> fir first</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> sec second</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 100000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MOD 1000000007</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="type">int</span>,<span class="type">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;lnt,<span class="type">int</span>&gt; pli;</span><br><span class="line"><span class="keyword">typedef</span> map&lt;pii,lnt&gt;::iterator IT;</span><br><span class="line">map &lt;pii, lnt&gt; s;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, m, seed, vmx, a[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">rnd</span><span class="params">()</span> </span>&#123;<span class="type">int</span> ret = seed; <span class="keyword">return</span> seed = (<span class="type">int</span>)((<span class="number">7LL</span>*seed+<span class="number">13</span>)%MOD), ret;&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">qry</span><span class="params">(<span class="type">int</span> &amp;op, <span class="type">int</span> &amp;l, <span class="type">int</span> &amp;r, <span class="type">int</span> &amp;x, <span class="type">int</span> &amp;y)</span> </span>&#123;</span><br><span class="line">	op = <span class="built_in">rnd</span>()%<span class="number">4</span>+<span class="number">1</span>, l = <span class="built_in">rnd</span>()%n+<span class="number">1</span>, r = <span class="built_in">rnd</span>()%n+<span class="number">1</span>; <span class="keyword">if</span> (l &gt; r) <span class="built_in">swap</span>(l, r);</span><br><span class="line">	x = <span class="built_in">rnd</span>()%(op == <span class="number">3</span> ? (r-l+<span class="number">1</span>) : vmx)+<span class="number">1</span>; y = op == <span class="number">4</span> ? <span class="built_in">rnd</span>()%vmx+<span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">lnt <span class="title">pw</span><span class="params">(lnt x, lnt k, lnt p)</span> </span>&#123;</span><br><span class="line">	lnt ret = <span class="number">1LL</span>; x %= p;</span><br><span class="line">	<span class="keyword">for</span> (; k; k&gt;&gt;=<span class="number">1</span>, (x *= x) %= p)</span><br><span class="line">		<span class="keyword">if</span> (k&amp;<span class="number">1</span>) (ret *= x) %= p;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(m), <span class="built_in">read</span>(seed), <span class="built_in">read</span>(vmx);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) a[i] = <span class="built_in">rnd</span>()%vmx+<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) s[<span class="built_in">pii</span>(i, i)] = a[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, op, l, r, x, y; i &lt;= m; i++) &#123;</span><br><span class="line">		<span class="built_in">qry</span>(op, l, r, x, y); IT it = s.<span class="built_in">lower_bound</span>(<span class="built_in">pii</span>(l, l));</span><br><span class="line">		<span class="keyword">if</span> (op == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (it-&gt;fir.fir != l) &#123;</span><br><span class="line">				it--;</span><br><span class="line">				pii pr = <span class="built_in">pii</span>(it-&gt;fir.fir, l<span class="number">-1</span>), cur = <span class="built_in">pii</span>(l, <span class="built_in">min</span>(r, it-&gt;fir.sec));</span><br><span class="line">				<span class="keyword">if</span> (it-&gt;fir.sec &lt;= r) s[pr] = it-&gt;sec, s[cur] = it-&gt;sec+x;</span><br><span class="line">				<span class="keyword">else</span> s[pr] = it-&gt;sec, s[cur] = it-&gt;sec+x, s[<span class="built_in">pii</span>(r+<span class="number">1</span>, it-&gt;fir.sec)] = it-&gt;sec;</span><br><span class="line">				s.<span class="built_in">erase</span>(it), it = s.<span class="built_in">lower_bound</span>(<span class="built_in">pii</span>(l+<span class="number">1</span>, l+<span class="number">1</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (; it != s.<span class="built_in">end</span>() &amp;&amp; it-&gt;fir.fir &lt;= r; it++)</span><br><span class="line">				<span class="keyword">if</span> (it-&gt;fir.sec &lt;= r) it-&gt;sec += x;</span><br><span class="line">				<span class="keyword">else</span> &#123;</span><br><span class="line">					s[<span class="built_in">pii</span>(it-&gt;fir.fir, r)] = it-&gt;sec+x, </span><br><span class="line">					s[<span class="built_in">pii</span>(r+<span class="number">1</span>, it-&gt;fir.sec)] = it-&gt;sec, </span><br><span class="line">					s.<span class="built_in">erase</span>(it); <span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (op == <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span> (it-&gt;fir.fir != l) &#123;</span><br><span class="line">				it--; pii pr = <span class="built_in">pii</span>(it-&gt;fir.fir, l<span class="number">-1</span>);</span><br><span class="line">				<span class="keyword">if</span> (it-&gt;fir.sec &gt; r) s[<span class="built_in">pii</span>(r+<span class="number">1</span>, it-&gt;fir.sec)] = it-&gt;sec;</span><br><span class="line">				s[pr] = it-&gt;sec, s.<span class="built_in">erase</span>(it), it = s.<span class="built_in">lower_bound</span>(<span class="built_in">pii</span>(l+<span class="number">1</span>, l+<span class="number">1</span>));</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">for</span> (; it != s.<span class="built_in">end</span>() &amp;&amp; it-&gt;fir.fir &lt;= r; s.<span class="built_in">erase</span>(it), it = s.<span class="built_in">lower_bound</span>(<span class="built_in">pii</span>(l, l)))</span><br><span class="line">				<span class="keyword">if</span> (it-&gt;fir.sec &gt; r) s[<span class="built_in">pii</span>(r+<span class="number">1</span>, it-&gt;fir.sec)] = it-&gt;sec;</span><br><span class="line">			s[<span class="built_in">pii</span>(l, r)] = x;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (op == <span class="number">3</span>) &#123;</span><br><span class="line">			vector &lt;pli&gt; vec;</span><br><span class="line">			<span class="keyword">if</span> (it-&gt;fir.fir != l)</span><br><span class="line">				it--, vec.<span class="built_in">push_back</span>(<span class="built_in">pli</span>(it-&gt;sec, <span class="built_in">min</span>(r, it-&gt;fir.sec)-l+<span class="number">1</span>)), it++;</span><br><span class="line">			<span class="keyword">for</span> (; it != s.<span class="built_in">end</span>() &amp;&amp; it-&gt;fir.fir &lt;= r; it++)</span><br><span class="line">				vec.<span class="built_in">push_back</span>(<span class="built_in">pli</span>(it-&gt;sec, <span class="built_in">min</span>(r, it-&gt;fir.sec)-it-&gt;fir.fir+<span class="number">1</span>));</span><br><span class="line">			<span class="built_in">sort</span>(vec.<span class="built_in">begin</span>(), vec.<span class="built_in">end</span>());</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; (<span class="type">int</span>)vec.<span class="built_in">size</span>(); x -= vec[j++].sec)</span><br><span class="line">				<span class="keyword">if</span> (x &lt;= vec[j].sec) &#123;<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, vec[j].fir); <span class="keyword">break</span>;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (op == <span class="number">4</span>) &#123;</span><br><span class="line">			lnt ans = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (it-&gt;fir.fir != l)</span><br><span class="line">				it--, (ans += <span class="built_in">pw</span>(it-&gt;sec, x, y)*(<span class="built_in">min</span>(r, it-&gt;fir.sec)-l+<span class="number">1</span>)%y) %= y, it++;</span><br><span class="line">			<span class="keyword">for</span> (; it != s.<span class="built_in">end</span>() &amp;&amp; it-&gt;fir.fir &lt;= r; it++)</span><br><span class="line">				(ans += <span class="built_in">pw</span>(it-&gt;sec, x, y)*(<span class="built_in">min</span>(r, it-&gt;fir.sec)-it-&gt;fir.fir+<span class="number">1</span>)%y) %= y;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, ans);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/OI-Blog/tags/CodeForces/" rel="tag"># CodeForces</a>
+              <a href="/OI-Blog/tags/ODT/" rel="tag"># ODT</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/05/16/BZOJ5343%E3%80%90CTSC2018%E3%80%91%E6%B7%B7%E5%90%88%E6%9E%9C%E6%B1%81%20%E6%95%B4%E4%BD%93%E4%BA%8C%E5%88%86+%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="prev" title="BZOJ5343【CTSC2018】混合果汁 <整体二分+线段树>">
+                  <i class="fa fa-chevron-left"></i> BZOJ5343【CTSC2018】混合果汁 <整体二分+线段树>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/05/18/BZOJ4355%20Play%20with%20sequence%20SegBeats/" rel="next" title="BZOJ4355 Play with sequence < SegBeats >">
+                  BZOJ4355 Play with sequence < SegBeats > <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

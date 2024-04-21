@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="ProblemSynchronized Subsequence$\mathrm{Time;limit:;2;Sec}$$\mathrm{Memory;limit:;1024;MB}$ StatementYou are given a string $S$ of length $2N$, containing $N$ occurrences of a and $N$ occurrences of b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AGC026E Synchronized Subsequence &lt;贪心+DP&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/08/01/AGC026E%20Synchronized%20Subsequence%20%E8%B4%AA%E5%BF%83+DP/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="ProblemSynchronized Subsequence$\mathrm{Time;limit:;2;Sec}$$\mathrm{Memory;limit:;1024;MB}$ StatementYou are given a string $S$ of length $2N$, containing $N$ occurrences of a and $N$ occurrences of b">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-07-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-10-08T12:51:09.209Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="AtCoder">
+<meta property="article:tag" content="AGC">
+<meta property="article:tag" content="贪心">
+<meta property="article:tag" content="DP">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/08/01/AGC026E%20Synchronized%20Subsequence%20%E8%B4%AA%E5%BF%83+DP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/08/01/AGC026E%20Synchronized%20Subsequence%20%E8%B4%AA%E5%BF%83+DP/","path":"2018/08/01/AGC026E Synchronized Subsequence 贪心+DP/","title":"AGC026E Synchronized Subsequence \u003c贪心+DP>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>AGC026E Synchronized Subsequence <贪心+DP> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Synchronized-Subsequence"><span class="nav-number">1.1.</span> <span class="nav-text">Synchronized Subsequence</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Statement"><span class="nav-number">1.2.</span> <span class="nav-text">Statement</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Constraints"><span class="nav-number">1.3.</span> <span class="nav-text">Constraints</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.4.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.5.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample"><span class="nav-number">1.6.</span> <span class="nav-text">Sample</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Translation"><span class="nav-number">2.</span> <span class="nav-text">Translation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">3.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">4.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/08/01/AGC026E%20Synchronized%20Subsequence%20%E8%B4%AA%E5%BF%83+DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="AGC026E Synchronized Subsequence <贪心+DP> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          AGC026E Synchronized Subsequence <贪心+DP>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-08-01 00:00:00" itemprop="dateCreated datePublished" datetime="2018-08-01T00:00:00+08:00">2018-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-10-08 20:51:09" itemprop="dateModified" datetime="2018-10-08T20:51:09+08:00">2018-10-08</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="Synchronized-Subsequence"><a href="#Synchronized-Subsequence" class="headerlink" title="Synchronized Subsequence"></a>Synchronized Subsequence</h3><p>$\mathrm{Time;limit:;2;Sec}$<br>$\mathrm{Memory;limit:;1024;MB}$</p>
+<h3 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h3><p>You are given a string $S$ of length $2N$, containing $N$ occurrences of <code>a</code> and $N$ occurrences of <code>b</code>.<br>You will choose some of the characters in $S$. Here, for each $i&#x3D;1,2,\cdots,N$, it is not allowed to choose exactly one of the following two: the $i^{th}$ occurrence of <code>a</code> and the $i^{th}$ occurrence of <code>b</code>. (That is, you can only choose both or neither.) Then, you will concatenate the chosen characters (without changing the order).<br>Find the lexicographically largest string that can be obtained in this way.</p>
+<h3 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h3><p>$1\le N\le3000$<br>$S$ is a string of length $2N$ containing $N$ occurrences of <code>a</code> and $N$ occurrences of <code>b</code>.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>Input is given from Standard Input in the following format:<br>$N\S$</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>Print the lexicographically largest string that satisfies the condition.</p>
+<span id="more"></span>
+<h3 id="Sample"><a href="#Sample" class="headerlink" title="Sample"></a>Sample</h3><p><strong>Input #1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">aababb</span><br></pre></td></tr></table></figure>
+<p><strong>Output #1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">abab</span><br></pre></td></tr></table></figure>
+<p><strong>Explanation #1</strong><br>A subsequence of $T$ obtained from taking the first, third, fourth and sixth characters in $S$, satisfies the condition.<br><strong>Input #2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">bbabaa</span><br></pre></td></tr></table></figure>
+<p><strong>Output #2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bbabaa</span><br></pre></td></tr></table></figure>
+<p><strong>Explanation #2</strong><br>You can choose all the characters.<br><strong>Input #3</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">bbbaabbabaaa</span><br></pre></td></tr></table></figure>
+<p><strong>Output #3</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bbbabaaa</span><br></pre></td></tr></table></figure>
+<p><strong>Input #4</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">9</span><br><span class="line">abbbaababaababbaba</span><br></pre></td></tr></table></figure>
+<p><strong>Output #4</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bbaababababa</span><br></pre></td></tr></table></figure>
+
+<p>标签：<code>贪心</code> <code>DP</code></p>
+<h2 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h2><p>给出一个长为$2N$的仅由<code>a</code>和<code>b</code>组成的字符串，每次可以删除第$i$个<code>a</code>和第$i$个<code>b</code>。求最终形成的字典序最大的串。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>首先将整个串分为若干段，每一段都保证<code>a</code>的个数和<code>b</code>的个数相等。<br>设第$i$对<code>a</code>,<code>b</code>的位置分别为$p_i,q_i$，那么每一段中满足以下两种条件之一：</p>
+<ol>
+<li>$\forall i,;p_i&lt;q_i$</li>
+<li>$\forall i,;p_i&gt;q_i$</li>
+</ol>
+<p>对于$情况1$，显然最后的串是<code>abab...</code>的形式，于是直接贪心从前往后选，对于当前这一对$(a,b)$如果<code>a</code>的位置在上一次选的$(a,b)$的<code>b</code>的位置之后，即可选当前这一对。<br>对于$情况2$，如果选了中间的某一组$(b,a)$，则其后面的$(b,a)$都选一定比不选要优。于是枚举哪一组$(b,a)$开始选，贪心求出字典序最大的串。<br>如此，可以将每一段都处理成能变成的字典序最大的串。最后需要考虑的就是拼起来。<br>显然，对于某一段，只有选和不选两种可能，于是用$f[i]$表示选第$i$段做开头，后面的串可以任意选，能得到的字典序最大的串（这里$f$是一个$string$数组）。那么$f[i]&#x3D;\max_{j&gt;i}\lbrace S[i]+f[j]\rbrace$。这样可以$O(n^2)$做$\mathrm{DP}$。最后的答案为$ans&#x3D;\max_{i&#x3D;1}^{m}\lbrace f[i]\rbrace$。</p>
+<p>附上官方题解</p>
+<div class="pdf-container" data-target="https://files.cnblogs.com/files/AzraelDeath/AGC026E.pdf" data-height="500px"></div>
+
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 3000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">vector &lt;string&gt; S;</span><br><span class="line">string s, f[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="function">string <span class="title">sol</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	vector &lt;<span class="type">int</span>&gt; a, b, id, p;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)s.<span class="built_in">size</span>(); i++)</span><br><span class="line">		<span class="keyword">if</span> (s[i] == <span class="string">&#x27;a&#x27;</span>) a.<span class="built_in">push_back</span>(i);</span><br><span class="line">		<span class="keyword">else</span> b.<span class="built_in">push_back</span>(i);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, pa = <span class="number">0</span>, pb = <span class="number">0</span>; i &lt; (<span class="type">int</span>)s.<span class="built_in">size</span>(); i++)</span><br><span class="line">		<span class="keyword">if</span> (s[i] == <span class="string">&#x27;a&#x27;</span>) id.<span class="built_in">push_back</span>(pa), p.<span class="built_in">push_back</span>(b[pa]), pa++;</span><br><span class="line">		<span class="keyword">else</span> id.<span class="built_in">push_back</span>(pb), p.<span class="built_in">push_back</span>(a[pb]), pb++;</span><br><span class="line">	string ret = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">if</span> (s[<span class="number">0</span>] == <span class="string">&#x27;a&#x27;</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; (<span class="type">int</span>)s.<span class="built_in">size</span>(); i++)</span><br><span class="line">			<span class="keyword">if</span> (s[i] == <span class="string">&#x27;a&#x27;</span>) ret += <span class="string">&quot;ab&quot;</span>, i = p[i];</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = (<span class="type">int</span>)id.<span class="built_in">size</span>()<span class="number">-1</span>; ~i; i--) &#123;</span><br><span class="line">			string ss = <span class="string">&quot;&quot;</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; (<span class="type">int</span>)s.<span class="built_in">size</span>(); j++)</span><br><span class="line">				<span class="keyword">if</span> (id[j] &gt;= i) ss.<span class="built_in">push_back</span>(s[j]);</span><br><span class="line">			ret = <span class="built_in">max</span>(ret, ss);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n; <span class="built_in">read</span>(n); string str; cin &gt;&gt; str, s = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, cnt = <span class="number">0</span>; i &lt; (<span class="type">int</span>)str.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">		s.<span class="built_in">push_back</span>(str[i]), cnt += str[i] == <span class="string">&#x27;a&#x27;</span> ? <span class="number">1</span> : <span class="number">-1</span>;</span><br><span class="line">		<span class="keyword">if</span> (!cnt) S.<span class="built_in">push_back</span>(<span class="built_in">sol</span>()), s.<span class="built_in">clear</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	string ans = <span class="string">&quot;&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = (<span class="type">int</span>)S.<span class="built_in">size</span>()<span class="number">-1</span>; ~i; i--) &#123;</span><br><span class="line">		f[i] = S[i];</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = i+<span class="number">1</span>; j &lt; (<span class="type">int</span>)S.<span class="built_in">size</span>(); j++)</span><br><span class="line">			f[i] = <span class="built_in">max</span>(f[i], S[i]+f[j]);</span><br><span class="line">		ans = <span class="built_in">max</span>(ans, f[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/AtCoder/" rel="tag"># AtCoder</a>
+              <a href="/OI-Blog/tags/AGC/" rel="tag"># AGC</a>
+              <a href="/OI-Blog/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
+              <a href="/OI-Blog/tags/DP/" rel="tag"># DP</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/07/28/BZOJ1100%E3%80%90POI2007%E3%80%91%E5%AF%B9%E7%A7%B0%E8%BD%B4osi%20Manacher/" rel="prev" title="BZOJ1100【POI2007】对称轴osi < Manacher >">
+                  <i class="fa fa-chevron-left"></i> BZOJ1100【POI2007】对称轴osi < Manacher >
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/08/04/51Nod1667%20%E6%A6%82%E7%8E%87%E5%A5%BD%E9%A2%98%20%E5%AE%B9%E6%96%A5+%E8%AE%A1%E6%95%B0/" rel="next" title="51Nod1667 概率好题 <容斥+计数>">
+                  51Nod1667 概率好题 <容斥+计数> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

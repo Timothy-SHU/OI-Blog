@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【APIO2014】序列分割$\mathrm{Time;Limit:;40;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description$\mathrm{小H}$最近迷上了一个分隔序列的游戏。在这个游戏里，$\mathrm{小H}$需要将一个长度为$n$的非负整数序列分割成$k+1$个非空的子序列。为了得到$k+1$个子序列，$\mathrm{小H">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ3675【APIO2014】序列分割 &lt;斜率优化&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/04/13/BZOJ3675%E3%80%90APIO2014%E3%80%91%E5%BA%8F%E5%88%97%E5%88%86%E5%89%B2%20%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【APIO2014】序列分割$\mathrm{Time;Limit:;40;Sec}$$\mathrm{Memory;Limit:;128;MB}$ Description$\mathrm{小H}$最近迷上了一个分隔序列的游戏。在这个游戏里，$\mathrm{小H}$需要将一个长度为$n$的非负整数序列分割成$k+1$个非空的子序列。为了得到$k+1$个子序列，$\mathrm{小H">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-04-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-04-16T03:59:00.225Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="斜率优化">
+<meta property="article:tag" content="APIO">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/04/13/BZOJ3675%E3%80%90APIO2014%E3%80%91%E5%BA%8F%E5%88%97%E5%88%86%E5%89%B2%20%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/04/13/BZOJ3675%E3%80%90APIO2014%E3%80%91%E5%BA%8F%E5%88%97%E5%88%86%E5%89%B2%20%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/","path":"2018/04/13/BZOJ3675【APIO2014】序列分割 斜率优化/","title":"BZOJ3675【APIO2014】序列分割 \u003c斜率优化>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ3675【APIO2014】序列分割 <斜率优化> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90APIO2014%E3%80%91%E5%BA%8F%E5%88%97%E5%88%86%E5%89%B2"><span class="nav-number">1.1.</span> <span class="nav-text">【APIO2014】序列分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hint"><span class="nav-number">1.7.</span> <span class="nav-text">Hint</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/04/13/BZOJ3675%E3%80%90APIO2014%E3%80%91%E5%BA%8F%E5%88%97%E5%88%86%E5%89%B2%20%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ3675【APIO2014】序列分割 <斜率优化> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ3675【APIO2014】序列分割 <斜率优化>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-04-13 00:00:00" itemprop="dateCreated datePublished" datetime="2018-04-13T00:00:00+08:00">2018-04-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-04-16 11:59:00" itemprop="dateModified" datetime="2018-04-16T11:59:00+08:00">2018-04-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【APIO2014】序列分割"><a href="#【APIO2014】序列分割" class="headerlink" title="【APIO2014】序列分割"></a>【APIO2014】序列分割</h3><p>$\mathrm{Time;Limit:;40;Sec}$<br>$\mathrm{Memory;Limit:;128;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>$\mathrm{小H}$最近迷上了一个分隔序列的游戏。<br>在这个游戏里，$\mathrm{小H}$需要将一个长度为$n$的非负整数序列分割成$k+1$个非空的子序列。<br>为了得到$k+1$个子序列，$\mathrm{小H}$需要重复$k$次以下的步骤：</p>
+<ol>
+<li>$\mathrm{小H}$首先选择一个长度超过$1$的序列（一开始$\mathrm{小H}$只有一个长度为$n$的序列，也就是一开始得到的整个序列）</li>
+<li>选择一个位置，并通过这个位置将这个序列分割成连续的两个非空的新序列</li>
+</ol>
+<p>每次进行上述步骤之后，$\mathrm{小H}$将会得到一定的分数。这个分数为两个新序列中元素和的乘积。<br>$\mathrm{小H}$希望选择一种最佳的分割方式，使得$k$轮之后，$\mathrm{小H}$的总得分最大。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>输入第一行包含两个整数$n,k;(k+1\le n)$。<br>第二行包含$n$个非负整数$a_1,a_2,\cdots,a_n;(0\le a_i\le10^4)$，表示一开始$\mathrm{小H}$得到的序列。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出第一行包含一个整数，为$\mathrm{小H}$可以得到的最大分数。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">7 3</span><br><span class="line">4 1 3 4 0 2 3</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">108</span><br></pre></td></tr></table></figure>
+<h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p>在样例中，$\mathrm{小H}$可以通过如下3轮操作得到108分： </p>
+<ol>
+<li>一开始$\mathrm{小H}$有一个序列$(4,1,3,4,0,2,3)$。$\mathrm{小H}$选择在第$1$个数之后的位置将序列分成两部分，并得到$4\times (1+3+4+0+2+3)&#x3D;52$分。 </li>
+<li>这一轮开始时$\mathrm{小H}$有两个序列：$(4),;(1,3,4,0,2,3)$。$\mathrm{小H}$选择在第3个数字之后的位置将第二个序列分成两部分，并得到$(1+3)\times(4+0+2+3)&#x3D;36$分。 </li>
+<li>这一轮开始时$\mathrm{小H}$有三个序列：$(4),;(1,3),;(4,0,2,3)$。$\mathrm{小H}$选择在第$5$个数字之后的位置将第三个序列分成两部分，并得到$(4+0)\times(2+3)&#x3D;20$分。</li>
+</ol>
+<p>经过上述三轮操作，$\mathrm{小H}$将会得到四个子序列：$(4),;(1,3),;(4,0),;(2,3)$并总共得到$52+36+20&#x3D;108$分。 </p>
+<p>标签：<code>斜率优化DP</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>易得$\mathrm{DP}$方程：$f[t][i]$表示玩$t$轮时只考虑$[1,i]$区间内的数的最大贡献。那么有$f[t][i]&#x3D;\max_{j&#x3D;0}^{i-1}\lbrace{f[t-1][j]+(S_i-S_j)\times S_j}\rbrace$。<br>简单推一推：<br>$$<br>\begin{aligned}<br>f[t][i]&amp;&#x3D;\max_{j&#x3D;0}^{i-1}\lbrace{f[t-1][j]+(S_i-S_j)\times S_j}\rbrace\<br>&amp;&#x3D;\max_{j&#x3D;0}^{i-1}\lbrace{f[t-1][j]+S_j\times S_i-S_j^2}\rbrace\<br>&amp;&#x3D;\max_{j&#x3D;0}^{i-1}\lbrace{S_iS_j+f[t-1][j]-S_j^2}\rbrace\<br>\end{aligned}<br>$$<br>套上斜率优化：<br>$$<br>For;i\in[1,n],;if;p&lt;q,;q;is;better;than;p,;then\<br>S_pS_i+f[t-1][p]-S_p^2\le S_qS_i+f[t-1][q]-S_q^2\<br>Let;a_n&#x3D;S_n,;b_n&#x3D;f[t-1][n]-S_n^2,\<br>then;(a_p-a_q)S_i\le b_q-b_p\<br>\therefore If;(a_p-a_q)S_i\le b_q-b_p,;then;we;can;pop;p;out;of;the;stack.<br>$$<br>注意这里不要写成斜率的形式，因为$a_p-a_q$可能等于$0$。<br>按照不等式用单调栈对每层$k$进行维护即可，这里可以做$k$次一维$\mathrm{DP}$，每次重新算$b$数组。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 100000</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, m, l, r, que[MAX_N+<span class="number">5</span>]; lnt s[MAX_N+<span class="number">5</span>];</span><br><span class="line">lnt f[MAX_N+<span class="number">5</span>], a[MAX_N+<span class="number">5</span>], b[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">chk</span><span class="params">(<span class="type">int</span> p, <span class="type">int</span> l, <span class="type">int</span> r)</span> </span>&#123;</span><br><span class="line">	lnt x = (b[p]-b[que[r]])*(a[que[r<span class="number">-1</span>]]-a[que[r]]);</span><br><span class="line">	lnt y = (b[que[r]]-b[que[r<span class="number">-1</span>]])*(a[que[r]]-a[p]);</span><br><span class="line">	<span class="keyword">return</span> x &lt;= y;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, x; i &lt;= n; i++)</span><br><span class="line">		<span class="built_in">read</span>(x), s[i] = s[i<span class="number">-1</span>]+x;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">		a[i] = s[i], b[i] = -s[i]*s[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">1</span>; k &lt;= m; k++) &#123;</span><br><span class="line">		que[l = r = <span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">			<span class="keyword">while</span> (l &lt; r &amp;&amp; s[i]*(a[que[l]]-a[que[l+<span class="number">1</span>]]) &lt;= b[que[l+<span class="number">1</span>]]-b[que[l]]) l++;</span><br><span class="line">			f[i] = a[que[l]]*s[i]+b[que[l]]; <span class="keyword">while</span> (l &lt; r &amp;&amp; <span class="built_in">chk</span>(i, l, r)) r--; que[++r] = i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) b[i] = f[i]-s[i]*s[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, f[n]), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/DP/" rel="tag"># DP</a>
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" rel="tag"># 斜率优化</a>
+              <a href="/OI-Blog/tags/APIO/" rel="tag"># APIO</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/04/10/BZOJ3730%20%E9%9C%87%E6%B3%A2%20%E5%8A%A8%E6%80%81%E7%82%B9%E5%88%86%E6%B2%BB/" rel="prev" title="BZOJ3730 震波 <动态点分治>">
+                  <i class="fa fa-chevron-left"></i> BZOJ3730 震波 <动态点分治>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/04/13/BZOJ1911%E3%80%90APIO2010%E3%80%91%E7%89%B9%E5%88%AB%E8%A1%8C%E5%8A%A8%E9%98%9F%20%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96/" rel="next" title="BZOJ1911【APIO2010】特别行动队 <斜率优化>">
+                  BZOJ1911【APIO2010】特别行动队 <斜率优化> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>

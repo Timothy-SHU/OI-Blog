@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem【CTSC2011】幸福路径$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;256;MB}$ Description有向图$G$有$n$个顶点$1,2,\cdots,n$，点$i$的权值为$w_i$。现在有一只蚂蚁，从给定的起点$v_0$出发，沿着图$G$的边爬行。开始时，它的体力为$1$。每爬过一条边，它的体力都会下降为原来的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ2306【CTSC2011】幸福路径 &lt;概率DP&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/2018/07/24/BZOJ2306%E3%80%90CTSC2011%E3%80%91%E5%B9%B8%E7%A6%8F%E8%B7%AF%E5%BE%84%20%E6%A6%82%E7%8E%87DP/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem【CTSC2011】幸福路径$\mathrm{Time;Limit:;10;Sec}$$\mathrm{Memory;Limit:;256;MB}$ Description有向图$G$有$n$个顶点$1,2,\cdots,n$，点$i$的权值为$w_i$。现在有一只蚂蚁，从给定的起点$v_0$出发，沿着图$G$的边爬行。开始时，它的体力为$1$。每爬过一条边，它的体力都会下降为原来的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2018-07-23T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-09-28T07:28:38.795Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="DP">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="概率DP">
+<meta property="article:tag" content="CTSCs">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/2018/07/24/BZOJ2306%E3%80%90CTSC2011%E3%80%91%E5%B9%B8%E7%A6%8F%E8%B7%AF%E5%BE%84%20%E6%A6%82%E7%8E%87DP/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/2018/07/24/BZOJ2306%E3%80%90CTSC2011%E3%80%91%E5%B9%B8%E7%A6%8F%E8%B7%AF%E5%BE%84%20%E6%A6%82%E7%8E%87DP/","path":"2018/07/24/BZOJ2306【CTSC2011】幸福路径 概率DP/","title":"BZOJ2306【CTSC2011】幸福路径 \u003c概率DP>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ2306【CTSC2011】幸福路径 <概率DP> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90CTSC2011%E3%80%91%E5%B9%B8%E7%A6%8F%E8%B7%AF%E5%BE%84"><span class="nav-number">1.1.</span> <span class="nav-text">【CTSC2011】幸福路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.7.</span> <span class="nav-text">HINT</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Source"><span class="nav-number">1.8.</span> <span class="nav-text">Source</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Personal Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">153</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/07/24/BZOJ2306%E3%80%90CTSC2011%E3%80%91%E5%B9%B8%E7%A6%8F%E8%B7%AF%E5%BE%84%20%E6%A6%82%E7%8E%87DP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Personal Blog">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ2306【CTSC2011】幸福路径 <概率DP> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ2306【CTSC2011】幸福路径 <概率DP>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-07-24 00:00:00" itemprop="dateCreated datePublished" datetime="2018-07-24T00:00:00+08:00">2018-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2018-09-28 15:28:38" itemprop="dateModified" datetime="2018-09-28T15:28:38+08:00">2018-09-28</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><h3 id="【CTSC2011】幸福路径"><a href="#【CTSC2011】幸福路径" class="headerlink" title="【CTSC2011】幸福路径"></a>【CTSC2011】幸福路径</h3><p>$\mathrm{Time;Limit:;10;Sec}$<br>$\mathrm{Memory;Limit:;256;MB}$</p>
+<h3 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h3><p>有向图$G$有$n$个顶点$1,2,\cdots,n$，点$i$的权值为$w_i$。现在有一只蚂蚁，从给定的起点$v_0$出发，沿着图$G$的边爬行。<br>开始时，它的体力为$1$。每爬过一条边，它的体力都会下降为原来的$p$倍，其中$p$是一个给定的小于$1$的正常数。而蚂蚁爬到某个顶点时的幸福度，是它当时的体力与该点权值的乘积。<br>我们把蚂蚁在爬行路径上幸福度的总和记为$H$。很显然，对于不同的爬行路径，$H$的值也可能不同。$\mathrm{小Z}$对$H$值的最大可能值很感兴趣，你能帮助他计算吗？<br>注意，蚂蚁爬行的路径长度可能是无穷的。</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>每一行中两个数之间用一个空格隔开。<br>输入文件第一行包含两个正整数$n,m$，分别表示$G$中顶点的个数和边的条数。<br>第二行包含$n$个非负实数，依次表示$n$个顶点权值$w_1,w_2,\cdots,w_n$。<br>第三行包含一个正整数$v_0$，表示给定的起点。<br>第四行包含一个实数$p$，表示给定的小于$1$的正常数。<br>接下来$m$行，每行两个正整数$x,y$，表示$&lt;x,y&gt;$是G的一条有向边。<br>可能有自环，但不会有重边。</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>仅包含一个实数，即$H$值的最大可能值，四舍五入到小数点后一位。</p>
+<span id="more"></span>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5 5</span><br><span class="line">10.0 8.0 8.0 8.0 15.0</span><br><span class="line">1 </span><br><span class="line">0.5</span><br><span class="line">1 2</span><br><span class="line">2 3</span><br><span class="line">3 4</span><br><span class="line">4 2</span><br><span class="line">4 5</span><br></pre></td></tr></table></figure>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">18.0</span><br></pre></td></tr></table></figure>
+<h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>对于$100%$的数据，$n\le100$，$m\le1000$，$p&lt;1$，$w_i\le100;(i&#x3D;1,2,\cdots,n)$。</p>
+<h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p><code>Day 1</code></p>
+<p>标签：<code>概率DP</code></p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>有点烦人的期望$\mathrm{DP}$，为什么那么多人用倍增$\mathrm{Floyed}$水过去…</p>
+<p>以下做法转自<a target="_blank" rel="noopener" href="http://www.cnblogs.com/jianglangcaijin/p/3799494.html#3672023">将狼踩尽19891101的博客</a>。</p>
+<p>观察可知最后一定是走了一条链或一个环或一条链和一个环，所以分开$\mathrm{DP}$出链和环的最大幸福度。设$f[i][j][k]$表示从$j$走$i$步到$k$的最大幸福度，那么$f[i][j][j]$表示的情况一定是在环上绕了若干圈造成的。可知绕了这么多圈没有再次到$j$的最大幸福度为$f[i][j][j]-a_j\times p^i$。<br>令$x&#x3D;f[i][j][j]-a_j\times p^i$，则在这个环上无限绕下去的最大幸福度为<br>$$<br>\begin{aligned}<br>g[j]<br>&amp;&#x3D;x+x\cdot p^i+x\cdot p^{2i}+\cdots\<br>&amp;&#x3D;x\cdot(1+p^i+p^{2i}+\cdots)\<br>&amp;&#x3D;\frac{x}{1-p^i}\<br>&amp;&#x3D;\frac{f[i][j][j]-a_j\times p^i}{1-p^i}\<br>\end{aligned}<br>$$<br>那么从$S$走$i$步到$j$再从$j$开始绕环的最大幸福度为$f[i][S][j]-a[j]\times p^i+g[j]\times p^i$，最终答案为这个值的最大值。</p>
+<h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 100</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">double</span> dnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n, m, s, u[<span class="number">1005</span>], v[<span class="number">1005</span>];</span><br><span class="line">dnt p, w[<span class="number">105</span>], pw[<span class="number">105</span>], ans;</span><br><span class="line">dnt f[<span class="number">105</span>][<span class="number">105</span>][<span class="number">105</span>], g[<span class="number">105</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n), <span class="built_in">read</span>(m);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, w+i);</span><br><span class="line">	<span class="built_in">read</span>(s), <span class="built_in">scanf</span>(<span class="string">&quot;%lf&quot;</span>, &amp;p), pw[<span class="number">0</span>] = <span class="number">1.0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) pw[i] = pw[i<span class="number">-1</span>]*p;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= m; i++) <span class="built_in">read</span>(u[i]), <span class="built_in">read</span>(v[i]);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= n; j++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt;= n; k++) f[i][j][k] = -INF;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) f[i][i][<span class="number">0</span>] = g[i] = w[i];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> stp = <span class="number">1</span>; stp &lt;= n; stp++) <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">1</span>; j &lt;= m; j++)</span><br><span class="line">		f[i][v[j]][stp] = <span class="built_in">max</span>(f[i][v[j]][stp], f[i][u[j]][stp<span class="number">-1</span>]+w[v[j]]*pw[stp]);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="keyword">for</span> (<span class="type">int</span> stp = <span class="number">1</span>; stp &lt;= n; stp++)</span><br><span class="line">		g[i] = <span class="built_in">max</span>(g[i], (f[i][i][stp]-w[i]*pw[stp])/(<span class="number">1</span>-pw[stp]));</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="keyword">for</span> (<span class="type">int</span> stp = <span class="number">1</span>; stp &lt;= n; stp++)</span><br><span class="line">		ans = <span class="built_in">max</span>(ans, f[s][i][stp]-w[i]*pw[stp]+g[i]*pw[stp]);</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%.1lf\n&quot;</span>, ans), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/DP/" rel="tag"># DP</a>
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"># BZOJ</a>
+              <a href="/OI-Blog/tags/%E6%A6%82%E7%8E%87DP/" rel="tag"># 概率DP</a>
+              <a href="/OI-Blog/tags/CTSCs/" rel="tag"># CTSCs</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/07/20/BZOJ3240%E3%80%90NOI2013%E3%80%91%E7%9F%A9%E9%98%B5%E6%B8%B8%E6%88%8F%20%E6%AC%A7%E6%8B%89%E5%AE%9A%E7%90%86/" rel="prev" title="BZOJ3240【NOI2013】矩阵游戏 <欧拉定理>">
+                  <i class="fa fa-chevron-left"></i> BZOJ3240【NOI2013】矩阵游戏 <欧拉定理>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/2018/07/26/BZOJ4589%20Hard%20Nim%20FWT/" rel="next" title="BZOJ4589 Hard Nim < FWT >">
+                  BZOJ4589 Hard Nim < FWT > <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+
+  
+
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+
+  
+
+
+
+
+
+</body>
+</html>
