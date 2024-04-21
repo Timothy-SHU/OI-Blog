@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/OI-Blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem  【SDOI2009】晨跑 Time  Limit:  4  Sec\mathrm{Time\;Limit:\;4\;Sec}TimeLimit:4Sec Memory  Limit:  64  MB\mathrm{Memory\;Limit:\;64\;MB}MemoryLimit:64MB  Description ElaxiaElaxiaElaxia最近迷恋上了空手道，他为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ1877【SDOI2009】晨跑 &lt;拆点费用流&gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/BZOJ1877%E3%80%90SDOI2009%E3%80%91%E6%99%A8%E8%B7%91%20%E6%8B%86%E7%82%B9%E8%B4%B9%E7%94%A8%E6%B5%81/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem  【SDOI2009】晨跑 Time  Limit:  4  Sec\mathrm{Time\;Limit:\;4\;Sec}TimeLimit:4Sec Memory  Limit:  64  MB\mathrm{Memory\;Limit:\;64\;MB}MemoryLimit:64MB  Description ElaxiaElaxiaElaxia最近迷恋上了空手道，他为">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2017-12-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-06-24T14:06:02.673Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="网络流">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="省选">
+<meta property="article:tag" content="图论">
+<meta property="article:tag" content="费用流">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/BZOJ1877%E3%80%90SDOI2009%E3%80%91%E6%99%A8%E8%B7%91%20%E6%8B%86%E7%82%B9%E8%B4%B9%E7%94%A8%E6%B5%81/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/BZOJ1877%E3%80%90SDOI2009%E3%80%91%E6%99%A8%E8%B7%91%20%E6%8B%86%E7%82%B9%E8%B4%B9%E7%94%A8%E6%B5%81/","path":"BZOJ1877【SDOI2009】晨跑 拆点费用流/","title":"BZOJ1877【SDOI2009】晨跑 \u003c拆点费用流>"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ1877【SDOI2009】晨跑 <拆点费用流> | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">OI Journal</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sdoi2009%E6%99%A8%E8%B7%91"><span class="nav-number">1.1.</span> <span class="nav-text"> 【SDOI2009】晨跑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#description"><span class="nav-number">1.2.</span> <span class="nav-text"> Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input"><span class="nav-number">1.3.</span> <span class="nav-text"> Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output"><span class="nav-number">1.4.</span> <span class="nav-text"> Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-input"><span class="nav-number">1.5.</span> <span class="nav-text"> Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-output"><span class="nav-number">1.6.</span> <span class="nav-text"> Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hint"><span class="nav-number">1.7.</span> <span class="nav-text"> Hint</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text"> Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Former OIer</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">248</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">152</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1877%E3%80%90SDOI2009%E3%80%91%E6%99%A8%E8%B7%91%20%E6%8B%86%E7%82%B9%E8%B4%B9%E7%94%A8%E6%B5%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Former OIer">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ1877【SDOI2009】晨跑 <拆点费用流> | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ1877【SDOI2009】晨跑 <拆点费用流>
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-12-25 00:00:00" itemprop="dateCreated datePublished" datetime="2017-12-25T00:00:00+08:00">2017-12-25</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>846</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h2>
+<h3 id="sdoi2009晨跑"><a class="markdownIt-Anchor" href="#sdoi2009晨跑"></a> 【SDOI2009】晨跑</h3>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mtext>  </mtext><mi mathvariant="normal">L</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mo>:</mo><mtext>  </mtext><mn>4</mn><mtext>  </mtext><mi mathvariant="normal">S</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi></mrow><annotation encoding="application/x-tex">\mathrm{Time\;Limit:\;4\;Sec}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">T</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">L</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">S</span><span class="mord mathrm">e</span><span class="mord mathrm">c</span></span></span></span></span><br />
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">y</mi><mtext>  </mtext><mi mathvariant="normal">L</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mo>:</mo><mtext>  </mtext><mn>64</mn><mtext>  </mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">B</mi></mrow><annotation encoding="application/x-tex">\mathrm{Memory\;Limit:\;64\;MB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathrm">M</span><span class="mord mathrm">e</span><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">r</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">L</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">6</span><span class="mord mathrm">4</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">M</span><span class="mord mathrm">B</span></span></span></span></span></p>
+<h3 id="description"><a class="markdownIt-Anchor" href="#description"></a> Description</h3>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>x</mi><mi>i</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Elaxia</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span></span></span></span>最近迷恋上了空手道，他为自己设定了一套健身计划，比如俯卧撑、仰卧起坐等 等，不过到目前为止，他坚持下来的只有晨跑。 现在给出一张学校附近的地图，这张地图中包含<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>个十字路口和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>条街道，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>x</mi><mi>i</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Elaxia</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span></span></span></span>只能从 一个十字路口跑向另外一个十字路口，街道之间只在十字路口处相交。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>x</mi><mi>i</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Elaxia</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span></span></span></span>每天从寝室出发 跑到学校，保证寝室编号为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，学校编号为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>。 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>x</mi><mi>i</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Elaxia</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span></span></span></span>的晨跑计划是按周期（包含若干天）进行的，由于他不喜欢走重复的路线，所以在一个周期内，每天的晨跑路线都不会相交（在十字路口处），寝室和学校不算十字路 口。<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>x</mi><mi>i</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Elaxia</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span></span></span></span>耐力不太好，他希望在一个周期内跑的路程尽量短，但是又希望训练周期包含的天数尽量长。 除了练空手道，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mi>l</mi><mi>a</mi><mi>x</mi><mi>i</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">Elaxia</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mord mathnormal">i</span><span class="mord mathnormal">a</span></span></span></span>其他时间都花在了学习和找<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>M</mi></mrow><annotation encoding="application/x-tex">MM</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>上面，所有他想请你帮忙为他设计 一套满足他要求的晨跑计划。</p>
+<h3 id="input"><a class="markdownIt-Anchor" href="#input"></a> Input</h3>
+<p>第一行：两个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo separator="true">,</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N,M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>。表示十字路口数和街道数。<br />
+接下来<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>行，每行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo separator="true">,</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">a,b,c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">c</span></span></span></span>，表示路口<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span>和路口<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span>之间有条长度为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span></span></span></span>的街道（单向）。</p>
+<h3 id="output"><a class="markdownIt-Anchor" href="#output"></a> Output</h3>
+<p>两个数，第一个数为最长周期的天数，第二个数为满足最长天数的条件下最短的路程长度。</p>
+<span id="more"></span>
+<h3 id="sample-input"><a class="markdownIt-Anchor" href="#sample-input"></a> Sample Input</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">7 10</span><br><span class="line">1 2 1</span><br><span class="line">1 3 1</span><br><span class="line">2 4 1</span><br><span class="line">3 4 1</span><br><span class="line">4 5 1</span><br><span class="line">4 6 1</span><br><span class="line">2 5 5</span><br><span class="line">3 6 6</span><br><span class="line">5 7 1</span><br><span class="line">6 7 1</span><br></pre></td></tr></table></figure>
+<h3 id="sample-output"><a class="markdownIt-Anchor" href="#sample-output"></a> Sample Output</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 11</span><br></pre></td></tr></table></figure>
+<h3 id="hint"><a class="markdownIt-Anchor" href="#hint"></a> Hint</h3>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mn>200</mn><mo separator="true">,</mo><mi>M</mi><mo>≤</mo><mn>20000</mn></mrow><annotation encoding="application/x-tex">N\le 200, M\le 20000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>。</p>
+<p>标签：<code>拆点费用流</code></p>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
+<p>拆点费用流套路题。<br />
+首先要同时考虑天数最长和路程最短两个权，可知要用费用流。<br />
+看到每个点只经过一次可知要把每个点拆成入点和出点，中间连流量为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>费用为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>的边。<br />
+套路建图后跑费用流即可。</p>
+<h2 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 500</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_M 50000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x7f7f7f7f</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> n, m, s, t, cnt, pr[MAX_N+<span class="number">5</span>], cr[MAX_N+<span class="number">5</span>], mxf, mic;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> v, c, w, nxt;&#125; E[MAX_M+<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;s = <span class="number">1</span>, t = n+n, <span class="built_in">memset</span>(pr, <span class="number">-1</span>, <span class="keyword">sizeof</span> pr);&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">insert</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v, <span class="type">int</span> c, <span class="type">int</span> w)</span> </span>&#123;E[cnt] = (node)&#123;v, c, w, pr[u]&#125;, pr[u] = cnt++;&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v, <span class="type">int</span> c, <span class="type">int</span> w)</span> </span>&#123;<span class="built_in">insert</span>(u, v, c, w), <span class="built_in">insert</span>(v, u, <span class="number">0</span>, -w);&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">SPFA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    queue &lt;<span class="type">int</span>&gt; que;	<span class="type">bool</span> inq[MAX_N+<span class="number">5</span>];	<span class="type">int</span> d[MAX_N+<span class="number">5</span>], cr[MAX_N+<span class="number">5</span>];</span><br><span class="line">    <span class="built_in">memset</span>(inq, <span class="literal">false</span>, <span class="keyword">sizeof</span> inq), <span class="built_in">memset</span>(d, INF, <span class="keyword">sizeof</span> d), <span class="built_in">memset</span>(cr, <span class="number">-1</span>, <span class="keyword">sizeof</span> cr);</span><br><span class="line">    d[s] = <span class="number">0</span>, que.<span class="built_in">push</span>(s), inq[s] = <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span> (!que.<span class="built_in">empty</span>()) &#123;</span><br><span class="line">        <span class="type">int</span> u = que.<span class="built_in">front</span>();	que.<span class="built_in">pop</span>(), inq[u] = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = pr[u]; ~i; i = E[i].nxt) &#123;</span><br><span class="line">            <span class="type">int</span> v = E[i].v, c = E[i].c, w = E[i].w;</span><br><span class="line">            <span class="keyword">if</span> (c &amp;&amp; d[u]+w &lt; d[v]) &#123;</span><br><span class="line">                d[v] = d[u]+w, cr[v] = i;</span><br><span class="line">                <span class="keyword">if</span> (!inq[v]) que.<span class="built_in">push</span>(v), inq[v] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (d[t] == INF) <span class="keyword">return</span> <span class="literal">false</span>;	<span class="type">int</span> flow = INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = cr[t]; ~i; i = cr[E[i^<span class="number">1</span>].v]) flow = <span class="built_in">min</span>(flow, E[i].c);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = cr[t]; ~i; i = cr[E[i^<span class="number">1</span>].v]) E[i].c -= flow, E[i^<span class="number">1</span>].c += flow;</span><br><span class="line">    mxf += flow, mic += d[t];	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;m), <span class="built_in">init</span>();</span><br><span class="line">    <span class="built_in">addedge</span>(<span class="number">1</span>, <span class="number">1</span>+n, INF, <span class="number">0</span>), <span class="built_in">addedge</span>(n, n+n, INF, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt; n; i++) <span class="built_in">addedge</span>(i, i+n, <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, u, v, w; i &lt; m; i++)</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>, &amp;u, &amp;v, &amp;w), <span class="built_in">addedge</span>(u+n, v, <span class="number">1</span>, w);</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">SPFA</span>()) ;	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%d %d&quot;</span>, mxf, mic), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 网络流</a>
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"><i class="fa fa-tag"></i> BZOJ</a>
+              <a href="/OI-Blog/tags/%E7%9C%81%E9%80%89/" rel="tag"><i class="fa fa-tag"></i> 省选</a>
+              <a href="/OI-Blog/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
+              <a href="/OI-Blog/tags/%E8%B4%B9%E7%94%A8%E6%B5%81/" rel="tag"><i class="fa fa-tag"></i> 费用流</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/BZOJ2321%E3%80%90BJ2011%E9%9B%86%E8%AE%AD%E3%80%91%E6%98%9F%E5%99%A8%20%E7%89%A9%E7%90%86/" rel="prev" title="BZOJ2321【BJ2011集训】星器 <物理>">
+                  <i class="fa fa-chevron-left"></i> BZOJ2321【BJ2011集训】星器 <物理>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/BZOJ1565%E3%80%90NOI2009%E3%80%91%E6%A4%8D%E7%89%A9%E5%A4%A7%E6%88%98%E5%83%B5%E5%B0%B8%20%E6%9C%80%E5%A4%A7%E6%9D%83%E9%97%AD%E5%90%88%E5%AD%90%E5%9B%BE+%E6%8B%93%E6%89%91/" rel="next" title="BZOJ1565【NOI2009】植物大战僵尸 <最大权闭合子图+拓扑>">
+                  BZOJ1565【NOI2009】植物大战僵尸 <最大权闭合子图+拓扑> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">259k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">15:42</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script><script src="/OI-Blog/js/pjax.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
+  <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+  <script src="/OI-Blog/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+
+
+
+</body>
+</html>

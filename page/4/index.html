@@ -18,8 +18,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/OI-Blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/OI-Blog/js/config.js"></script>
 
     <meta name="description" content="Former OIer">
 <meta property="og:type" content="website">
@@ -78,6 +80,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -85,12 +88,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -172,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/13/BZOJ4184%20Shallot%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E7%BA%BF%E6%80%A7%E5%9F%BA/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ4184%20Shallot%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E7%BA%BF%E6%80%A7%E5%9F%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -190,7 +219,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/13/BZOJ4184%20Shallot%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E7%BA%BF%E6%80%A7%E5%9F%BA/" class="post-title-link" itemprop="url">BZOJ4184 Shallot <线段树分治+凸包></a>
+          <a href="/OI-Blog/BZOJ4184%20Shallot%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E7%BA%BF%E6%80%A7%E5%9F%BA/" class="post-title-link" itemprop="url">BZOJ4184 Shallot <线段树分治+凸包></a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,6 +234,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>783</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -230,7 +273,7 @@
 <p>输出共<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">n</span></span></span></span>行，每行一个整数代表第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>个时刻的最大异或和。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/13/BZOJ4184%20Shallot%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E7%BA%BF%E6%80%A7%E5%9F%BA/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ4184%20Shallot%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E7%BA%BF%E6%80%A7%E5%9F%BA/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -261,7 +304,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/11/BZOJ3702%20%E4%BA%8C%E5%8F%89%E6%A0%91%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ3702%20%E4%BA%8C%E5%8F%89%E6%A0%91%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -279,7 +322,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/11/BZOJ3702%20%E4%BA%8C%E5%8F%89%E6%A0%91%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/" class="post-title-link" itemprop="url">BZOJ3702 二叉树 <线段树合并></a>
+          <a href="/OI-Blog/BZOJ3702%20%E4%BA%8C%E5%8F%89%E6%A0%91%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/" class="post-title-link" itemprop="url">BZOJ3702 二叉树 <线段树合并></a>
         </h2>
 
         <div class="post-meta-container">
@@ -294,6 +337,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>813</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -322,7 +379,7 @@
 <p>一行，最少逆序对个数。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/11/BZOJ3702%20%E4%BA%8C%E5%8F%89%E6%A0%91%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ3702%20%E4%BA%8C%E5%8F%89%E6%A0%91%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -353,7 +410,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/11/BZOJ4311%20%E5%90%91%E9%87%8F%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E5%87%B8%E5%8C%85/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ4311%20%E5%90%91%E9%87%8F%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E5%87%B8%E5%8C%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -371,7 +428,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/11/BZOJ4311%20%E5%90%91%E9%87%8F%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E5%87%B8%E5%8C%85/" class="post-title-link" itemprop="url">BZOJ4311 向量 <线段树分治+凸包></a>
+          <a href="/OI-Blog/BZOJ4311%20%E5%90%91%E9%87%8F%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E5%87%B8%E5%8C%85/" class="post-title-link" itemprop="url">BZOJ4311 向量 <线段树分治+凸包></a>
         </h2>
 
         <div class="post-meta-container">
@@ -386,6 +443,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -414,7 +485,7 @@
 <p>对于每条<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">t=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>的询问，输出一个答案</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/11/BZOJ4311%20%E5%90%91%E9%87%8F%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E5%87%B8%E5%8C%85/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ4311%20%E5%90%91%E9%87%8F%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB+%E5%87%B8%E5%8C%85/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -445,7 +516,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/10/BZOJ4373%20%E7%AE%97%E6%9C%AF%E5%A4%A9%E6%89%8D%E2%91%A8%E4%B8%8E%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%20%E7%BA%BF%E6%AE%B5%E6%A0%91+set/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ4373%20%E7%AE%97%E6%9C%AF%E5%A4%A9%E6%89%8D%E2%91%A8%E4%B8%8E%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%20%E7%BA%BF%E6%AE%B5%E6%A0%91+set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -463,7 +534,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/10/BZOJ4373%20%E7%AE%97%E6%9C%AF%E5%A4%A9%E6%89%8D%E2%91%A8%E4%B8%8E%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%20%E7%BA%BF%E6%AE%B5%E6%A0%91+set/" class="post-title-link" itemprop="url">BZOJ4373 算术天才⑨与等差数列 <线段树+set></a>
+          <a href="/OI-Blog/BZOJ4373%20%E7%AE%97%E6%9C%AF%E5%A4%A9%E6%89%8D%E2%91%A8%E4%B8%8E%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%20%E7%BA%BF%E6%AE%B5%E6%A0%91+set/" class="post-title-link" itemprop="url">BZOJ4373 算术天才⑨与等差数列 <线段树+set></a>
         </h2>
 
         <div class="post-meta-container">
@@ -478,6 +549,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -509,7 +594,7 @@
 <p>输出若干行，对于每个询问，如果可以形成等差数列，那么输出<code>Yes</code>，否则输出<code>No</code>。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/10/BZOJ4373%20%E7%AE%97%E6%9C%AF%E5%A4%A9%E6%89%8D%E2%91%A8%E4%B8%8E%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%20%E7%BA%BF%E6%AE%B5%E6%A0%91+set/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ4373%20%E7%AE%97%E6%9C%AF%E5%A4%A9%E6%89%8D%E2%91%A8%E4%B8%8E%E7%AD%89%E5%B7%AE%E6%95%B0%E5%88%97%20%E7%BA%BF%E6%AE%B5%E6%A0%91+set/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -540,7 +625,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/05/BZOJ1594%E3%80%90USACO2008%20Jan%E3%80%91%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F%20%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88+%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1594%E3%80%90USACO2008%20Jan%E3%80%91%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F%20%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88+%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -558,7 +643,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/05/BZOJ1594%E3%80%90USACO2008%20Jan%E3%80%91%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F%20%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88+%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">BZOJ1594【USACO2008 Jan】猜数游戏 <二分答案+线段树></a>
+          <a href="/OI-Blog/BZOJ1594%E3%80%90USACO2008%20Jan%E3%80%91%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F%20%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88+%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">BZOJ1594【USACO2008 Jan】猜数游戏 <二分答案+线段树></a>
         </h2>
 
         <div class="post-meta-container">
@@ -573,6 +658,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -605,7 +704,7 @@
 注意：如果有冲突出现输出一个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span>，使得前<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">m-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>个命题不冲突。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/05/BZOJ1594%E3%80%90USACO2008%20Jan%E3%80%91%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F%20%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88+%E7%BA%BF%E6%AE%B5%E6%A0%91/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1594%E3%80%90USACO2008%20Jan%E3%80%91%E7%8C%9C%E6%95%B0%E6%B8%B8%E6%88%8F%20%E4%BA%8C%E5%88%86%E7%AD%94%E6%A1%88+%E7%BA%BF%E6%AE%B5%E6%A0%91/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -636,7 +735,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/05/BZOJ1604%E3%80%90USACO2008%20Open%E3%80%91%E5%A5%B6%E7%89%9B%E7%9A%84%E9%82%BB%E5%B1%85%20%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95+set/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1604%E3%80%90USACO2008%20Open%E3%80%91%E5%A5%B6%E7%89%9B%E7%9A%84%E9%82%BB%E5%B1%85%20%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95+set/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -654,7 +753,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/05/BZOJ1604%E3%80%90USACO2008%20Open%E3%80%91%E5%A5%B6%E7%89%9B%E7%9A%84%E9%82%BB%E5%B1%85%20%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95+set/" class="post-title-link" itemprop="url">BZOJ1604【USACO2008 Open】奶牛的邻居 < 计算几何+set ></a>
+          <a href="/OI-Blog/BZOJ1604%E3%80%90USACO2008%20Open%E3%80%91%E5%A5%B6%E7%89%9B%E7%9A%84%E9%82%BB%E5%B1%85%20%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95+set/" class="post-title-link" itemprop="url">BZOJ1604【USACO2008 Open】奶牛的邻居 < 计算几何+set ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -669,6 +768,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>762</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -695,7 +808,7 @@
 <p>仅一行，先输出牛群数，再输出最大牛群里的牛数，用空格隔开。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/05/BZOJ1604%E3%80%90USACO2008%20Open%E3%80%91%E5%A5%B6%E7%89%9B%E7%9A%84%E9%82%BB%E5%B1%85%20%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95+set/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1604%E3%80%90USACO2008%20Open%E3%80%91%E5%A5%B6%E7%89%9B%E7%9A%84%E9%82%BB%E5%B1%85%20%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95+set/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -726,7 +839,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/08/24/BZOJ3611%E3%80%90HEOI2014%E3%80%91%E5%A4%A7%E5%B7%A5%E7%A8%8B%20%E8%99%9A%E6%A0%91+DP/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ3611%E3%80%90HEOI2014%E3%80%91%E5%A4%A7%E5%B7%A5%E7%A8%8B%20%E8%99%9A%E6%A0%91+DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -744,7 +857,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/08/24/BZOJ3611%E3%80%90HEOI2014%E3%80%91%E5%A4%A7%E5%B7%A5%E7%A8%8B%20%E8%99%9A%E6%A0%91+DP/" class="post-title-link" itemprop="url">BZOJ3611【HEOI2014】大工程 < 虚树+DP ></a>
+          <a href="/OI-Blog/BZOJ3611%E3%80%90HEOI2014%E3%80%91%E5%A4%A7%E5%B7%A5%E7%A8%8B%20%E8%99%9A%E6%A0%91+DP/" class="post-title-link" itemprop="url">BZOJ3611【HEOI2014】大工程 < 虚树+DP ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -759,6 +872,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -793,7 +920,7 @@
 <p>输出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>行，每行三个数分别表示代价和，最小代价，最大代价。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/08/24/BZOJ3611%E3%80%90HEOI2014%E3%80%91%E5%A4%A7%E5%B7%A5%E7%A8%8B%20%E8%99%9A%E6%A0%91+DP/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ3611%E3%80%90HEOI2014%E3%80%91%E5%A4%A7%E5%B7%A5%E7%A8%8B%20%E8%99%9A%E6%A0%91+DP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -824,7 +951,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/08/23/BZOJ1057%E3%80%90ZJOI2007%E3%80%91%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%20%E6%82%AC%E7%BA%BF%E6%B3%95DP/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1057%E3%80%90ZJOI2007%E3%80%91%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%20%E6%82%AC%E7%BA%BF%E6%B3%95DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -842,7 +969,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/08/23/BZOJ1057%E3%80%90ZJOI2007%E3%80%91%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%20%E6%82%AC%E7%BA%BF%E6%B3%95DP/" class="post-title-link" itemprop="url">BZOJ1057【ZJOI2007】棋盘制作 < 悬线法DP ></a>
+          <a href="/OI-Blog/BZOJ1057%E3%80%90ZJOI2007%E3%80%91%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%20%E6%82%AC%E7%BA%BF%E6%B3%95DP/" class="post-title-link" itemprop="url">BZOJ1057【ZJOI2007】棋盘制作 < 悬线法DP ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -857,6 +984,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -882,7 +1023,7 @@
 第二行为可以找到的最大矩形棋盘的面积。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/08/23/BZOJ1057%E3%80%90ZJOI2007%E3%80%91%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%20%E6%82%AC%E7%BA%BF%E6%B3%95DP/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1057%E3%80%90ZJOI2007%E3%80%91%E6%A3%8B%E7%9B%98%E5%88%B6%E4%BD%9C%20%E6%82%AC%E7%BA%BF%E6%B3%95DP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -913,7 +1054,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/08/21/BZOJ1552%E3%80%90CERC2007%E3%80%91Robotic%20Sort%20Splay/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1552%E3%80%90CERC2007%E3%80%91Robotic%20Sort%20Splay/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -931,7 +1072,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/08/21/BZOJ1552%E3%80%90CERC2007%E3%80%91Robotic%20Sort%20Splay/" class="post-title-link" itemprop="url">BZOJ1552【CERC2007】Robotic Sort < Splay ></a>
+          <a href="/OI-Blog/BZOJ1552%E3%80%90CERC2007%E3%80%91Robotic%20Sort%20Splay/" class="post-title-link" itemprop="url">BZOJ1552【CERC2007】Robotic Sort < Splay ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -946,6 +1087,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>887</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -969,7 +1124,7 @@
 注意：如果第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>次操作前，第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>小的物品己经在正确的位置<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>P</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">P_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>上，我们将区间<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">[</mo><msub><mi>P</mi><mi>i</mi></msub><mo separator="true">,</mo><msub><mi>P</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">[P_i,P_i]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>反转(单个物品)。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/08/21/BZOJ1552%E3%80%90CERC2007%E3%80%91Robotic%20Sort%20Splay/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1552%E3%80%90CERC2007%E3%80%91Robotic%20Sort%20Splay/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1000,7 +1155,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/08/21/BZOJ1797%E3%80%90AHOI2009%E3%80%91Mincut%E6%9C%80%E5%B0%8F%E5%89%B2%20%E7%BD%91%E7%BB%9C%E6%B5%81+Tarjan/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1797%E3%80%90AHOI2009%E3%80%91Mincut%E6%9C%80%E5%B0%8F%E5%89%B2%20%E7%BD%91%E7%BB%9C%E6%B5%81+Tarjan/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -1018,7 +1173,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/08/21/BZOJ1797%E3%80%90AHOI2009%E3%80%91Mincut%E6%9C%80%E5%B0%8F%E5%89%B2%20%E7%BD%91%E7%BB%9C%E6%B5%81+Tarjan/" class="post-title-link" itemprop="url">BZOJ1797【AHOI2009】Mincut最小割 <网络流+Tarjan></a>
+          <a href="/OI-Blog/BZOJ1797%E3%80%90AHOI2009%E3%80%91Mincut%E6%9C%80%E5%B0%8F%E5%89%B2%20%E7%BD%91%E7%BB%9C%E6%B5%81+Tarjan/" class="post-title-link" itemprop="url">BZOJ1797【AHOI2009】Mincut最小割 <网络流+Tarjan></a>
         </h2>
 
         <div class="post-meta-container">
@@ -1033,6 +1188,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -1064,7 +1233,7 @@
 同一行相邻两数之间用一个空格隔开，每行开头和末尾没有多余空格。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/08/21/BZOJ1797%E3%80%90AHOI2009%E3%80%91Mincut%E6%9C%80%E5%B0%8F%E5%89%B2%20%E7%BD%91%E7%BB%9C%E6%B5%81+Tarjan/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1797%E3%80%90AHOI2009%E3%80%91Mincut%E6%9C%80%E5%B0%8F%E5%89%B2%20%E7%BD%91%E7%BB%9C%E6%B5%81+Tarjan/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1106,6 +1275,20 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Azrael</span>
 </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">259k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">15:42</span>
+  </span>
+</div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
@@ -1114,11 +1297,14 @@
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script><script src="/OI-Blog/js/pjax.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/third-party/search/local-search.js"></script>
 
   <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
   <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
@@ -1126,6 +1312,7 @@
 
   <script src="/OI-Blog/js/third-party/fancybox.js"></script>
 
+  <script src="/OI-Blog/js/third-party/pace.js"></script>
 
   
 

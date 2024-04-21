@@ -18,8 +18,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/OI-Blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/OI-Blog/js/config.js"></script>
 
     <meta name="description" content="Former OIer">
 <meta property="og:type" content="website">
@@ -78,6 +80,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -85,12 +88,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -172,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/10/01/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -190,7 +219,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/10/01/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/" class="post-title-link" itemprop="url">BZOJ4872【SHOI2017】分手是祝愿 <概率DP></a>
+          <a href="/OI-Blog/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/" class="post-title-link" itemprop="url">BZOJ4872【SHOI2017】分手是祝愿 <概率DP></a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,6 +234,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>920</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -229,7 +272,7 @@
 <p>一行，为操作次数的期望乘以 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo stretchy="false">!</mo></mrow><annotation encoding="application/x-tex">n!</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">n</span><span class="mclose">!</span></span></span></span> 对 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>100003</mn></mrow><annotation encoding="application/x-tex">100003</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span><span class="mord">3</span></span></span></span> 取模之后的结果。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/10/01/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ4872%E3%80%90SHOI2017%E3%80%91%E5%88%86%E6%89%8B%E6%98%AF%E7%A5%9D%E6%84%BF%20%E6%A6%82%E7%8E%87DP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -260,7 +303,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/10/01/CF264E%20Roadside%20Trees%20%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/CF264E%20Roadside%20Trees%20%E7%BA%BF%E6%AE%B5%E6%A0%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -278,7 +321,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/10/01/CF264E%20Roadside%20Trees%20%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">CF264E Roadside Trees <线段树></a>
+          <a href="/OI-Blog/CF264E%20Roadside%20Trees%20%E7%BA%BF%E6%AE%B5%E6%A0%91/" class="post-title-link" itemprop="url">CF264E Roadside Trees <线段树></a>
         </h2>
 
         <div class="post-meta-container">
@@ -293,6 +336,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -331,7 +388,7 @@ The input is guaranteed to be correct, i.e.,</li>
 <p>Print <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span> integers – the length of the longest increasing subsequence after each query. Separate the numbers by whitespaces.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/10/01/CF264E%20Roadside%20Trees%20%E7%BA%BF%E6%AE%B5%E6%A0%91/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/CF264E%20Roadside%20Trees%20%E7%BA%BF%E6%AE%B5%E6%A0%91/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -362,7 +419,7 @@ The input is guaranteed to be correct, i.e.,</li>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/27/BZOJ1415%E3%80%90NOI2005%E3%80%91%E8%81%AA%E8%81%AA%E5%92%8C%E5%8F%AF%E5%8F%AF%20%E6%A6%82%E7%8E%87DP+%E6%9C%80%E7%9F%AD%E8%B7%AF/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1415%E3%80%90NOI2005%E3%80%91%E8%81%AA%E8%81%AA%E5%92%8C%E5%8F%AF%E5%8F%AF%20%E6%A6%82%E7%8E%87DP+%E6%9C%80%E7%9F%AD%E8%B7%AF/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -380,7 +437,7 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/27/BZOJ1415%E3%80%90NOI2005%E3%80%91%E8%81%AA%E8%81%AA%E5%92%8C%E5%8F%AF%E5%8F%AF%20%E6%A6%82%E7%8E%87DP+%E6%9C%80%E7%9F%AD%E8%B7%AF/" class="post-title-link" itemprop="url">BZOJ1415【NOI2005】聪聪和可可 <概率DP+最短路></a>
+          <a href="/OI-Blog/BZOJ1415%E3%80%90NOI2005%E3%80%91%E8%81%AA%E8%81%AA%E5%92%8C%E5%8F%AF%E5%8F%AF%20%E6%A6%82%E7%8E%87DP+%E6%9C%80%E7%9F%AD%E8%B7%AF/" class="post-title-link" itemprop="url">BZOJ1415【NOI2005】聪聪和可可 <概率DP+最短路></a>
         </h2>
 
         <div class="post-meta-container">
@@ -395,6 +452,20 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>793</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -421,7 +492,7 @@ The input is guaranteed to be correct, i.e.,</li>
 输出一个实数，四舍五入保留三位小数，表示平均多少个时间单位后聪聪会把可可吃掉。
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/27/BZOJ1415%E3%80%90NOI2005%E3%80%91%E8%81%AA%E8%81%AA%E5%92%8C%E5%8F%AF%E5%8F%AF%20%E6%A6%82%E7%8E%87DP+%E6%9C%80%E7%9F%AD%E8%B7%AF/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1415%E3%80%90NOI2005%E3%80%91%E8%81%AA%E8%81%AA%E5%92%8C%E5%8F%AF%E5%8F%AF%20%E6%A6%82%E7%8E%87DP+%E6%9C%80%E7%9F%AD%E8%B7%AF/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -452,7 +523,7 @@ The input is guaranteed to be correct, i.e.,</li>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/27/BZOJ3566%E3%80%90SHOI2014%E3%80%91%E6%A6%82%E7%8E%87%E5%85%85%E7%94%B5%E5%99%A8%20%E6%A6%82%E7%8E%87DP+%E6%A0%91%E5%BD%A2DP/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ3566%E3%80%90SHOI2014%E3%80%91%E6%A6%82%E7%8E%87%E5%85%85%E7%94%B5%E5%99%A8%20%E6%A6%82%E7%8E%87DP+%E6%A0%91%E5%BD%A2DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -470,7 +541,7 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/27/BZOJ3566%E3%80%90SHOI2014%E3%80%91%E6%A6%82%E7%8E%87%E5%85%85%E7%94%B5%E5%99%A8%20%E6%A6%82%E7%8E%87DP+%E6%A0%91%E5%BD%A2DP/" class="post-title-link" itemprop="url">BZOJ3566【SHOI2014】概率充电器 <概率DP+树形DP></a>
+          <a href="/OI-Blog/BZOJ3566%E3%80%90SHOI2014%E3%80%91%E6%A6%82%E7%8E%87%E5%85%85%E7%94%B5%E5%99%A8%20%E6%A6%82%E7%8E%87DP+%E6%A0%91%E5%BD%A2DP/" class="post-title-link" itemprop="url">BZOJ3566【SHOI2014】概率充电器 <概率DP+树形DP></a>
         </h2>
 
         <div class="post-meta-container">
@@ -485,6 +556,20 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -513,7 +598,7 @@ The input is guaranteed to be correct, i.e.,</li>
 <p>输出一行一个实数，为进入充电状态的元件个数的期望，四舍五入到六位小数。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/27/BZOJ3566%E3%80%90SHOI2014%E3%80%91%E6%A6%82%E7%8E%87%E5%85%85%E7%94%B5%E5%99%A8%20%E6%A6%82%E7%8E%87DP+%E6%A0%91%E5%BD%A2DP/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ3566%E3%80%90SHOI2014%E3%80%91%E6%A6%82%E7%8E%87%E5%85%85%E7%94%B5%E5%99%A8%20%E6%A6%82%E7%8E%87DP+%E6%A0%91%E5%BD%A2DP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -544,7 +629,7 @@ The input is guaranteed to be correct, i.e.,</li>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/27/BZOJ5197%E3%80%90CERC2017%E3%80%91Gambling%20Guide%20%E6%A6%82%E7%8E%87DP+Dijkstra/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ5197%E3%80%90CERC2017%E3%80%91Gambling%20Guide%20%E6%A6%82%E7%8E%87DP+Dijkstra/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -562,7 +647,7 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/27/BZOJ5197%E3%80%90CERC2017%E3%80%91Gambling%20Guide%20%E6%A6%82%E7%8E%87DP+Dijkstra/" class="post-title-link" itemprop="url">BZOJ5197【CERC2017】Gambling Guide <概率DP+Dijkstra></a>
+          <a href="/OI-Blog/BZOJ5197%E3%80%90CERC2017%E3%80%91Gambling%20Guide%20%E6%A6%82%E7%8E%87DP+Dijkstra/" class="post-title-link" itemprop="url">BZOJ5197【CERC2017】Gambling Guide <概率DP+Dijkstra></a>
         </h2>
 
         <div class="post-meta-container">
@@ -577,6 +662,20 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -604,7 +703,7 @@ The input is guaranteed to be correct, i.e.,</li>
 <p>输出一行一个实数，即最少的期望花费，当绝对或者相对误差不超过<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mrow><mo>−</mo><mn>6</mn></mrow></msup></mrow><annotation encoding="application/x-tex">10^{-6}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">6</span></span></span></span></span></span></span></span></span></span></span></span>时视为正确。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/27/BZOJ5197%E3%80%90CERC2017%E3%80%91Gambling%20Guide%20%E6%A6%82%E7%8E%87DP+Dijkstra/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ5197%E3%80%90CERC2017%E3%80%91Gambling%20Guide%20%E6%A6%82%E7%8E%87DP+Dijkstra/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -635,7 +734,7 @@ The input is guaranteed to be correct, i.e.,</li>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/26/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -653,7 +752,7 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/26/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/" class="post-title-link" itemprop="url">BZOJ2201 彩色圆环 <概率DP></a>
+          <a href="/OI-Blog/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/" class="post-title-link" itemprop="url">BZOJ2201 彩色圆环 <概率DP></a>
         </h2>
 
         <div class="post-meta-container">
@@ -668,6 +767,20 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>614</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -691,7 +804,7 @@ The input is guaranteed to be correct, i.e.,</li>
 应仅有一行，该行给出一个实数$E(R)$，表示圆环的“美观程度”的期望值。
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/26/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -722,7 +835,7 @@ The input is guaranteed to be correct, i.e.,</li>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/26/BZOJ2688%20Green%20Hackenbush%20%E6%A6%82%E7%8E%87DP+%E5%8D%9A%E5%BC%88%E8%AE%BA/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ2688%20Green%20Hackenbush%20%E6%A6%82%E7%8E%87DP+%E5%8D%9A%E5%BC%88%E8%AE%BA/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -740,7 +853,7 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/26/BZOJ2688%20Green%20Hackenbush%20%E6%A6%82%E7%8E%87DP+%E5%8D%9A%E5%BC%88%E8%AE%BA/" class="post-title-link" itemprop="url">BZOJ2688 Green Hackenbush <概率DP+博弈论></a>
+          <a href="/OI-Blog/BZOJ2688%20Green%20Hackenbush%20%E6%A6%82%E7%8E%87DP+%E5%8D%9A%E5%BC%88%E8%AE%BA/" class="post-title-link" itemprop="url">BZOJ2688 Green Hackenbush <概率DP+博弈论></a>
         </h2>
 
         <div class="post-meta-container">
@@ -755,6 +868,20 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>804</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -777,7 +904,7 @@ The input is guaranteed to be correct, i.e.,</li>
 <p>一个保留<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>位小数的实数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">ans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span>。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/26/BZOJ2688%20Green%20Hackenbush%20%E6%A6%82%E7%8E%87DP+%E5%8D%9A%E5%BC%88%E8%AE%BA/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ2688%20Green%20Hackenbush%20%E6%A6%82%E7%8E%87DP+%E5%8D%9A%E5%BC%88%E8%AE%BA/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -808,7 +935,7 @@ The input is guaranteed to be correct, i.e.,</li>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/25/ARC072E%20Alice%20in%20linear%20land%20DP/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/ARC072E%20Alice%20in%20linear%20land%20DP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -826,7 +953,7 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/25/ARC072E%20Alice%20in%20linear%20land%20DP/" class="post-title-link" itemprop="url">ARC072E Alice in linear land < DP ></a>
+          <a href="/OI-Blog/ARC072E%20Alice%20in%20linear%20land%20DP/" class="post-title-link" itemprop="url">ARC072E Alice in linear land < DP ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -841,6 +968,20 @@ The input is guaranteed to be correct, i.e.,</li>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>993</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -878,7 +1019,7 @@ Write a program to determine whether each plan is feasible.</p>
 <p>Print <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span></span></span></span> lines. The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span> line should contain <code>YES</code> if the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>i</mi><mrow><mi>t</mi><mi>h</mi></mrow></msup></mrow><annotation encoding="application/x-tex">i^{th}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.849108em;vertical-align:0em;"></span><span class="mord"><span class="mord mathnormal">i</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.849108em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="mord mathnormal mtight">h</span></span></span></span></span></span></span></span></span></span></span></span> plan is feasible, and <code>NO</code> otherwise.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/25/ARC072E%20Alice%20in%20linear%20land%20DP/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/ARC072E%20Alice%20in%20linear%20land%20DP/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -909,7 +1050,7 @@ Write a program to determine whether each plan is feasible.</p>
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/23/AGC021E%20Ball%20Eat%20Chameleons%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/AGC021E%20Ball%20Eat%20Chameleons%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -927,7 +1068,7 @@ Write a program to determine whether each plan is feasible.</p>
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/23/AGC021E%20Ball%20Eat%20Chameleons%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="post-title-link" itemprop="url">AGC021E Ball Eat Chameleons <组合数学></a>
+          <a href="/OI-Blog/AGC021E%20Ball%20Eat%20Chameleons%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/" class="post-title-link" itemprop="url">AGC021E Ball Eat Chameleons <组合数学></a>
         </h2>
 
         <div class="post-meta-container">
@@ -942,6 +1083,20 @@ Write a program to determine whether each plan is feasible.</p>
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -978,7 +1133,7 @@ A Snuke Chameleon that has not eaten anything is blue. It changes its color acco
 <p>Print the possible ways Ringo could have thrown in <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07153em;">K</span></span></span></span> balls, modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>998244353</mn></mrow><annotation encoding="application/x-tex">998244353</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span><span class="mord">9</span><span class="mord">8</span><span class="mord">2</span><span class="mord">4</span><span class="mord">4</span><span class="mord">3</span><span class="mord">5</span><span class="mord">3</span></span></span></span>.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/23/AGC021E%20Ball%20Eat%20Chameleons%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/AGC021E%20Ball%20Eat%20Chameleons%20%E7%BB%84%E5%90%88%E6%95%B0%E5%AD%A6/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1009,7 +1164,7 @@ A Snuke Chameleon that has not eaten anything is blue. It changes its color acco
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/09/22/CF995F%20Cowmpany%20Cowmpensation%20%E6%A0%91%E5%BD%A2DP+%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%92%E5%80%BC/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/CF995F%20Cowmpany%20Cowmpensation%20%E6%A0%91%E5%BD%A2DP+%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%92%E5%80%BC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -1027,7 +1182,7 @@ A Snuke Chameleon that has not eaten anything is blue. It changes its color acco
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/09/22/CF995F%20Cowmpany%20Cowmpensation%20%E6%A0%91%E5%BD%A2DP+%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%92%E5%80%BC/" class="post-title-link" itemprop="url">CF995F Cowmpany Cowmpensation < 树形DP+多项式插值 ></a>
+          <a href="/OI-Blog/CF995F%20Cowmpany%20Cowmpensation%20%E6%A0%91%E5%BD%A2DP+%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%92%E5%80%BC/" class="post-title-link" itemprop="url">CF995F Cowmpany Cowmpensation < 树形DP+多项式插值 ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -1042,6 +1197,20 @@ A Snuke Chameleon that has not eaten anything is blue. It changes its color acco
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -1066,7 +1235,7 @@ The remaining <span class="katex"><span class="katex-mathml"><math xmlns="http:/
 <p>Output a single integer: the number of ways to assign salaries modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup><mo>+</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">10^9+7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.897438em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/09/22/CF995F%20Cowmpany%20Cowmpensation%20%E6%A0%91%E5%BD%A2DP+%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%92%E5%80%BC/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/CF995F%20Cowmpany%20Cowmpensation%20%E6%A0%91%E5%BD%A2DP+%E5%A4%9A%E9%A1%B9%E5%BC%8F%E6%8F%92%E5%80%BC/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1108,6 +1277,20 @@ The remaining <span class="katex"><span class="katex-mathml"><math xmlns="http:/
   </span>
   <span class="author" itemprop="copyrightHolder">Azrael</span>
 </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">259k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">15:42</span>
+  </span>
+</div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
@@ -1116,11 +1299,14 @@ The remaining <span class="katex"><span class="katex-mathml"><math xmlns="http:/
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script><script src="/OI-Blog/js/pjax.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/third-party/search/local-search.js"></script>
 
   <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
   <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
@@ -1128,6 +1314,7 @@ The remaining <span class="katex"><span class="katex-mathml"><math xmlns="http:/
 
   <script src="/OI-Blog/js/third-party/fancybox.js"></script>
 
+  <script src="/OI-Blog/js/third-party/pace.js"></script>
 
   
 

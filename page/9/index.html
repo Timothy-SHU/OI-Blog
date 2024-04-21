@@ -18,8 +18,10 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/OI-Blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/OI-Blog/js/config.js"></script>
 
     <meta name="description" content="Former OIer">
 <meta property="og:type" content="website">
@@ -78,6 +80,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -85,12 +88,38 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -172,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/27/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -190,7 +219,7 @@
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/27/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" class="post-title-link" itemprop="url">CF235E Number Challenge <莫比乌斯反演></a>
+          <a href="/OI-Blog/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/" class="post-title-link" itemprop="url">CF235E Number Challenge <莫比乌斯反演></a>
         </h2>
 
         <div class="post-meta-container">
@@ -205,6 +234,20 @@
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -230,7 +273,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>Print a single integer — the required sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1073741824</mn><mo stretchy="false">(</mo><msup><mn>2</mn><mn>30</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">1073741824 (2^{30})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">7</span><span class="mord">3</span><span class="mord">7</span><span class="mord">4</span><span class="mord">1</span><span class="mord">8</span><span class="mord">2</span><span class="mord">4</span><span class="mopen">(</span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span><span class="mord mtight">0</span></span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/27/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/CF235E%20Number%20Challenge%20%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -261,7 +304,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/25/BZOJ4930%20%E6%A3%8B%E7%9B%98%20%E8%B4%B9%E7%94%A8%E6%B5%81/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ4930%20%E6%A3%8B%E7%9B%98%20%E8%B4%B9%E7%94%A8%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -279,7 +322,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/25/BZOJ4930%20%E6%A3%8B%E7%9B%98%20%E8%B4%B9%E7%94%A8%E6%B5%81/" class="post-title-link" itemprop="url">BZOJ4930 棋盘 <费用流></a>
+          <a href="/OI-Blog/BZOJ4930%20%E6%A3%8B%E7%9B%98%20%E8%B4%B9%E7%94%A8%E6%B5%81/" class="post-title-link" itemprop="url">BZOJ4930 棋盘 <费用流></a>
         </h2>
 
         <div class="post-meta-container">
@@ -294,6 +337,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>4 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -323,7 +380,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>输出共<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">q</span></span></span></span>行，每行代表对应询问的最少的互相能攻击到的棋子对数。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/25/BZOJ4930%20%E6%A3%8B%E7%9B%98%20%E8%B4%B9%E7%94%A8%E6%B5%81/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ4930%20%E6%A3%8B%E7%9B%98%20%E8%B4%B9%E7%94%A8%E6%B5%81/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -354,7 +411,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/24/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -372,7 +429,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/24/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/" class="post-title-link" itemprop="url">BZOJ1927【SDOI2010】星际竞速 <费用流></a>
+          <a href="/OI-Blog/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/" class="post-title-link" itemprop="url">BZOJ1927【SDOI2010】星际竞速 <费用流></a>
         </h2>
 
         <div class="post-meta-container">
@@ -387,6 +444,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -414,7 +485,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>仅包含一个正整数，表示完成比赛所需的最少时间。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/24/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ1927%E3%80%90SDOI2010%E3%80%91%E6%98%9F%E9%99%85%E7%AB%9E%E9%80%9F%20%E8%B4%B9%E7%94%A8%E6%B5%81/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -445,7 +516,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -463,7 +534,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">莫比乌斯反演总结</a>
+          <a href="/OI-Blog/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">莫比乌斯反演总结</a>
         </h2>
 
         <div class="post-meta-container">
@@ -478,6 +549,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -490,7 +575,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
           <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>  </mtext></mrow><annotation encoding="application/x-tex">\;</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span></span></span></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/23/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/%E8%8E%AB%E6%AF%94%E4%B9%8C%E6%96%AF%E5%8F%8D%E6%BC%94%E6%80%BB%E7%BB%93/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -521,7 +606,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/21/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -539,7 +624,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/21/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/" class="post-title-link" itemprop="url">BZOJ2194 快速傅立叶之二 < FFT ></a>
+          <a href="/OI-Blog/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/" class="post-title-link" itemprop="url">BZOJ2194 快速傅立叶之二 < FFT ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -554,6 +639,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>298</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -576,7 +675,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>输出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>行，每行一个整数，第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>行输出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi><mo stretchy="false">[</mo><mi>i</mi><mo>−</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">c[i-1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">c</span><span class="mopen">[</span><span class="mord mathnormal">i</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">]</span></span></span></span>。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/21/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ2194%20%E5%BF%AB%E9%80%9F%E5%82%85%E7%AB%8B%E5%8F%B6%E4%B9%8B%E4%BA%8C%20FFT/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -607,7 +706,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/21/BZOJ3262%20%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%20CDQ%E5%88%86%E6%B2%BB/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ3262%20%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%20CDQ%E5%88%86%E6%B2%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -625,7 +724,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/21/BZOJ3262%20%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%20CDQ%E5%88%86%E6%B2%BB/" class="post-title-link" itemprop="url">BZOJ3262 陌上花开 < CDQ分治 ></a>
+          <a href="/OI-Blog/BZOJ3262%20%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%20CDQ%E5%88%86%E6%B2%BB/" class="post-title-link" itemprop="url">BZOJ3262 陌上花开 < CDQ分治 ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -640,6 +739,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>755</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -665,7 +778,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>包含<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>行，分别表示评级为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>∼</mo><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">0\sim N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>的每级花的数量。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/21/BZOJ3262%20%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%20CDQ%E5%88%86%E6%B2%BB/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ3262%20%E9%99%8C%E4%B8%8A%E8%8A%B1%E5%BC%80%20CDQ%E5%88%86%E6%B2%BB/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -696,7 +809,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/21/BZOJ3295%E3%80%90CQOI2011%E3%80%91%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9%20CDQ%E5%88%86%E6%B2%BB/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ3295%E3%80%90CQOI2011%E3%80%91%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9%20CDQ%E5%88%86%E6%B2%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -714,7 +827,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/21/BZOJ3295%E3%80%90CQOI2011%E3%80%91%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9%20CDQ%E5%88%86%E6%B2%BB/" class="post-title-link" itemprop="url">BZOJ3295【CQOI2011】动态逆序对 < CDQ分治 ></a>
+          <a href="/OI-Blog/BZOJ3295%E3%80%90CQOI2011%E3%80%91%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9%20CDQ%E5%88%86%E6%B2%BB/" class="post-title-link" itemprop="url">BZOJ3295【CQOI2011】动态逆序对 < CDQ分治 ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -729,6 +842,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>807</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -753,7 +880,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>输出包含<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span></span></span></span>行，依次为删除每个元素之前，逆序对的个数。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/21/BZOJ3295%E3%80%90CQOI2011%E3%80%91%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9%20CDQ%E5%88%86%E6%B2%BB/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ3295%E3%80%90CQOI2011%E3%80%91%E5%8A%A8%E6%80%81%E9%80%86%E5%BA%8F%E5%AF%B9%20CDQ%E5%88%86%E6%B2%BB/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -784,7 +911,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/20/BZOJ5087%20polycomp%20bitset+%E5%88%86%E5%9D%97/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ5087%20polycomp%20bitset+%E5%88%86%E5%9D%97/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -802,7 +929,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/20/BZOJ5087%20polycomp%20bitset+%E5%88%86%E5%9D%97/" class="post-title-link" itemprop="url">BZOJ5087 Polycomp < bitset+分块 ></a>
+          <a href="/OI-Blog/BZOJ5087%20polycomp%20bitset+%E5%88%86%E5%9D%97/" class="post-title-link" itemprop="url">BZOJ5087 Polycomp < bitset+分块 ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -817,6 +944,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>692</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -843,7 +984,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 如果答案为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，输出<code>0 0</code></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/20/BZOJ5087%20polycomp%20bitset+%E5%88%86%E5%9D%97/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ5087%20polycomp%20bitset+%E5%88%86%E5%9D%97/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -874,7 +1015,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/18/BZOJ4355%20Play%20with%20sequence%20SegBeats/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ4355%20Play%20with%20sequence%20SegBeats/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -892,7 +1033,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/18/BZOJ4355%20Play%20with%20sequence%20SegBeats/" class="post-title-link" itemprop="url">BZOJ4355 Play with sequence < SegBeats ></a>
+          <a href="/OI-Blog/BZOJ4355%20Play%20with%20sequence%20SegBeats/" class="post-title-link" itemprop="url">BZOJ4355 Play with sequence < SegBeats ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -907,6 +1048,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>944</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -935,7 +1090,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
 <p>输出若干行，每行一个整数，依次回答每个操作<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>的问题。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/18/BZOJ4355%20Play%20with%20sequence%20SegBeats/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/BZOJ4355%20Play%20with%20sequence%20SegBeats/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -966,7 +1121,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
@@ -984,7 +1139,7 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
-          <a href="/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/" class="post-title-link" itemprop="url">CF896C Willem, Chtholly and Seniorious < ODT ></a>
+          <a href="/OI-Blog/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/" class="post-title-link" itemprop="url">CF896C Willem, Chtholly and Seniorious < ODT ></a>
         </h2>
 
         <div class="post-meta-container">
@@ -999,6 +1154,20 @@ Find the sum modulo <span class="katex"><span class="katex-mathml"><math xmlns="
     </span>
 
   
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.3k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
 </div>
 
         </div>
@@ -1042,7 +1211,7 @@ The initial values and operations are generated using following pseudo code:</p>
 <p>For each operation of types <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>, output a line containing the answer.</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/OI-Blog/2018/05/17/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/#more" rel="contents">
+              <a class="btn" href="/OI-Blog/CF896C%20Willem,%20Chtholly%20and%20Seniorious%20ODT/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1084,6 +1253,20 @@ The initial values and operations are generated using following pseudo code:</p>
   </span>
   <span class="author" itemprop="copyrightHolder">Azrael</span>
 </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">259k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">15:42</span>
+  </span>
+</div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
@@ -1092,11 +1275,14 @@ The initial values and operations are generated using following pseudo code:</p>
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script><script src="/OI-Blog/js/pjax.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/third-party/search/local-search.js"></script>
 
   <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
   <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
@@ -1104,6 +1290,7 @@ The initial values and operations are generated using following pseudo code:</p>
 
   <script src="/OI-Blog/js/third-party/fancybox.js"></script>
 
+  <script src="/OI-Blog/js/third-party/pace.js"></script>
 
   
 

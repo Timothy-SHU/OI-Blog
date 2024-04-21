@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/OI-Blog/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/OI-Blog/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/OI-Blog/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/OI-Blog/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/OI-Blog/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/OI-Blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/OI-Blog/js/config.js"></script>
+
+    <meta name="description" content="Problem  【ONTAK2010】Peaks加强版 Time  Limit:  20  Sec\mathrm{Time\;Limit:\;20\;Sec}TimeLimit:20Sec Memory  Limit:  128  MB\mathrm{Memory\;Limit:\;128\;MB}MemoryLimit:128MB  Description 在Bytemountains\ma">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BZOJ3551【ONTAK2010】Peaks加强版 &lt; Kruskal重构树+DFS序+主席树 &gt;">
+<meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/BZOJ3551%E3%80%90ONTAK2010%E3%80%91Peaks%E5%8A%A0%E5%BC%BA%E7%89%88%20Kruskal%E9%87%8D%E6%9E%84%E6%A0%91+DFS%E5%BA%8F+%E4%B8%BB%E5%B8%AD%E6%A0%91/index.html">
+<meta property="og:site_name" content="NIRVANA">
+<meta property="og:description" content="Problem  【ONTAK2010】Peaks加强版 Time  Limit:  20  Sec\mathrm{Time\;Limit:\;20\;Sec}TimeLimit:20Sec Memory  Limit:  128  MB\mathrm{Memory\;Limit:\;128\;MB}MemoryLimit:128MB  Description 在Bytemountains\ma">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2018/07/19/5b50236032da0.png">
+<meta property="article:published_time" content="2018-06-26T16:00:00.000Z">
+<meta property="article:modified_time" content="2018-07-19T05:37:04.296Z">
+<meta property="article:author" content="Azrael">
+<meta property="article:tag" content="BZOJ">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="ONTAK">
+<meta property="article:tag" content="Kruskal重构树">
+<meta property="article:tag" content="DFS序">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/19/5b50236032da0.png">
+
+
+<link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/BZOJ3551%E3%80%90ONTAK2010%E3%80%91Peaks%E5%8A%A0%E5%BC%BA%E7%89%88%20Kruskal%E9%87%8D%E6%9E%84%E6%A0%91+DFS%E5%BA%8F+%E4%B8%BB%E5%B8%AD%E6%A0%91/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://timothy-shu.github.io/OI-Blog/BZOJ3551%E3%80%90ONTAK2010%E3%80%91Peaks%E5%8A%A0%E5%BC%BA%E7%89%88%20Kruskal%E9%87%8D%E6%9E%84%E6%A0%91+DFS%E5%BA%8F+%E4%B8%BB%E5%B8%AD%E6%A0%91/","path":"BZOJ3551【ONTAK2010】Peaks加强版 Kruskal重构树+DFS序+主席树/","title":"BZOJ3551【ONTAK2010】Peaks加强版 \u003c Kruskal重构树+DFS序+主席树 >"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>BZOJ3551【ONTAK2010】Peaks加强版 < Kruskal重构树+DFS序+主席树 > | NIRVANA</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/OI-Blog/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/OI-Blog/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">NIRVANA</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">OI Journal</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ontak2010peaks%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="nav-number">1.1.</span> <span class="nav-text"> 【ONTAK2010】Peaks加强版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#description"><span class="nav-number">1.2.</span> <span class="nav-text"> Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input"><span class="nav-number">1.3.</span> <span class="nav-text"> Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output"><span class="nav-number">1.4.</span> <span class="nav-text"> Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-input"><span class="nav-number">1.5.</span> <span class="nav-text"> Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-output"><span class="nav-number">1.6.</span> <span class="nav-text"> Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hint"><span class="nav-number">1.7.</span> <span class="nav-text"> HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text"> Code</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Azrael</p>
+  <div class="site-description" itemprop="description">Former OIer</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/OI-Blog/archives/">
+          <span class="site-state-item-count">248</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/OI-Blog/tags/">
+        <span class="site-state-item-count">152</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://timothy-shu.github.io/OI-Blog/BZOJ3551%E3%80%90ONTAK2010%E3%80%91Peaks%E5%8A%A0%E5%BC%BA%E7%89%88%20Kruskal%E9%87%8D%E6%9E%84%E6%A0%91+DFS%E5%BA%8F+%E4%B8%BB%E5%B8%AD%E6%A0%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/OI-Blog/images/avatar.gif">
+      <meta itemprop="name" content="Azrael">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="NIRVANA">
+      <meta itemprop="description" content="Former OIer">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="BZOJ3551【ONTAK2010】Peaks加强版 < Kruskal重构树+DFS序+主席树 > | NIRVANA">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          BZOJ3551【ONTAK2010】Peaks加强版 < Kruskal重构树+DFS序+主席树 >
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-06-27 00:00:00" itemprop="dateCreated datePublished" datetime="2018-06-27T00:00:00+08:00">2018-06-27</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="problem"><a class="markdownIt-Anchor" href="#problem"></a> Problem</h2>
+<h3 id="ontak2010peaks加强版"><a class="markdownIt-Anchor" href="#ontak2010peaks加强版"></a> 【ONTAK2010】Peaks加强版</h3>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mtext>  </mtext><mi mathvariant="normal">L</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mo>:</mo><mtext>  </mtext><mn>20</mn><mtext>  </mtext><mi mathvariant="normal">S</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi></mrow><annotation encoding="application/x-tex">\mathrm{Time\;Limit:\;20\;Sec}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">T</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">L</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">2</span><span class="mord mathrm">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">S</span><span class="mord mathrm">e</span><span class="mord mathrm">c</span></span></span></span></span><br />
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">y</mi><mtext>  </mtext><mi mathvariant="normal">L</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mo>:</mo><mtext>  </mtext><mn>128</mn><mtext>  </mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">B</mi></mrow><annotation encoding="application/x-tex">\mathrm{Memory\;Limit:\;128\;MB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathrm">M</span><span class="mord mathrm">e</span><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">r</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">L</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">1</span><span class="mord mathrm">2</span><span class="mord mathrm">8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">M</span><span class="mord mathrm">B</span></span></span></span></span></p>
+<h3 id="description"><a class="markdownIt-Anchor" href="#description"></a> Description</h3>
+<p>在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">B</mi><mi mathvariant="normal">y</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">t</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">s</mi></mrow><annotation encoding="application/x-tex">\mathrm{Bytemountains}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathrm">B</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mord mathrm">t</span><span class="mord mathrm">e</span><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">u</span><span class="mord mathrm">n</span><span class="mord mathrm">t</span><span class="mord mathrm">a</span><span class="mord mathrm">i</span><span class="mord mathrm">n</span><span class="mord mathrm">s</span></span></span></span></span>有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>座山峰，每座山峰有他的高度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。<br />
+有些山峰之间有双向道路相连，共<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>条路径，每条路径有一个困难值，这个值越大表示越难走。<br />
+现在有<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span></span></span></span>组询问，每组询问询问从点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>开始只经过困难值小于等于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>的路径所能到达的山峰中第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>高的山峰，如果无解输出<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。</p>
+<h3 id="input"><a class="markdownIt-Anchor" href="#input"></a> Input</h3>
+<p>第一行三个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo separator="true">,</mo><mi>M</mi><mo separator="true">,</mo><mi>Q</mi></mrow><annotation encoding="application/x-tex">N,M,Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">Q</span></span></span></span>。<br />
+第二行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span>个数，第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>个数为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">h_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。<br />
+接下来<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi></mrow><annotation encoding="application/x-tex">M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>行，每行<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mtext>  </mtext><mi>b</mi><mtext>  </mtext><mi>c</mi></mrow><annotation encoding="application/x-tex">a\;b\;c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal">c</span></span></span></span>，表示从<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">a</span></span></span></span>到<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">b</span></span></span></span>有一条困难值为<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>c</mi></mrow><annotation encoding="application/x-tex">c</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">c</span></span></span></span>的双向路径。<br />
+接下来<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Q</mi></mrow><annotation encoding="application/x-tex">Q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal">Q</span></span></span></span>行，每行三个数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mtext>  </mtext><mi>x</mi><mtext>  </mtext><mi>k</mi></mrow><annotation encoding="application/x-tex">v\;x\;k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>，表示一组询问。<br />
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>v</mi><mtext>  </mtext><mrow><mi mathvariant="normal">x</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi></mrow><mtext>  </mtext><mi>l</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">v=v\;\mathrm{xor}\;lastans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathrm">x</span><span class="mord mathrm">o</span><span class="mord mathrm">r</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mi>x</mi><mtext>  </mtext><mrow><mi mathvariant="normal">x</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi></mrow><mtext>  </mtext><mi>l</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">x=x\;\mathrm{xor}\;lastans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathrm">x</span><span class="mord mathrm">o</span><span class="mord mathrm">r</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>k</mi><mtext>  </mtext><mrow><mi mathvariant="normal">x</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi></mrow><mtext>  </mtext><mi>l</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">k=k\;\mathrm{xor}\;lastans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord"><span class="mord mathrm">x</span><span class="mord mathrm">o</span><span class="mord mathrm">r</span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span></span></span></span>，如果<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi><mi>a</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">lastans=-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">a</span><span class="mord mathnormal">s</span><span class="mord mathnormal">t</span><span class="mord mathnormal">a</span><span class="mord mathnormal">n</span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>则不变。</p>
+<h3 id="output"><a class="markdownIt-Anchor" href="#output"></a> Output</h3>
+<p>对于每组询问，输出一个整数表示答案。</p>
+<span id="more"></span>
+<h3 id="sample-input"><a class="markdownIt-Anchor" href="#sample-input"></a> Sample Input</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">10 11 4</span><br><span class="line">1 2 3 4 5 6 7 8 9 10</span><br><span class="line">1 4 4</span><br><span class="line">2 5 3</span><br><span class="line">9 8 2</span><br><span class="line">7 8 10</span><br><span class="line">7 1 4</span><br><span class="line">6 7 1</span><br><span class="line">6 4 8</span><br><span class="line">2 1 5</span><br><span class="line">10 8 10</span><br><span class="line">3 4 7</span><br><span class="line">3 4 6</span><br><span class="line">1 5 2</span><br><span class="line">1 5 6</span><br><span class="line">1 5 8</span><br><span class="line">8 9 2 </span><br></pre></td></tr></table></figure>
+<h3 id="sample-output"><a class="markdownIt-Anchor" href="#sample-output"></a> Sample Output</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">6</span><br><span class="line">10</span><br><span class="line">9</span><br><span class="line">-1</span><br></pre></td></tr></table></figure>
+<h3 id="hint"><a class="markdownIt-Anchor" href="#hint"></a> HINT</h3>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">N\le10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8193em;vertical-align:-0.13597em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo separator="true">,</mo><mi>Q</mi><mo>≤</mo><mn>5</mn><mo>×</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">M,Q\le5\times10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">Q</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mi>i</mi></msub><mo separator="true">,</mo><mi>c</mi><mo separator="true">,</mo><mi>x</mi><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">h_i,c,x\le10^9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">h</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">c</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">9</span></span></span></span></span></span></span></span></span></span></span></p>
+<p>标签：<code>Kruskal重构树</code> <code>DFS序</code> <code>主席树</code></p>
+<h2 id="solution"><a class="markdownIt-Anchor" href="#solution"></a> Solution</h2>
+<p>这道题是<a target="_blank" rel="noopener" href="http://azrael.top/BZOJ3545%E3%80%90ONTAK2010%E3%80%91Peaks%20%E5%B9%B6%E6%9F%A5%E9%9B%86+%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/">BZOJ3545【ONTAK2010】Peaks</a>的强制在线版本。<br />
+无法离线，则不能只加边不删边，于是无法直接线段树合并。</p>
+<p>这里需要引入<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi><mtext>重构树</mtext></mrow><annotation encoding="application/x-tex">\mathrm{Kruskal重构树}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">K</span><span class="mord mathrm">r</span><span class="mord mathrm">u</span><span class="mord mathrm">s</span><span class="mord mathrm">k</span><span class="mord mathrm">a</span><span class="mord mathrm">l</span><span class="mord mathrm cjk_fallback">重</span><span class="mord mathrm cjk_fallback">构</span><span class="mord mathrm cjk_fallback">树</span></span></span></span></span>这一概念。<br />
+对于一个图，我们对其构建<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi></mrow><mtext>重构树</mtext></mrow><annotation encoding="application/x-tex">\mathrm{Kruskal}重构树</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">K</span><span class="mord mathrm">r</span><span class="mord mathrm">u</span><span class="mord mathrm">s</span><span class="mord mathrm">k</span><span class="mord mathrm">a</span><span class="mord mathrm">l</span></span><span class="mord cjk_fallback">重</span><span class="mord cjk_fallback">构</span><span class="mord cjk_fallback">树</span></span></span></span>：<br />
+为每条边都设置一个点，点权为该边边权；为每个点（连同边代表的点）一起建立并查集。</p>
+<ol>
+<li>找出当前没有尝试过的最小的边<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>，判断其两端点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">u_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">v_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的连通性</li>
+<li>若两端点尚未联通，则将<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">u_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>和<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">v_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>的祖先用并查集并到边<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">i</span></span></span></span>所代表的点<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>上，这时在重构树上加边<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>→</mo><msub><mi>u</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i\to u_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">u</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>,<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>→</mo><msub><mi>v</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i\to v_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathnormal">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.03588em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></li>
+<li>若当前所有原树上的点都在同一个并查集中，则退出，否则返回步骤<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></li>
+</ol>
+<p>下图是一个<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi></mrow><mtext>重构树</mtext></mrow><annotation encoding="application/x-tex">\mathrm{Kruskal}重构树</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">K</span><span class="mord mathrm">r</span><span class="mord mathrm">u</span><span class="mord mathrm">s</span><span class="mord mathrm">k</span><span class="mord mathrm">a</span><span class="mord mathrm">l</span></span><span class="mord cjk_fallback">重</span><span class="mord cjk_fallback">构</span><span class="mord cjk_fallback">树</span></span></span></span>的例子，其四个性质在下方标注</p>
+<p><img src="https://i.loli.net/2018/07/19/5b50236032da0.png" alt="" /></p>
+<p>不难发现，由于其是一个大根堆，从一个点出发，只走边权小于等于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>的点所能到达的点，一定是重构树上一个边所代表的点的子树的所有叶子节点。这样我们在重构树上倍增预处理一下，即可在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span></span></span>的时间内找到每个询问对应的上述的这个点。对整棵重构树做树上主席树，即可在<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log{n}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">n</span></span></span></span></span>的时间内找到第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>大的点权。</p>
+<p>综上，先跑<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">K</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">s</mi><mi mathvariant="normal">k</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi></mrow><annotation encoding="application/x-tex">\mathrm{Kruskal}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">K</span><span class="mord mathrm">r</span><span class="mord mathrm">u</span><span class="mord mathrm">s</span><span class="mord mathrm">k</span><span class="mord mathrm">a</span><span class="mord mathrm">l</span></span></span></span></span>建立重构树，并在重构树上倍增预处理和树上值域主席树预处理。随后对每次询问，先倍增跳到权值小于等于<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">x</span></span></span></span>的层数最浅的结点，再在此结点子树的<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">D</mi><mi mathvariant="normal">F</mi><mi mathvariant="normal">S</mi></mrow><annotation encoding="application/x-tex">\mathrm{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">D</span><span class="mord mathrm">F</span><span class="mord mathrm">S</span></span></span></span></span>序区间中询问第<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03148em;">k</span></span></span></span>大权值即可，时间复杂度<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n\log{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">n</span></span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="code"><a class="markdownIt-Anchor" href="#code"></a> Code</h2>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LOG 20</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 200000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_M 500000</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INF 0x3f3f3f3f</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> mid ((s+t)&gt;&gt;1)</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">    x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line">vector &lt;<span class="type">int</span>&gt; G[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> N, M, Q, sz, h[MAX_N+<span class="number">5</span>], fa[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> cnt, ind, id[MAX_N+<span class="number">5</span>], into[MAX_N+<span class="number">5</span>], outo[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> anc[MAX_N+<span class="number">5</span>][LOG+<span class="number">1</span>], dep[MAX_N+<span class="number">5</span>], rt[MAX_N+<span class="number">5</span>];</span><br><span class="line"><span class="type">int</span> val[MAX_N+<span class="number">5</span>], rev[MAX_N+<span class="number">5</span>], tot; map &lt;<span class="type">int</span>, <span class="type">int</span>&gt; mp;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">edge</span> &#123;<span class="type">int</span> u, v, c;&#125; E[MAX_M+<span class="number">5</span>];</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">node</span> &#123;<span class="type">int</span> ls, rs, s;&#125; tr[MAX_N*LOG];</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">addedge</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span> </span>&#123;G[u].<span class="built_in">push_back</span>(v);&#125;</span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">cmp</span><span class="params">(<span class="type">const</span> edge &amp;a, <span class="type">const</span> edge &amp;b)</span> </span>&#123;<span class="keyword">return</span> a.c &lt; b.c;&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getf</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;<span class="keyword">return</span> fa[x] == x ? x : fa[x] = <span class="built_in">getf</span>(fa[x]);&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Kruskal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cnt = <span class="number">1</span>, <span class="built_in">sort</span>(E+<span class="number">1</span>, E+M+<span class="number">1</span>, cmp);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++) fa[i] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= M &amp;&amp; cnt &lt; N; i++) &#123;</span><br><span class="line">        <span class="type">int</span> u = <span class="built_in">getf</span>(E[i].u), v = <span class="built_in">getf</span>(E[i].v);</span><br><span class="line">        <span class="keyword">if</span> (u^v)</span><br><span class="line">            fa[cnt+N] = cnt+N, fa[u] = fa[v] = cnt+N, </span><br><span class="line">            <span class="built_in">addedge</span>(cnt+N, u), <span class="built_in">addedge</span>(cnt+N, v), </span><br><span class="line">            h[cnt+N] = E[i].c, cnt++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">DFS</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123;</span><br><span class="line">    into[u] = ++ind, id[ind] = u;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= LOG; i++)</span><br><span class="line">        anc[u][i] = anc[anc[u][i<span class="number">-1</span>]][i<span class="number">-1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>, v; i &lt; (<span class="type">int</span>)G[u].<span class="built_in">size</span>(); i++)</span><br><span class="line">        anc[v = G[u][i]][<span class="number">0</span>] = u, dep[v] = dep[u]+<span class="number">1</span>, <span class="built_in">DFS</span>(v);</span><br><span class="line">    outo[u] = ind;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">modify</span><span class="params">(<span class="type">int</span> v, <span class="type">int</span> o, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> p)</span> </span>&#123;</span><br><span class="line">    tr[v] = tr[o]; <span class="keyword">if</span> (s == t) &#123;tr[v].s++; <span class="keyword">return</span>;&#125;</span><br><span class="line">    <span class="keyword">if</span> (p &lt;= mid) <span class="built_in">modify</span>(tr[v].ls = ++sz, tr[o].ls, s, mid, p);</span><br><span class="line">    <span class="keyword">if</span> (p &gt;= mid+<span class="number">1</span>) <span class="built_in">modify</span>(tr[v].rs = ++sz, tr[o].rs, mid+<span class="number">1</span>, t, p);</span><br><span class="line">    tr[v].s = tr[tr[v].ls].s+tr[tr[v].rs].s;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">query</span><span class="params">(<span class="type">int</span> v1, <span class="type">int</span> v2, <span class="type">int</span> s, <span class="type">int</span> t, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (s == t) <span class="keyword">return</span> s; <span class="type">int</span> rsz = tr[tr[v2].rs].s-tr[tr[v1].rs].s;</span><br><span class="line">    <span class="keyword">if</span> (k &gt; rsz) <span class="keyword">return</span> <span class="built_in">query</span>(tr[v1].ls, tr[v2].ls, s, mid, k-rsz);</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">query</span>(tr[v1].rs, tr[v2].rs, mid+<span class="number">1</span>, t, k);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getpos</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = LOG; ~i; i--)</span><br><span class="line">        <span class="keyword">if</span> (h[anc[u][i]] &lt;= c) u = anc[u][i];</span><br><span class="line">    <span class="keyword">return</span> u;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getans</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> c, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">    u = <span class="built_in">getpos</span>(u, c); <span class="type">int</span> l = into[u]<span class="number">-1</span>, r = outo[u];</span><br><span class="line">    <span class="keyword">if</span> (tr[rt[r]].s-tr[rt[l]].s &lt; k) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> rev[<span class="built_in">query</span>(rt[l], rt[r], <span class="number">1</span>, N, k)];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">read</span>(N), <span class="built_in">read</span>(M), <span class="built_in">read</span>(Q), h[<span class="number">0</span>] = INF;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++) <span class="built_in">read</span>(h[i]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++) val[i] = h[i];</span><br><span class="line">    <span class="built_in">sort</span>(val+<span class="number">1</span>, val+N+<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++)</span><br><span class="line">        <span class="keyword">if</span> (i == <span class="number">1</span> || (val[i]^val[i<span class="number">-1</span>]))</span><br><span class="line">            mp[val[i]] = ++tot, rev[tot] = val[i];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= N; i++) h[i] = mp[h[i]];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, u, v, c; i &lt;= M; i++)</span><br><span class="line">        <span class="built_in">read</span>(u), <span class="built_in">read</span>(v), <span class="built_in">read</span>(c), E[i] = (edge)&#123;u, v, c&#125;;</span><br><span class="line">    <span class="built_in">Kruskal</span>(), <span class="built_in">DFS</span>(<span class="built_in">getf</span>(<span class="number">1</span>));</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, p; i &lt; N+N; i++)</span><br><span class="line">        <span class="keyword">if</span> ((p = id[i]) &gt; N) rt[i] = rt[i<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">else</span> <span class="built_in">modify</span>(rt[i] = ++sz, rt[i<span class="number">-1</span>], <span class="number">1</span>, N, h[p]);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, lst = <span class="number">-1</span>; i &lt;= Q; i++) &#123;</span><br><span class="line">        <span class="type">int</span> u, c, k; <span class="built_in">read</span>(u), <span class="built_in">read</span>(c), <span class="built_in">read</span>(k);</span><br><span class="line">        <span class="keyword">if</span> (~lst) u ^= lst, c ^= lst, k ^= lst;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, lst = <span class="built_in">getans</span>(u, c, k));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/OI-Blog/tags/BZOJ/" rel="tag"><i class="fa fa-tag"></i> BZOJ</a>
+              <a href="/OI-Blog/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
+              <a href="/OI-Blog/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
+              <a href="/OI-Blog/tags/ONTAK/" rel="tag"><i class="fa fa-tag"></i> ONTAK</a>
+              <a href="/OI-Blog/tags/Kruskal%E9%87%8D%E6%9E%84%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> Kruskal重构树</a>
+              <a href="/OI-Blog/tags/DFS%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> DFS序</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI-Blog/BZOJ3545%E3%80%90ONTAK2010%E3%80%91Peaks%20%E5%B9%B6%E6%9F%A5%E9%9B%86+%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%90%88%E5%B9%B6/" rel="prev" title="BZOJ3545【ONTAK2010】Peaks <并查集+线段树合并>">
+                  <i class="fa fa-chevron-left"></i> BZOJ3545【ONTAK2010】Peaks <并查集+线段树合并>
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI-Blog/BZOJ4025%20%E4%BA%8C%E5%88%86%E5%9B%BE%20%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%88%86%E6%B2%BB/" rel="next" title="BZOJ4025 二分图 <线段树分治+并查集>">
+                  BZOJ4025 二分图 <线段树分治+并查集> <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Azrael</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">259k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">15:42</span>
+  </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script><script src="/OI-Blog/js/pjax.js"></script>
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/OI-Blog/js/third-party/search/local-search.js"></script>
+
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
+  <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
+
+
+  <script src="/OI-Blog/js/third-party/fancybox.js"></script>
+
+  <script src="/OI-Blog/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.2/katex.min.css" integrity="sha256-oWCabCfPd4Oi21wqZezBSz/anto4VYcJqc9sM9IzQTk=" crossorigin="anonymous">
+
+
+
+</body>
+</html>
