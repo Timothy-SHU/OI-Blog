@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
 
     <meta name="description" content="Problem【SDOI2008】递归数列$\mathrm{Time;Limit:;1;Sec}$$\mathrm{Memory;Limit:;256;MB}$ Description一个由自然数组成的数列按下式定义：  对于$i\le k$：$a_i &#x3D; b_i$ 对于$i &gt; k$：$a_i&#x3D;c_1\times a_{i-1} + c_2\times a_{i-2}">
 <meta property="og:type" content="article">
@@ -65,6 +65,9 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -75,7 +78,7 @@
       <p class="site-title">NIRVANA</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+      <p class="site-subtitle" itemprop="description">OI Journal</p>
   </div>
 
   <div class="site-nav-right">
@@ -86,6 +89,10 @@
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
 
 
 
@@ -114,20 +121,20 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90SDOI2008%E3%80%91%E9%80%92%E5%BD%92%E6%95%B0%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">【SDOI2008】递归数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.7.</span> <span class="nav-text">HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">3.</span> <span class="nav-text">Code</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">1.</span> <span class="nav-text">Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E3%80%90SDOI2008%E3%80%91%E9%80%92%E5%BD%92%E6%95%B0%E5%88%97"><span class="nav-number">1.1.</span> <span class="nav-text">【SDOI2008】递归数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Description"><span class="nav-number">1.2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Input"><span class="nav-number">1.3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">1.4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Input"><span class="nav-number">1.5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sample-Output"><span class="nav-number">1.6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HINT"><span class="nav-number">1.7.</span> <span class="nav-text">HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%B0%86%E7%AD%94%E6%A1%88%E6%8B%86%E6%88%90%E4%B8%A4%E4%B8%AA%E5%89%8D%E7%BC%80%E5%92%8C%EF%BC%8C%E5%8D%B3-s-n-s-m-1-%E3%80%82%E6%88%91%E4%BB%AC%E9%9C%80%E8%A6%81%E5%BF%AB%E9%80%9F%E8%AE%A1%E7%AE%97-s-%E7%9A%84%E5%80%BC%EF%BC%8C%E6%98%BE%E7%84%B6%E5%8F%AF%E4%BB%A5%E6%9E%84%E9%80%A0%E9%80%92%E6%8E%A8%E7%9F%A9%E9%98%B5%E3%80%82-begin-pmatrix-1-C-1-C-2-cdots-C-k-0-C-1-C-2-cdots-C-k-0-1-0-cdots-0-0-0-1-cdots-0-vdots-vdots-vdots-ddots-0-0-0-0-cdots-0-end-pmatrix-times-begin-pmatrix-s-i-A-i-A-i-1-A-i-2-vdots-A-i-k-1-end-pmatrix"><span class="nav-number"></span> <span class="nav-text">将答案拆成两个前缀和，即$s_n-s_{m-1}$。我们需要快速计算$s$的值，显然可以构造递推矩阵。$$\begin {pmatrix}1&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\0&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\0&amp;1&amp;0&amp;\cdots&amp;0\0&amp;0&amp;1&amp;\cdots&amp;0\\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;0\0&amp;0&amp;0&amp;\cdots&amp;0\end {pmatrix}\times\begin {pmatrix}s_i\A_i\A_{i-1}\A_{i-2}\\vdots\A_{i-k+1}\end {pmatrix}</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Code"><span class="nav-number">1.</span> <span class="nav-text">Code</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Azrael</p>
-  <div class="site-description" itemprop="description">Personal Blog</div>
+  <div class="site-description" itemprop="description">Former OIer</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/OI-Blog/archives/">
-          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-count">249</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -181,7 +188,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="NIRVANA">
-      <meta itemprop="description" content="Personal Blog">
+      <meta itemprop="description" content="Former OIer">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -202,13 +209,6 @@
       <span class="post-meta-item-text">Posted on</span>
 
       <time title="Created: 2018-06-24 00:00:00" itemprop="dateCreated datePublished" datetime="2018-06-24T00:00:00+08:00">2018-06-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2018-06-25 15:43:20" itemprop="dateModified" datetime="2018-06-25T15:43:20+08:00">2018-06-25</time>
     </span>
 
   
@@ -236,7 +236,7 @@
 <h3 id="HINT"><a href="#HINT" class="headerlink" title="HINT"></a>HINT</h3><p>对于$100%$的测试数据：$1\le k\le15$，$1\le m\le n\le10^{18}$</p>
 <p>标签：<code>矩阵快速幂</code></p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>简单矩阵快速幂优化递推。</p>
-<p>将答案拆成两个前缀和，即$s_n-s_{m-1}$。我们需要快速计算$s$的值，显然可以构造递推矩阵。<br>$$<br>\begin {pmatrix}<br>1&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\<br>0&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\<br>0&amp;1&amp;0&amp;\cdots&amp;0\<br>0&amp;0&amp;1&amp;\cdots&amp;0\<br>\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;0\<br>0&amp;0&amp;0&amp;\cdots&amp;0<br>\end {pmatrix}<br>\times<br>\begin {pmatrix}<br>s_i\<br>A_i\<br>A_{i-1}\<br>A_{i-2}\<br>\vdots\<br>A_{i-k+1}<br>\end {pmatrix}<br>&#x3D;<br>\begin {pmatrix}<br>s_{i+1}\<br>A_{i+1}\<br>A_{i}\<br>A_{i-1}\<br>\vdots\<br>A_{i-k+2}<br>\end {pmatrix}<br>$$<br>特判$n\le k$暴力，其余用转移矩阵的$n-k$次方乘由$A_1\sim A_k$和$s_k$组成的矩阵即可得到$s_n$。</p>
+<h1 id="将答案拆成两个前缀和，即-s-n-s-m-1-。我们需要快速计算-s-的值，显然可以构造递推矩阵。-begin-pmatrix-1-C-1-C-2-cdots-C-k-0-C-1-C-2-cdots-C-k-0-1-0-cdots-0-0-0-1-cdots-0-vdots-vdots-vdots-ddots-0-0-0-0-cdots-0-end-pmatrix-times-begin-pmatrix-s-i-A-i-A-i-1-A-i-2-vdots-A-i-k-1-end-pmatrix"><a href="#将答案拆成两个前缀和，即-s-n-s-m-1-。我们需要快速计算-s-的值，显然可以构造递推矩阵。-begin-pmatrix-1-C-1-C-2-cdots-C-k-0-C-1-C-2-cdots-C-k-0-1-0-cdots-0-0-0-1-cdots-0-vdots-vdots-vdots-ddots-0-0-0-0-cdots-0-end-pmatrix-times-begin-pmatrix-s-i-A-i-A-i-1-A-i-2-vdots-A-i-k-1-end-pmatrix" class="headerlink" title="将答案拆成两个前缀和，即$s_n-s_{m-1}$。我们需要快速计算$s$的值，显然可以构造递推矩阵。$$\begin {pmatrix}1&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\0&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\0&amp;1&amp;0&amp;\cdots&amp;0\0&amp;0&amp;1&amp;\cdots&amp;0\\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;0\0&amp;0&amp;0&amp;\cdots&amp;0\end {pmatrix}\times\begin {pmatrix}s_i\A_i\A_{i-1}\A_{i-2}\\vdots\A_{i-k+1}\end {pmatrix}"></a>将答案拆成两个前缀和，即$s_n-s_{m-1}$。我们需要快速计算$s$的值，显然可以构造递推矩阵。<br>$$<br>\begin {pmatrix}<br>1&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\<br>0&amp;C_1&amp;C_2&amp;\cdots&amp;C_k\<br>0&amp;1&amp;0&amp;\cdots&amp;0\<br>0&amp;0&amp;1&amp;\cdots&amp;0\<br>\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;0\<br>0&amp;0&amp;0&amp;\cdots&amp;0<br>\end {pmatrix}<br>\times<br>\begin {pmatrix}<br>s_i\<br>A_i\<br>A_{i-1}\<br>A_{i-2}\<br>\vdots\<br>A_{i-k+1}<br>\end {pmatrix}</h1><p>\begin {pmatrix}<br>s_{i+1}\<br>A_{i+1}\<br>A_{i}\<br>A_{i-1}\<br>\vdots\<br>A_{i-k+2}<br>\end {pmatrix}<br>$$<br>特判$n\le k$暴力，其余用转移矩阵的$n-k$次方乘由$A_1\sim A_k$和$s_k$组成的矩阵即可得到$s_n$。</p>
 <h2 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAX_N 20</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> lnt;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt; <span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span> </span>&#123;</span><br><span class="line">	x = <span class="number">0</span>; <span class="type">int</span> c = <span class="built_in">getchar</span>(), f = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; !<span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) <span class="keyword">if</span> (c == <span class="number">45</span>) f = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; <span class="built_in">isdigit</span>(c); c = <span class="built_in">getchar</span>()) (x *= <span class="number">10</span>) += f*(c-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="type">int</span> n; lnt l, r, b[MAX_N+<span class="number">5</span>], c[MAX_N+<span class="number">5</span>], s1, s2, P;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Matrix</span> &#123;</span><br><span class="line">	<span class="type">int</span> n; lnt ele[MAX_N][MAX_N];</span><br><span class="line">	<span class="built_in">Matrix</span> (<span class="type">int</span> _n) &#123;n = _n, <span class="built_in">memset</span>(ele, <span class="number">0</span>, <span class="keyword">sizeof</span> ele);&#125;</span><br><span class="line">	<span class="keyword">inline</span> Matrix <span class="keyword">operator</span> * (<span class="type">const</span> Matrix &amp;x) <span class="type">const</span> &#123;</span><br><span class="line">		<span class="function">Matrix <span class="title">ret</span><span class="params">(n)</span></span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) <span class="keyword">for</span> (<span class="type">int</span> k = <span class="number">0</span>; k &lt; n; k++)</span><br><span class="line">			ret.ele[i][j] = (ret.ele[i][j]+ele[i][k]*x.ele[k][j]%P)%P;</span><br><span class="line">		<span class="keyword">return</span> ret;</span><br><span class="line">	&#125;</span><br><span class="line">&#125; ;</span><br><span class="line"><span class="function">Matrix <span class="title">Power</span><span class="params">(Matrix mat, lnt k)</span> </span>&#123;</span><br><span class="line">	<span class="function">Matrix <span class="title">ret</span><span class="params">(mat.n)</span></span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; ret.n; i++)</span><br><span class="line">		ret.ele[i][i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (; k; k &gt;&gt;= <span class="number">1</span>, mat = mat*mat)</span><br><span class="line">		<span class="keyword">if</span> (k&amp;<span class="number">1</span>) ret = ret*mat;</span><br><span class="line">	<span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n); <span class="function">Matrix <span class="title">p</span><span class="params">(n+<span class="number">1</span>)</span>, <span class="title">q</span><span class="params">(n+<span class="number">1</span>)</span></span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">read</span>(b[i]);</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) <span class="built_in">read</span>(c[i]);</span><br><span class="line">	<span class="built_in">read</span>(l), <span class="built_in">read</span>(r), <span class="built_in">read</span>(P), l--, p.ele[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) p.ele[i+<span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) p.ele[<span class="number">0</span>][i] = c[i]%P;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) p.ele[<span class="number">1</span>][i] = c[i]%P;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) (q.ele[<span class="number">0</span>][<span class="number">0</span>] += b[i]) %= P;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) (q.ele[n-i+<span class="number">1</span>][<span class="number">0</span>] = b[i]) %= P;</span><br><span class="line">	<span class="keyword">if</span> (l &lt;= n) <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= l; i++) (s1 += b[i]) %= P;</span><br><span class="line">	<span class="keyword">else</span> s1 = (<span class="built_in">Power</span>(p, l-n)*q).ele[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">if</span> (r &lt;= n) <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= r; i++) (s2 += b[i]) %= P;</span><br><span class="line">	<span class="keyword">else</span> s2 = (<span class="built_in">Power</span>(p, r-n)*q).ele[<span class="number">0</span>][<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">printf</span>(<span class="string">&quot;%lld\n&quot;</span>, (s2-s1+P)%P), <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     </div>
 
@@ -289,7 +289,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Azrael</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
     </div>
@@ -299,10 +299,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
 
   
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
+  <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
 
 
   <script src="/OI-Blog/js/third-party/fancybox.js"></script>
@@ -311,6 +313,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/OI-Blog/js/third-party/math/mathjax.js"></script>
 
 
 

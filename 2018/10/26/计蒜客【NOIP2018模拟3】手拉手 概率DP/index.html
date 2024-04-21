@@ -19,7 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Mist","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/OI-Blog/js/config.js"></script>
 
     <meta name="description" content="Problem【NOIP2018模拟3】手拉手$\mathrm{Time;Limit:;1000;ms}$$\mathrm{Memory;Limit:;131072;K}$ Description小 P 是个幼儿园老师。有一天，他组织 $n$ 个小朋友玩游戏。游戏开始时，每个小朋友伸出两只手，没有手相互拉在一起。每次，小 P 等概率随机挑选两只空着的手，让这两只手拉在一起。小 P 一直重复这个操作">
 <meta property="og:type" content="article">
@@ -29,7 +29,7 @@
 <meta property="og:description" content="Problem【NOIP2018模拟3】手拉手$\mathrm{Time;Limit:;1000;ms}$$\mathrm{Memory;Limit:;131072;K}$ Description小 P 是个幼儿园老师。有一天，他组织 $n$ 个小朋友玩游戏。游戏开始时，每个小朋友伸出两只手，没有手相互拉在一起。每次，小 P 等概率随机挑选两只空着的手，让这两只手拉在一起。小 P 一直重复这个操作">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2018-10-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2018-10-26T12:55:11.170Z">
+<meta property="article:modified_time" content="2024-04-21T08:46:48.918Z">
 <meta property="article:author" content="Azrael">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="计蒜客">
@@ -65,6 +65,9 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -75,7 +78,7 @@
       <p class="site-title">NIRVANA</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">Veni Vidi Vici</p>
+      <p class="site-subtitle" itemprop="description">OI Journal</p>
   </div>
 
   <div class="site-nav-right">
@@ -86,6 +89,10 @@
 
 
 
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/OI-Blog/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-about"><a href="https://timothy-shu.github.io/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-tags"><a href="/OI-Blog/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-archives"><a href="/OI-Blog/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
 
 
 
@@ -121,13 +128,13 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
   <p class="site-author-name" itemprop="name">Azrael</p>
-  <div class="site-description" itemprop="description">Personal Blog</div>
+  <div class="site-description" itemprop="description">Former OIer</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/OI-Blog/archives/">
-          <span class="site-state-item-count">268</span>
+          <span class="site-state-item-count">249</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -181,7 +188,7 @@
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="NIRVANA">
-      <meta itemprop="description" content="Personal Blog">
+      <meta itemprop="description" content="Former OIer">
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
@@ -200,9 +207,8 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2018-10-26 00:00:00 / Modified: 20:55:11" itemprop="dateCreated datePublished" datetime="2018-10-26T00:00:00+08:00">2018-10-26</time>
+      <time title="Created: 2018-10-26 00:00:00" itemprop="dateCreated datePublished" datetime="2018-10-26T00:00:00+08:00">2018-10-26</time>
     </span>
 
   
@@ -220,14 +226,17 @@
 <h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>输入数据仅一行，包含一个正整数 $n$ ，表示小朋友的数量。</p>
 <h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>输出文件仅一行，包含一个实数，表示当所有的手都拉在一起之后，小朋友们拉成的圈个数的期望是多少。输出和标准答案的绝对误差不能超过 $10^{-9}$。</p>
 <span id="more"></span>
+
 <h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p><strong>Input #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2</span><br></pre></td></tr></table></figure>
 <p><strong>Input #2</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1000000</span><br></pre></td></tr></table></figure>
+
 <h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p><strong>Output #1</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1.333333333</span><br></pre></td></tr></table></figure>
 <p><strong>Output #2</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7.889510292</span><br></pre></td></tr></table></figure>
+
 <h3 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h3><p><strong>Explanation #1</strong><br>小 P 组织 $2$ 个小朋友玩游戏，我们称他们为小 A 和小 B。小 A 的左手等概率和小 A 的右手、小 B 的左手、小 B 的右手拉在一起，每一种情况的概率均为 $\frac{1}{3}$ 。若小 A 的左右手拉起来，那么最终会形成 $2$ 个圈，因为小 B 也必然左右手拉住。若小 A 的左手和小 B 的任意一只手拉起来，那么最终会形成一个圈，因为小 A 的右手必然和小 B 的另一只手拉住。那么，根据期望的公式，小 A 和小 B 拉成的圈个数的期望为<br>$$<br>\frac{1}{3}\times2+\frac{1}{3}\times1+\frac{1}{3}\times1&#x3D;\frac{4}{3}<br>$$</p>
 <h3 id="Constraint"><a href="#Constraint" class="headerlink" title="Constraint"></a>Constraint</h3><p>对于 $30%$ 的数据：$1 \le n \le 9$ 。<br>对于 $50%$ 的数据：$1 \le n \le 10^3$ 。<br>对于 $70%$ 的数据：$1 \le n \le 10^6$ 。<br>对于 $100%$ 的数据：$1 \le n \le 10^{18}$。</p>
 <h3 id="Source"><a href="#Source" class="headerlink" title="Source"></a>Source</h3><p><a target="_blank" rel="noopener" href="https://nanti.jisuanke.com/?kw=%E8%AE%A1%E8%92%9C%E5%AE%A2%20NOIP%20%E6%8F%90%E9%AB%98%E7%BB%84%E6%A8%A1%E6%8B%9F%E7%AB%9E%E8%B5%9B%E7%AC%AC%E4%BA%8C%E8%AF%95">计蒜客 NOIP 提高组模拟竞赛第二试</a></p>
@@ -252,14 +261,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/OI-Blog/2018/10/23/%E8%AE%A1%E8%92%9C%E5%AE%A2%E3%80%90NOIP2017%E6%A8%A1%E6%8B%9F3%E3%80%91%E6%95%B0%E4%B8%89%E8%A7%92%E5%BD%A2%20%E8%AE%A1%E6%95%B0/" rel="prev" title="计蒜客【NOIP2017模拟3】数三角形 <计数>">
-                  <i class="fa fa-chevron-left"></i> 计蒜客【NOIP2017模拟3】数三角形 <计数>
+                <a href="/OI-Blog/2018/10/26/%E8%AE%A1%E8%92%9C%E5%AE%A2%E3%80%90NOIP2018%E6%A8%A1%E6%8B%9F1%E3%80%91%E6%95%B0%E4%B8%89%E8%A7%92%E5%BD%A2%20%E6%A6%82%E7%8E%87/" rel="prev" title="计蒜客【NOIP2018模拟1】数三角形 <概率>">
+                  <i class="fa fa-chevron-left"></i> 计蒜客【NOIP2018模拟1】数三角形 <概率>
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/OI-Blog/2018/10/26/%E8%AE%A1%E8%92%9C%E5%AE%A2%E3%80%90NOIP2018%E6%A8%A1%E6%8B%9F1%E3%80%91%E6%95%B0%E4%B8%89%E8%A7%92%E5%BD%A2%20%E6%A6%82%E7%8E%87/" rel="next" title="计蒜客【NOIP2018模拟1】数三角形 <概率>">
-                  计蒜客【NOIP2018模拟1】数三角形 <概率> <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -286,7 +292,7 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Azrael</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
   </div>
 
     </div>
@@ -296,10 +302,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
-<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/schemes/muse.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
+<script src="/OI-Blog/js/comments.js"></script><script src="/OI-Blog/js/utils.js"></script><script src="/OI-Blog/js/motion.js"></script><script src="/OI-Blog/js/next-boot.js"></script>
 
   
 
+  <script class="next-config" data-name="pdf" type="application/json">{"object_url":{"url":"https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.2.8/pdfobject.min.js","integrity":"sha256-tu9j5pBilBQrWSDePOOajCUdz6hWsid/lBNzK4KgEPM="},"url":"/OI-Blog/lib/pdf/web/viewer.html"}</script>
+  <script src="/OI-Blog/js/third-party/tags/pdf.js"></script>
 
 
   <script src="/OI-Blog/js/third-party/fancybox.js"></script>
@@ -308,6 +316,12 @@
   
 
 
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/OI-Blog/js/third-party/math/mathjax.js"></script>
 
 
 
