@@ -23,21 +23,23 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"timothy-shu.github.io","root":"/OI-Blog/","images":"/OI-Blog/images","scheme":"Gemini","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/OI-Blog/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/OI-Blog/js/config.js"></script>
 
-    <meta name="description" content="Problem  彩色圆环 Time  Limit:  10  Sec\mathrm{Time\;Limit:\;10\;Sec}TimeLimit:10Sec Memory  Limit:  259  MB\mathrm{Memory\;Limit:\;259\;MB}MemoryLimit:259MB  Description  ![](https:&#x2F;&#x2F;www.lydsy.com&#x2F;Judge">
+    <meta name="description" content="Problem  彩色圆环 Time  Limit:  10  Sec\mathrm{Time\;Limit:\;10\;Sec}TimeLimit:10Sec Memory  Limit:  259  MB\mathrm{Memory\;Limit:\;259\;MB}MemoryLimit:259MB  Description   Input 仅有一行，该行给出依次两个正整数N,MN,MN,">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BZOJ2201 彩色圆环 &lt;概率DP&gt;">
 <meta property="og:url" content="https://timothy-shu.github.io/OI-Blog/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/index.html">
 <meta property="og:site_name" content="NIRVANA">
-<meta property="og:description" content="Problem  彩色圆环 Time  Limit:  10  Sec\mathrm{Time\;Limit:\;10\;Sec}TimeLimit:10Sec Memory  Limit:  259  MB\mathrm{Memory\;Limit:\;259\;MB}MemoryLimit:259MB  Description  ![](https:&#x2F;&#x2F;www.lydsy.com&#x2F;Judge">
+<meta property="og:description" content="Problem  彩色圆环 Time  Limit:  10  Sec\mathrm{Time\;Limit:\;10\;Sec}TimeLimit:10Sec Memory  Limit:  259  MB\mathrm{Memory\;Limit:\;259\;MB}MemoryLimit:259MB  Description   Input 仅有一行，该行给出依次两个正整数N,MN,MN,">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.lydsy.com/JudgeOnline/images/2201.jpg">
 <meta property="article:published_time" content="2018-09-25T16:00:00.000Z">
-<meta property="article:modified_time" content="2018-09-28T08:12:58.306Z">
+<meta property="article:modified_time" content="2024-04-22T05:12:01.816Z">
 <meta property="article:author" content="Azrael">
 <meta property="article:tag" content="DP">
 <meta property="article:tag" content="BZOJ">
 <meta property="article:tag" content="期望">
 <meta property="article:tag" content="概率DP">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.lydsy.com/JudgeOnline/images/2201.jpg">
 
 
 <link rel="canonical" href="https://timothy-shu.github.io/OI-Blog/BZOJ2201%20%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF%20%E6%A6%82%E7%8E%87DP/">
@@ -151,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF"><span class="nav-number">1.1.</span> <span class="nav-text"> 彩色圆环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#description"><span class="nav-number">1.2.</span> <span class="nav-text"> Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-input"><span class="nav-number">1.3.</span> <span class="nav-text"> Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-output"><span class="nav-number">1.4.</span> <span class="nav-text"> Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hint"><span class="nav-number">1.5.</span> <span class="nav-text"> HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text"> Code</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#problem"><span class="nav-number">1.</span> <span class="nav-text"> Problem</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%A9%E8%89%B2%E5%9C%86%E7%8E%AF"><span class="nav-number">1.1.</span> <span class="nav-text"> 彩色圆环</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#description"><span class="nav-number">1.2.</span> <span class="nav-text"> Description</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#input"><span class="nav-number">1.3.</span> <span class="nav-text"> Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#output"><span class="nav-number">1.4.</span> <span class="nav-text"> Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-input"><span class="nav-number">1.5.</span> <span class="nav-text"> Sample Input</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sample-output"><span class="nav-number">1.6.</span> <span class="nav-text"> Sample Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hint"><span class="nav-number">1.7.</span> <span class="nav-text"> HINT</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solution"><span class="nav-number">2.</span> <span class="nav-text"> Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text"> Code</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -247,7 +249,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>614</span>
+      <span>612</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -270,13 +272,11 @@
 <p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">T</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">e</mi><mtext>  </mtext><mi mathvariant="normal">L</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mo>:</mo><mtext>  </mtext><mn>10</mn><mtext>  </mtext><mi mathvariant="normal">S</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">c</mi></mrow><annotation encoding="application/x-tex">\mathrm{Time\;Limit:\;10\;Sec}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord"><span class="mord mathrm">T</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">L</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">1</span><span class="mord mathrm">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">S</span><span class="mord mathrm">e</span><span class="mord mathrm">c</span></span></span></span></span><br />
 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">M</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">y</mi><mtext>  </mtext><mi mathvariant="normal">L</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi><mo>:</mo><mtext>  </mtext><mn>259</mn><mtext>  </mtext><mi mathvariant="normal">M</mi><mi mathvariant="normal">B</mi></mrow><annotation encoding="application/x-tex">\mathrm{Memory\;Limit:\;259\;MB}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathrm">M</span><span class="mord mathrm">e</span><span class="mord mathrm">m</span><span class="mord mathrm">o</span><span class="mord mathrm">r</span><span class="mord mathrm" style="margin-right:0.01389em;">y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">L</span><span class="mord mathrm">i</span><span class="mord mathrm">m</span><span class="mord mathrm">i</span><span class="mord mathrm">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">2</span><span class="mord mathrm">5</span><span class="mord mathrm">9</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mord mathrm">M</span><span class="mord mathrm">B</span></span></span></span></span></p>
 <h3 id="description"><a class="markdownIt-Anchor" href="#description"></a> Description</h3>
-<center>
-![](https://www.lydsy.com/JudgeOnline/images/2201.jpg)
-</center>
-### Input
-仅有一行，该行给出依次两个正整数$N,M$，分别表示宝石的个数和宝石在变化时可能变成的颜色种类数。
-### Output
-应仅有一行，该行给出一个实数$E(R)$，表示圆环的“美观程度”的期望值。
+<p><img src="https://www.lydsy.com/JudgeOnline/images/2201.jpg" alt="" /></p>
+<h3 id="input"><a class="markdownIt-Anchor" href="#input"></a> Input</h3>
+<p>仅有一行，该行给出依次两个正整数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo separator="true">,</mo><mi>M</mi></mrow><annotation encoding="application/x-tex">N,M</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8777699999999999em;vertical-align:-0.19444em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">M</span></span></span></span>，分别表示宝石的个数和宝石在变化时可能变成的颜色种类数。</p>
+<h3 id="output"><a class="markdownIt-Anchor" href="#output"></a> Output</h3>
+<p>应仅有一行，该行给出一个实数<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">E(R)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mclose">)</span></span></span></span>，表示圆环的“美观程度”的期望值。</p>
 <span id="more"></span>
 <h3 id="sample-input"><a class="markdownIt-Anchor" href="#sample-input"></a> Sample Input</h3>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8 1</span><br></pre></td></tr></table></figure>
